@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="potGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd700" stop-opacity="0.35"/>
+      <stop offset="70%" stop-color="#5fdee7" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#081c18" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff176"/>
+      <stop offset="50%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#ff9800"/>
+    </linearGradient>
+    <linearGradient id="cyanAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5fdee7"/>
+      <stop offset="100%" stop-color="#00e5ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#081c18" stroke="#ffd700" stroke-width="1.8"/>
+  <circle cx="32" cy="34" r="24" fill="url(#potGlow)"/>
+
+  <path d="M24 18 C22 13, 27 10, 25 6" fill="none" stroke="url(#cyanAccent)" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+  <path d="M32 17 C30 11, 35 9, 33 5" fill="none" stroke="#ffd700" stroke-width="2.2" stroke-linecap="round" opacity="0.95"/>
+  <path d="M40 18 C38 13, 43 10, 41 6" fill="none" stroke="url(#cyanAccent)" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+
+  <circle cx="32" cy="22" r="3" fill="url(#goldGradient)"/>
+  <rect x="29" y="24" width="6" height="2" rx="1" fill="#ffd700"/>
+
+  <path d="M16 28 C16 25, 48 25, 48 28 L51 30 L13 30 Z" fill="url(#goldGradient)"/>
+  <path d="M14 32 L16 46 C17 51, 47 51, 48 46 L50 32 Z" fill="#0b2721" stroke="url(#goldGradient)" stroke-width="2.2"/>
+  <line x1="20" y1="39" x2="44" y2="39" stroke="#5fdee7" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.85"/>
+  <path d="M14 34 C10 34, 10 40, 14 40" fill="none" stroke="url(#goldGradient)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M50 34 C54 34, 54 40, 50 40" fill="none" stroke="url(#goldGradient)" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="26" cy="54" r="1.5" fill="#ffd700"/>
+  <circle cx="32" cy="55.5" r="2" fill="#5fdee7"/>
+  <circle cx="38" cy="54" r="1.5" fill="#ffd700"/>
+</svg>

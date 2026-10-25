@@ -1,0 +1,7 @@
+{
+  "name": "recipepots - One-Pot Dinners & Slow Cooker Journal",
+  "description": "DELICIOUS ONE-POT RECIPES & KITCHEN GEAR GUIDES - PUBLISHED DAILY. Independent culinary journal for one-pot dinners, slow cooker classics, quick weeknight meals, and healthy diets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
