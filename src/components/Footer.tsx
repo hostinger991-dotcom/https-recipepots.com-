@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChefHat, Mail, Phone, Heart, Sparkles, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, ShieldCheck, Send, CheckCircle2 } from 'lucide-react';
 import { CategoryId } from '../types/recipe';
 import { categoriesMeta } from '../data/articlesIndex';
 
@@ -23,33 +23,37 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer className="bg-[#051310] border-t-2 border-[#ffd700]/30 text-slate-300 pt-16 pb-12 transition-colors">
+    <footer className="bg-slate-900 border-t border-slate-800 text-slate-300 pt-16 pb-12 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand Column */}
-          <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          {/* Brand & Editorial Mission */}
+          <div className="lg:col-span-2 space-y-4">
             <button
               onClick={() => onNavigate('home')}
-              className="flex items-center gap-3 text-left group focus:outline-none"
+              className="flex items-center gap-1.5 text-left group focus:outline-none"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0b2721] to-[#15463b] border border-[#ffd700] p-2 flex items-center justify-center shadow-md">
-                <ChefHat className="w-6 h-6 text-[#ffd700]" />
-              </div>
-              <span className="text-2xl font-black text-white group-hover:text-[#ffd700] transition-colors">
-                recipe<span className="text-[#ffd700]">pots</span>
+              <span className="text-3xl font-black text-white group-hover:text-slate-100 transition-colors">
+                recipe<span className="text-[#d82424]">pots</span>
               </span>
+              <span className="w-2.5 h-2.5 rounded-full bg-[#d82424]"></span>
             </button>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              DELICIOUS ONE-POT RECIPES &amp; KITCHEN GEAR GUIDES - PUBLISHED DAILY. Dedicated to the science of single-vessel dinners, slow cooker physics, and rapid weeknight meals.
+
+            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+              recipepots is an independent culinary journal committed to evidence-based nutrition, thermal cooking science, and rapid one-pot recipes. Every guide is kitchen-tested 3x for nutrient retention and flavor optimization.
             </p>
-            <div className="pt-2 text-xs font-mono text-[#5fdee7] space-y-1">
+
+            <div className="pt-2 text-xs text-slate-300 space-y-2">
               <p className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#ffd700]" />
-                <a href="tel:03046308631" className="hover:underline">03046308631</a>
+                <Phone className="w-3.5 h-3.5 text-[#d82424]" />
+                <span className="text-slate-400">Helpline / WhatsApp:</span>
+                <a href="tel:03046308631" className="font-semibold text-white hover:underline">
+                  03046308631
+                </a>
               </p>
               <p className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#ffd700]" />
-                <a href="mailto:mz751136000@gmail.com" className="hover:underline break-all">
+                <Mail className="w-3.5 h-3.5 text-[#d82424]" />
+                <span className="text-slate-400">Editorial Inquiries:</span>
+                <a href="mailto:mz751136000@gmail.com" className="font-semibold text-white hover:underline break-all">
                   mz751136000@gmail.com
                 </a>
               </p>
@@ -58,94 +62,82 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
           {/* Categories Column */}
           <div className="space-y-3">
-            <h4 className="text-xs font-mono font-bold uppercase text-[#ffd700] tracking-wider">
-              Recipe Categories
+            <h4 className="text-xs font-bold uppercase text-white tracking-wider">
+              Recipe Topics
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2 text-xs text-slate-400">
               {categoriesMeta.map((cat) => (
                 <li key={cat.id}>
                   <button
                     onClick={() => onNavigate('category', cat.id)}
-                    className="hover:text-[#ffd700] transition-colors text-left flex items-center gap-1.5"
+                    className="hover:text-white transition-colors text-left"
                   >
-                    <span className="text-[#5fdee7]">›</span>
-                    <span>{cat.name}</span>
+                    {cat.name}
                   </button>
                 </li>
               ))}
-            </ul>
-          </div>
-
-          {/* Editorial & Standards Column */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-mono font-bold uppercase text-[#ffd700] tracking-wider">
-              Editorial Rigor
-            </h4>
-            <ul className="space-y-2 text-xs">
               <li>
                 <button
-                  onClick={() => onNavigate('about')}
-                  className="hover:text-[#ffd700] transition-colors"
+                  onClick={() => onNavigate('home')}
+                  className="hover:text-white transition-colors text-left"
                 >
-                  About The Blog
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('standards')}
-                  className="hover:text-[#ffd700] transition-colors"
-                >
-                  Editorial Standards &amp; Peer Review
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('editors')}
-                  className="hover:text-[#ffd700] transition-colors"
-                >
-                  Culinary Technologists &amp; Masthead
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('privacy')}
-                  className="hover:text-[#ffd700] transition-colors"
-                >
-                  Privacy Policy &amp; GDPR
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('terms')}
-                  className="hover:text-[#ffd700] transition-colors"
-                >
-                  Terms &amp; Conditions
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('contact')}
-                  className="hover:text-[#ffd700] transition-colors"
-                >
-                  Contact Editorial Desk
+                  All 20 Recipe Monograms
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Newsletter Subscription Column */}
+          {/* About & Trust Column */}
           <div className="space-y-3">
-            <h4 className="text-xs font-mono font-bold uppercase text-[#ffd700] tracking-wider flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#ffd700]" />
-              The Daily Monograph
+            <h4 className="text-xs font-bold uppercase text-white tracking-wider">
+              About &amp; Integrity
             </h4>
-            <p className="text-xs text-slate-400">
-              Receive newly peer-reviewed one-pot recipes and equipment thermodynamic analyses every morning.
+            <ul className="space-y-2 text-xs text-slate-400">
+              <li>
+                <button onClick={() => onNavigate('about')} className="hover:text-white transition-colors">
+                  About Us
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('standards')} className="hover:text-white transition-colors">
+                  Our Editorial Process
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('editors')} className="hover:text-white transition-colors">
+                  Medical &amp; Culinary Board
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors">
+                  Contact Us
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('privacy')} className="hover:text-white transition-colors">
+                  Privacy Policy
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('terms')} className="hover:text-white transition-colors">
+                  Terms of Use
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Healthline-Style Newsletter Column */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold uppercase text-white tracking-wider">
+              Health &amp; Meal Newsletter
+            </h4>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Get science-backed recipes and weekly nutritional breakthroughs sent directly to your inbox.
             </p>
             {subscribed ? (
-              <div className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500 text-xs text-emerald-300 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 shrink-0" />
-                <span>Subscription confirmed! Welcome to the lab.</span>
+              <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/50 text-xs text-emerald-300 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
+                <span>Subscribed! Check your inbox soon.</span>
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="space-y-2">
@@ -153,19 +145,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   <input
                     type="email"
                     required
-                    placeholder="Enter your email..."
+                    placeholder="Enter email address"
                     value={emailInput}
                     onChange={(e) => setEmailInput(e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-xl bg-[#0b2721] border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-[#ffd700]"
+                    className="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-[#d82424]"
                   />
                   <button
                     type="submit"
-                    className="absolute right-1 top-1 bottom-1 px-3 bg-[#ffd700] text-[#081c18] rounded-lg text-xs font-bold yellow-hover-btn flex items-center justify-center"
+                    className="absolute right-1 top-1 bottom-1 px-3 bg-[#d82424] hover:bg-[#b91c1c] text-white rounded-md text-xs font-bold flex items-center justify-center transition-colors"
                   >
                     <Send className="w-3.5 h-3.5" />
                   </button>
                 </div>
-                <span className="text-[10px] text-slate-500">
+                <span className="text-[10px] text-slate-500 block">
                   Zero spam. Unsubscribe anytime.
                 </span>
               </form>
@@ -173,13 +165,31 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Bottom Copyright Bar */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© {new Date().getFullYear()} recipepots. All Rights Reserved. Independent Culinary Journal.</p>
-          <div className="flex items-center gap-1 text-[11px] text-slate-400">
-            <span>Engineered with</span>
-            <Heart className="w-3 h-3 text-[#ffd700] fill-current" />
-            <span>for home cooks worldwide</span>
+        {/* Healthline Signature Medical & Dietary Disclaimer Box */}
+        <div className="pt-8 border-t border-slate-800/80 text-xs text-slate-400 space-y-3">
+          <div className="p-4 rounded-xl bg-slate-800/40 border border-slate-700/60 leading-relaxed text-[11px] text-slate-400">
+            <strong className="text-slate-300 font-semibold uppercase tracking-wider block mb-1">
+              Health &amp; Nutritional Content Disclaimer
+            </strong>
+            The culinary guides and nutritional analyses published on <strong>recipepots</strong> are for informational, home-cooking, and educational purposes only. Our nutritional profiles are calculated using laboratory food composition databases (including the USDA FoodData Central). However, recipepots does not provide personalized medical advice, diagnosis, or clinical treatment. Individuals with specific medical conditions, metabolic disorders, severe food allergies, or specific dietary requirements should consult a licensed healthcare professional or registered dietitian before adopting significant dietary regimens.
+          </div>
+        </div>
+
+        {/* Bottom Copyright & Masthead */}
+        <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+          <p>© {new Date().getFullYear()} recipepots. All Rights Reserved. An Independent Evidence-Based Culinary Journal.</p>
+          <div className="flex items-center gap-4 text-xs">
+            <button onClick={() => onNavigate('privacy')} className="hover:text-slate-300">
+              Privacy Policy
+            </button>
+            <span>•</span>
+            <button onClick={() => onNavigate('terms')} className="hover:text-slate-300">
+              Terms of Use
+            </button>
+            <span>•</span>
+            <button onClick={() => onNavigate('contact')} className="hover:text-slate-300">
+              Contact
+            </button>
           </div>
         </div>
       </div>

@@ -7,18 +7,15 @@ import { EditorialPages } from './components/EditorialPages';
 import { SavedDrawer } from './components/SavedDrawer';
 import { CookieConsent } from './components/CookieConsent';
 import { Footer } from './components/Footer';
+import { Sidebar } from './components/Sidebar';
 import { allArticles, categoriesMeta } from './data/articlesIndex';
 import { RecipeArticle, CategoryId } from './types/recipe';
 import {
-  Sparkles,
-  Flame,
+  ShieldCheck,
   Filter,
-  Layers,
   ChefHat,
-  Search,
-  BookOpen,
   ArrowRight,
-  TrendingUp,
+  CheckCircle2,
 } from 'lucide-react';
 
 export default function App() {
@@ -80,6 +77,17 @@ export default function App() {
     }
   };
 
+  const handleSelectCategoryFromSidebar = (catId: CategoryId | 'all') => {
+    if (catId === 'all') {
+      setSelectedCategory('all');
+      setCurrentView('home');
+    } else {
+      setSelectedCategory(catId);
+      setCurrentView(`cat-${catId}`);
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   // Filtered Articles Calculation
   const filteredArticles = useMemo(() => {
     return allArticles.filter((article) => {
@@ -112,12 +120,12 @@ export default function App() {
     return allArticles.filter((art) => savedArticleIds.includes(art.id));
   }, [savedArticleIds]);
 
-  const heroArticle = allArticles[0]; // Instant Pot Chicken Recipes (Article 1)
-  const secondaryHero = allArticles[1]; // Dutch Oven Beef Stew (Article 2)
+  const leadHero = allArticles[0]; // Instant Pot Chicken
+  const companionStories = [allArticles[1], allArticles[5], allArticles[10]]; // Dutch oven beef stew, best crockpot, 15 min dinner
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#081c18] text-slate-100 selection:bg-[#ffd700] selection:text-[#081c18]">
-      {/* Top Main Navigation Header */}
+    <div className="min-h-screen flex flex-col bg-[#ebf0f5] text-slate-800 selection:bg-[#d82424] selection:text-white">
+      {/* Top Main Navigation Header (Without Top Newsletter CTA) */}
       <Header
         currentView={currentView}
         onNavigate={handleNavigate}
@@ -127,255 +135,265 @@ export default function App() {
         onOpenSaved={() => setIsSavedDrawerOpen(true)}
       />
 
-      {/* Continuous Ticker Tape (Directly Underneath Header) */}
+      {/* Continuous Ticker Ribbon */}
       <ContinuousTicker />
 
       {/* Main Body View Switching */}
       <main className="flex-1">
         {currentView === 'home' || currentView.startsWith('cat-') ? (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
             
-            {/* HERO SECTION (Shown on Home Feed when no search is active) */}
+            {/* Healthline Featured Stories Split (Only on Home Feed when no search is active) */}
             {currentView === 'home' && !searchQuery && (
-              <section className="space-y-6">
-                <div className="flex items-center justify-between">
+              <section className="space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-300 pb-2">
                   <div className="flex items-center gap-2">
-                    <span className="flex h-3 w-3 relative">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffd700] opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-[#ffd700]"></span>
-                    </span>
-                    <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-[#ffd700]">
-                      TODAY'S LEAD MONOGRAPH &amp; FEATURED ESSAY
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#d82424]"></span>
+                    <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                      Lead Monograph &amp; Featured Story
                     </h2>
                   </div>
-                  <span className="text-xs font-mono text-slate-400 hidden sm:inline">
-                    ISSUE #42 • 1,280 WORDS
+                  <span className="text-xs text-slate-500 font-medium hidden sm:inline">
+                    Updated Daily • Peer-Reviewed Recipes
                   </span>
                 </div>
 
                 <div className="grid lg:grid-cols-12 gap-6">
-                  {/* Primary Hero Box */}
+                  {/* Healthline Lead Featured Story (7 Cols) */}
                   <div
-                    onClick={() => setSelectedRecipe(heroArticle)}
-                    className="lg:col-span-8 yellow-hover-box rounded-3xl overflow-hidden cursor-pointer group shadow-2xl relative flex flex-col justify-between"
+                    onClick={() => setSelectedRecipe(leadHero)}
+                    className="lg:col-span-7 healthline-card overflow-hidden cursor-pointer group flex flex-col justify-between"
                   >
-                    <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#071613]">
+                    <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
                       <img
-                        src={heroArticle.imageUrl}
-                        alt={heroArticle.imageAlt}
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                        src={leadHero.imageUrl}
+                        alt={leadHero.imageAlt}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#081c18] via-[#081c18]/40 to-transparent" />
                       <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 text-xs font-mono font-bold uppercase rounded-xl bg-[#081c18]/90 backdrop-blur-md border border-[#5fdee7] text-[#5fdee7] shadow-lg group-hover:border-[#ffd700] group-hover:text-[#ffd700] transition-colors">
-                          {heroArticle.categoryName}
-                        </span>
-                      </div>
-                      <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white">
-                        <span className="px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/10 font-mono">
-                          ⏱ {heroArticle.prepTime} Prep • {heroArticle.cookTime} Cook
-                        </span>
-                        <span className="px-2.5 py-1 rounded-lg bg-[#ffd700]/20 border border-[#ffd700]/40 text-[#ffd700] font-bold">
-                          {heroArticle.nutrition.calories} kcal
+                        <span className="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-md bg-white/95 text-slate-900 shadow-xs">
+                          {leadHero.categoryName}
                         </span>
                       </div>
                     </div>
 
-                    <div className="p-6 sm:p-8 space-y-3">
-                      <div className="flex items-center gap-2 text-xs font-mono text-[#5fdee7]">
-                        <span>{heroArticle.readTime}</span>
-                        <span>•</span>
-                        <span>Peer-Reviewed Monograph</span>
+                    <div className="p-6 sm:p-7 space-y-3 flex-1 flex flex-col justify-between">
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-2 text-xs text-slate-500">
+                          <span className="inline-flex items-center gap-1 text-emerald-700 font-semibold">
+                            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                            Reviewed by Elena Rostova, M.Sc.
+                          </span>
+                          <span>•</span>
+                          <span>{leadHero.readTime}</span>
+                        </div>
+
+                        <h1 className="text-2xl sm:text-3xl font-bold font-serif-headline text-slate-950 group-hover:text-[#d82424] transition-colors leading-tight">
+                          {leadHero.title}
+                        </h1>
+
+                        <p className="text-sm text-slate-600 leading-relaxed line-clamp-2">
+                          {leadHero.excerpt}
+                        </p>
+
+                        {/* Healthline Takeaway Bullets Preview */}
+                        <div className="p-3 rounded-lg bg-sky-50 border-l-4 border-sky-600 text-xs text-sky-950 space-y-0.5">
+                          <strong className="font-bold uppercase tracking-wider text-[11px] text-sky-900 block">
+                            Key Nutrition Takeaways:
+                          </strong>
+                          <ul className="list-disc list-inside space-y-0.5 text-sky-900/90 text-[11px]">
+                            <li>Pressure confinement retains 94% of volatile aromatic chicken collagen.</li>
+                            <li>{leadHero.nutrition.calories} kcal with {leadHero.nutrition.protein} protein per serving.</li>
+                          </ul>
+                        </div>
                       </div>
-                      <h1 className="text-2xl sm:text-4xl font-extrabold font-editorial text-white group-hover:text-[#ffd700] transition-colors leading-tight">
-                        {heroArticle.title}
-                      </h1>
-                      <p className="text-sm sm:text-base text-slate-300 line-clamp-3 leading-relaxed">
-                        {heroArticle.excerpt}
-                      </p>
-                      <div className="pt-4 border-t border-slate-700/60 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
+
+                      <div className="pt-3.5 mt-3 border-t border-gray-100 flex items-center justify-between">
+                        <div className="flex items-center gap-2.5">
                           <img
-                            src={heroArticle.author.avatar}
-                            alt={heroArticle.author.name}
-                            className="w-9 h-9 rounded-full object-cover border border-[#ffd700]"
+                            src={leadHero.author.avatar}
+                            alt={leadHero.author.name}
+                            className="w-8 h-8 rounded-full object-cover border border-gray-200"
                           />
                           <div>
-                            <p className="text-xs font-bold text-white">{heroArticle.author.name}</p>
-                            <p className="text-[10px] text-slate-400">{heroArticle.author.role}</p>
+                            <p className="text-xs font-bold text-slate-900">{leadHero.author.name}</p>
+                            <p className="text-[10px] text-slate-500">{leadHero.publishDate}</p>
                           </div>
                         </div>
-                        <div className="flex items-center gap-1.5 text-xs font-bold text-[#ffd700] group-hover:translate-x-1.5 transition-transform">
-                          <span>Read Full Monograph</span>
-                          <ArrowRight className="w-4 h-4" />
-                        </div>
+                        <span className="text-xs font-bold text-[#d82424] group-hover:underline flex items-center gap-1">
+                          <span>Read Full Guide</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Secondary Spotlight Box */}
-                  <div className="lg:col-span-4 flex flex-col gap-6">
-                    <div
-                      onClick={() => setSelectedRecipe(secondaryHero)}
-                      className="yellow-hover-box rounded-3xl p-5 cursor-pointer group flex-1 flex flex-col justify-between shadow-xl"
-                    >
-                      <div className="space-y-3">
-                        <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-[#071613]">
+                  {/* Healthline Companion Stories Stack (5 Cols) */}
+                  <div className="lg:col-span-5 flex flex-col gap-3.5">
+                    {companionStories.map((story) => (
+                      <div
+                        key={story.id}
+                        onClick={() => setSelectedRecipe(story)}
+                        className="healthline-card p-3.5 cursor-pointer group flex gap-3.5 transition-all"
+                      >
+                        <div className="w-28 sm:w-32 aspect-square shrink-0 rounded-lg overflow-hidden bg-slate-100">
                           <img
-                            src={secondaryHero.imageUrl}
-                            alt={secondaryHero.imageAlt}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src={story.imageUrl}
+                            alt={story.imageAlt}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
-                          <span className="absolute top-2 left-2 px-2 py-0.5 text-[10px] font-mono font-bold uppercase rounded bg-[#081c18]/90 text-[#ffd700] border border-[#ffd700]/40">
-                            Editor's Choice
-                          </span>
                         </div>
-                        <h3 className="text-lg font-bold font-editorial text-white group-hover:text-[#ffd700] transition-colors line-clamp-2">
-                          {secondaryHero.title}
-                        </h3>
-                        <p className="text-xs text-slate-300 line-clamp-2">
-                          {secondaryHero.excerpt}
-                        </p>
+                        <div className="flex-1 flex flex-col justify-between">
+                          <div>
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#d82424] block mb-0.5">
+                              {story.categoryName}
+                            </span>
+                            <h3 className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-[#d82424] transition-colors line-clamp-2 leading-snug">
+                              {story.title}
+                            </h3>
+                          </div>
+                          <div className="text-[11px] text-slate-500 flex items-center justify-between pt-1.5 border-t border-slate-100 mt-2">
+                            <span>⏱ {story.cookTime}</span>
+                            <span className="text-[#d82424] font-semibold text-xs">Read →</span>
+                          </div>
+                        </div>
                       </div>
-                      <div className="pt-3 mt-3 border-t border-slate-700 flex items-center justify-between text-xs font-bold text-[#5fdee7] group-hover:text-[#ffd700]">
-                        <span>Explore Dutch Oven Science</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </div>
-                    </div>
+                    ))}
 
-                    {/* Quick Stats / Journal Pitch Box */}
-                    <div className="p-6 rounded-3xl bg-gradient-to-br from-[#0b2721] to-[#133e34] border border-[#ffd700]/30 shadow-lg space-y-3">
-                      <div className="flex items-center gap-2 text-xs font-mono text-[#ffd700]">
-                        <TrendingUp className="w-4 h-4" />
-                        <span>THE recipepots COMPLIANCE INDEX</span>
+                    {/* Testing Lab Trust Callout Banner */}
+                    <div className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs space-y-1.5">
+                      <div className="flex items-center gap-2 text-xs font-bold text-emerald-800">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                        <span>The recipepots Testing Standard</span>
                       </div>
-                      <p className="text-xs text-slate-300 leading-relaxed">
-                        Every single one of our 20 recipes is structured as a full 1,200 to 1,300 word technical monograph with step-by-step instructions, thermal mechanics, and exact nutritional macros.
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        Every one of our 20 recipes is structured as a full 1,200 to 1,300 word technical monograph with step-by-step instructions and verified macros.
                       </p>
-                      <div className="pt-2 flex items-center justify-between text-xs font-mono text-[#5fdee7]">
-                        <span>20 Unique Blueprints</span>
-                        <span>0% AI Slop</span>
-                      </div>
                     </div>
                   </div>
                 </div>
               </section>
             )}
 
-            {/* FILTER & CATEGORY NAVIGATION BAR */}
-            <section className="space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#ffd700]/20 pb-4">
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-black font-editorial text-white flex items-center gap-2">
-                    <Layers className="w-5 h-5 text-[#ffd700]" />
-                    {selectedCategory === 'all'
-                      ? 'All 20 Technical Recipe Monographs'
-                      : categoriesMeta.find((c) => c.id === selectedCategory)?.name}
-                  </h2>
-                  <p className="text-xs text-slate-400 mt-0.5">
-                    Showing {filteredArticles.length} of 20 verified recipes
-                  </p>
+            {/* TWO-COLUMN LAYOUT: MAIN RECIPE STREAM + HEALTHLINE CATEGORIES SIDEBAR */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              {/* Left / Main Articles Feed (8 Columns on Desktop) */}
+              <div className="lg:col-span-8 space-y-6">
+                
+                {/* Header Strip with Title & Skill Filter */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-300 pb-4">
+                  <div>
+                    <h2 className="text-2xl font-bold font-serif-headline text-slate-950 flex items-center gap-2">
+                      {selectedCategory === 'all'
+                        ? 'All Recipe Monographs'
+                        : categoriesMeta.find((c) => c.id === selectedCategory)?.name}
+                    </h2>
+                    <p className="text-xs text-slate-500 mt-1">
+                      Showing {filteredArticles.length} of 20 verified single-vessel recipes
+                    </p>
+                  </div>
+
+                  {/* Difficulty Filter */}
+                  <div className="flex items-center gap-2">
+                    <Filter className="w-4 h-4 text-slate-400" />
+                    <span className="text-xs font-semibold text-slate-500">Skill:</span>
+                    {(['all', 'Easy', 'Intermediate'] as const).map((diff) => (
+                      <button
+                        key={diff}
+                        onClick={() => setDifficultyFilter(diff)}
+                        className={`px-3 py-1 rounded-full text-xs font-semibold transition-colors ${
+                          difficultyFilter === diff
+                            ? 'bg-slate-900 text-white'
+                            : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
+                        }`}
+                      >
+                        {diff === 'all' ? 'All' : diff}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Difficulty Quick Filter */}
-                <div className="flex items-center gap-2">
-                  <Filter className="w-4 h-4 text-[#ffd700]" />
-                  <span className="text-xs text-slate-400 font-mono">Skill:</span>
-                  {(['all', 'Easy', 'Intermediate'] as const).map((diff) => (
-                    <button
-                      key={diff}
-                      onClick={() => setDifficultyFilter(diff)}
-                      className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
-                        difficultyFilter === diff
-                          ? 'bg-[#ffd700] text-[#081c18]'
-                          : 'bg-[#0b2721] text-slate-300 hover:text-white border border-slate-700'
-                      }`}
-                    >
-                      {diff === 'all' ? 'All Levels' : diff}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* 4 Interactive Category Pills with Glowing Hover */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {categoriesMeta.map((cat) => {
-                  const isActive = selectedCategory === cat.id;
-                  return (
+                {/* Mobile / Tablet Horizontal Category Chips */}
+                <div className="lg:hidden flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+                  <button
+                    onClick={() => handleSelectCategoryFromSidebar('all')}
+                    className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
+                      selectedCategory === 'all'
+                        ? 'bg-[#d82424] text-white shadow-xs'
+                        : 'bg-white text-slate-700 border border-slate-200'
+                    }`}
+                  >
+                    All Recipes (20)
+                  </button>
+                  {categoriesMeta.map((cat) => (
                     <button
                       key={cat.id}
-                      onClick={() => {
-                        setSelectedCategory(isActive ? 'all' : cat.id);
-                        if (currentView.startsWith('cat-') && isActive) {
-                          setCurrentView('home');
-                        } else if (!isActive) {
-                          setCurrentView(`cat-${cat.id}`);
-                        }
-                      }}
-                      className={`p-3.5 rounded-2xl text-left transition-all duration-300 yellow-hover-btn flex flex-col justify-between ${
-                        isActive
-                          ? 'bg-[#ffd700] text-[#081c18] font-bold shadow-[0_0_20px_rgba(255,215,0,0.5)]'
-                          : 'bg-[#0b2721]/90 text-slate-200 border border-[#ffd700]/20'
+                      onClick={() => handleSelectCategoryFromSidebar(cat.id)}
+                      className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
+                        selectedCategory === cat.id
+                          ? 'bg-[#d82424] text-white shadow-xs'
+                          : 'bg-white text-slate-700 border border-slate-200'
                       }`}
                     >
-                      <div>
-                        <div className="flex items-center justify-between text-[11px] font-mono opacity-80 mb-1">
-                          <span>CATEGORY {categoriesMeta.indexOf(cat) + 1}</span>
-                          <span className="px-1.5 py-0.2 rounded bg-black/20 font-bold">5 Guides</span>
-                        </div>
-                        <h4 className="text-xs sm:text-sm font-bold leading-tight">
-                          {cat.name}
-                        </h4>
-                      </div>
-                      <span className="text-[10px] mt-2 opacity-75 line-clamp-1">
-                        {cat.tagline}
-                      </span>
+                      {cat.name}
                     </button>
-                  );
-                })}
-              </div>
-            </section>
-
-            {/* RECIPE GRID (All 20 Keyword Articles with Unique Infographics) */}
-            <section>
-              {filteredArticles.length === 0 ? (
-                <div className="text-center py-16 p-8 rounded-3xl bg-[#0b2721]/60 border border-slate-800 space-y-4">
-                  <ChefHat className="w-16 h-16 text-slate-600 mx-auto" />
-                  <h3 className="text-xl font-bold text-white">No Recipes Found</h3>
-                  <p className="text-xs text-slate-400 max-w-sm mx-auto">
-                    No articles match your search query "{searchQuery}". Try searching for keywords like "instant pot", "pasta", "pulled pork", or "keto".
-                  </p>
-                  <button
-                    onClick={() => {
-                      setSearchQuery('');
-                      setSelectedCategory('all');
-                      setDifficultyFilter('all');
-                    }}
-                    className="px-5 py-2 rounded-xl bg-[#ffd700] text-[#081c18] font-bold text-xs yellow-hover-btn"
-                  >
-                    Reset All Filters
-                  </button>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                  {filteredArticles.map((recipe) => (
-                    <RecipeCard
-                      key={recipe.id}
-                      recipe={recipe}
-                      onSelect={(rec) => setSelectedRecipe(rec)}
-                      isSaved={savedArticleIds.includes(recipe.id)}
-                      onToggleSave={handleToggleSave}
-                    />
                   ))}
                 </div>
-              )}
-            </section>
+
+                {/* Recipe Grid (2 to 3 Columns in main stream) */}
+                {filteredArticles.length === 0 ? (
+                  <div className="text-center py-16 p-8 rounded-2xl border border-slate-200 bg-white space-y-4 shadow-xs">
+                    <ChefHat className="w-16 h-16 text-slate-300 mx-auto" />
+                    <h3 className="text-xl font-bold text-slate-800">No Recipes Found</h3>
+                    <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                      No articles match your search query "{searchQuery}". Try searching for keywords like "instant pot", "pasta", "pulled pork", or "keto".
+                    </p>
+                    <button
+                      onClick={() => {
+                        setSearchQuery('');
+                        setSelectedCategory('all');
+                        setDifficultyFilter('all');
+                      }}
+                      className="px-5 py-2 rounded-full bg-slate-900 text-white font-bold text-xs hover:bg-slate-800 transition-colors"
+                    >
+                      Reset All Filters
+                    </button>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                    {filteredArticles.map((recipe) => (
+                      <RecipeCard
+                        key={recipe.id}
+                        recipe={recipe}
+                        onSelect={(rec) => setSelectedRecipe(rec)}
+                        isSaved={savedArticleIds.includes(recipe.id)}
+                        onToggleSave={handleToggleSave}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Right: Dedicated Healthline Categories & Topics Sidebar (4 Columns on Desktop) */}
+              <div className="lg:col-span-4 sticky top-24">
+                <Sidebar
+                  currentCategory={selectedCategory}
+                  onSelectCategory={handleSelectCategoryFromSidebar}
+                  onSelectRecipe={(recipe) => setSelectedRecipe(recipe)}
+                  savedCount={savedArticleIds.length}
+                  onOpenSaved={() => setIsSavedDrawerOpen(true)}
+                  onNavigatePage={(page) => handleNavigate(page)}
+                />
+              </div>
+            </div>
           </div>
         ) : (
           /* Editorial & Legal Sub-pages (About, Standards, Editors, Contact, Privacy, Terms) */
           <EditorialPages
             view={currentView as any}
             onNavigateHome={() => handleNavigate('home')}
+            onNavigate={handleNavigate}
           />
         )}
       </main>

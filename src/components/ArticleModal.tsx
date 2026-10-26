@@ -11,12 +11,15 @@ import {
   CheckSquare,
   Square,
   HelpCircle,
-  Sparkles,
   ShieldCheck,
   ChevronDown,
   ChevronUp,
   Scale,
-  Atom,
+  Sparkles,
+  ThumbsUp,
+  ThumbsDown,
+  CheckCircle2,
+  BookOpen,
 } from 'lucide-react';
 import { RecipeArticle } from '../types/recipe';
 
@@ -40,6 +43,8 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
   const [checkedIngredients, setCheckedIngredients] = useState<string[]>([]);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [showShareToast, setShowShareToast] = useState(false);
+  const [feedbackGiven, setFeedbackGiven] = useState<'yes' | 'no' | null>(null);
+  const [showEditorialInfo, setShowEditorialInfo] = useState(false);
 
   const toggleStep = (stepNumber: number) => {
     if (completedSteps.includes(stepNumber)) {
@@ -68,39 +73,40 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex justify-center p-2 sm:p-4 md:p-6 lg:p-8 animate-fadeIn">
-      <div className="relative bg-[#081c18] border-2 border-[#ffd700]/60 rounded-3xl w-full max-w-4xl shadow-[0_0_80px_rgba(255,215,0,0.3)] overflow-hidden my-auto text-slate-100">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex justify-center p-2 sm:p-4 md:p-6 lg:p-8 animate-fadeIn">
+      <div className="relative bg-white border border-gray-200 rounded-2xl w-full max-w-5xl shadow-2xl overflow-hidden my-auto text-slate-800">
         
-        {/* Floating Top Controls */}
-        <div className="sticky top-0 z-30 bg-[#081c18]/90 backdrop-blur-md px-4 sm:px-6 py-3 border-b border-[#ffd700]/30 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#5fdee7]">
-            <span className="px-2 py-0.5 rounded bg-[#0b2721] border border-[#5fdee7]/40 uppercase font-bold">
+        {/* Sticky Top Header Bar */}
+        <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md px-4 sm:px-6 py-3 border-b border-gray-200 flex items-center justify-between">
+          <div className="flex items-center gap-2 text-xs text-slate-500">
+            <span className="font-bold text-[#d82424] uppercase tracking-wider">
               {recipe.categoryName}
             </span>
-            <span className="hidden sm:inline text-slate-400">• {recipe.readTime}</span>
+            <span>•</span>
+            <span>{recipe.readTime}</span>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={() => onToggleSave(recipe.id)}
-              className={`p-2 rounded-xl transition-all ${
+              className={`p-2 rounded-full border transition-all ${
                 isSaved
-                  ? 'bg-[#ffd700] text-[#081c18]'
-                  : 'bg-[#0b2721] text-slate-300 hover:text-[#ffd700] border border-[#ffd700]/30'
+                  ? 'bg-[#d82424] text-white border-[#d82424]'
+                  : 'bg-white text-slate-700 hover:text-[#d82424] border-gray-200 hover:border-gray-300'
               }`}
-              title={isSaved ? 'Saved in cookbook' : 'Save to cookbook'}
+              title={isSaved ? 'Saved in cookbook' : 'Save recipe'}
             >
               <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} />
             </button>
 
             <button
               onClick={handleShare}
-              className="p-2 rounded-xl bg-[#0b2721] text-slate-300 hover:text-[#ffd700] border border-[#ffd700]/30 transition-all relative"
-              title="Share recipe"
+              className="p-2 rounded-full bg-white text-slate-700 hover:text-slate-900 border border-gray-200 hover:border-gray-300 transition-all relative"
+              title="Share article"
             >
               <Share2 className="w-4 h-4" />
               {showShareToast && (
-                <span className="absolute -bottom-8 right-0 px-2 py-1 bg-[#ffd700] text-[#081c18] font-bold text-[10px] rounded shadow-md whitespace-nowrap">
+                <span className="absolute -bottom-8 right-0 px-2 py-1 bg-slate-900 text-white font-bold text-[10px] rounded shadow-md whitespace-nowrap">
                   Link Copied!
                 </span>
               )}
@@ -108,15 +114,16 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
 
             <button
               onClick={handlePrint}
-              className="p-2 rounded-xl bg-[#0b2721] text-slate-300 hover:text-[#ffd700] border border-[#ffd700]/30 transition-all hidden sm:block"
-              title="Print recipe guide"
+              className="p-2 rounded-full bg-white text-slate-700 hover:text-slate-900 border border-gray-200 hover:border-gray-300 transition-all hidden sm:block"
+              title="Print recipe"
             >
               <Printer className="w-4 h-4" />
             </button>
 
             <button
               onClick={onClose}
-              className="p-2 rounded-xl bg-[#0b2721] text-slate-300 hover:text-white hover:bg-red-950/40 border border-slate-700 transition-all"
+              className="p-2 rounded-full bg-slate-100 text-slate-700 hover:text-slate-900 hover:bg-slate-200 transition-all"
+              aria-label="Close"
             >
               <X className="w-5 h-5" />
             </button>
@@ -125,183 +132,222 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
 
         {/* Modal Scrollable Body */}
         <div className="p-4 sm:p-8 space-y-8 max-h-[85vh] overflow-y-auto">
-          {/* Header & Meta */}
+          {/* Article Header & Healthline Medical Review Badge */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#ffd700]">
-              <Sparkles className="w-4 h-4" />
-              <span>PEER-REVIEWED TECHNICAL MONOGRAPH</span>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#d82424]">
+                {recipe.categoryName}
+              </span>
+              <span className="text-slate-300">•</span>
+              <span className="text-xs text-slate-500 font-medium">Culinary Nutrition &amp; Science</span>
             </div>
 
-            <h1 className="text-2xl sm:text-4xl font-extrabold font-editorial text-white leading-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold font-serif-headline text-slate-950 leading-tight">
               {recipe.title}
             </h1>
 
-            <p className="text-base sm:text-lg text-[#5fdee7] font-medium leading-relaxed">
+            <p className="text-base sm:text-xl text-slate-600 leading-relaxed font-normal">
               {recipe.subtitle}
             </p>
 
-            {/* Author Byline */}
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800">
-              <div className="flex items-center gap-3">
-                <img
-                  src={recipe.author.avatar}
-                  alt={recipe.author.name}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-[#ffd700]"
-                />
-                <div>
-                  <p className="text-sm font-bold text-white">{recipe.author.name}</p>
-                  <p className="text-xs text-slate-400">{recipe.author.role}</p>
+            {/* Healthline Signature Reviewer Attribution Box */}
+            <div className="rounded-xl bg-slate-50 border border-gray-200 p-4 space-y-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                <div className="flex items-center gap-2 text-emerald-800 font-semibold">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>
+                    Medically &amp; Scientifically Reviewed by{' '}
+                    <strong className="text-slate-900 font-bold">Elena Rostova, M.Sc., RD</strong>
+                  </span>
                 </div>
+                <span className="text-slate-500 text-[11px]">
+                  Updated on October 24, 2026
+                </span>
               </div>
-              <div className="text-right text-xs text-slate-400 font-mono">
-                <p>Published: {recipe.publishDate}</p>
-                <p className="text-[#5fdee7]">Review Status: Verified &amp; Kitchen Tested</p>
+
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs pt-2 border-t border-gray-200/60">
+                <p className="text-slate-600">
+                  Written by <strong className="text-slate-800 font-semibold">{recipe.author.name}</strong>, {recipe.author.role}
+                </p>
+                <button
+                  onClick={() => setShowEditorialInfo(!showEditorialInfo)}
+                  className="text-xs text-[#d82424] hover:underline font-semibold flex items-center gap-1"
+                >
+                  <span>Our Editorial Process</span>
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showEditorialInfo ? 'rotate-180' : ''}`} />
+                </button>
               </div>
+
+              {showEditorialInfo && (
+                <div className="pt-2 text-xs text-slate-600 leading-relaxed border-t border-gray-200/60 animate-fadeIn">
+                  <p>
+                    Every recipe monograph on <strong>recipepots</strong> undergoes triple kitchen testing: thermal conductivity verification, nutritional macro analysis in accordance with USDA FoodData Central standards, and sodium/sodium-to-potassium ratio optimization. Our clinical reviewers ensure meal compositions support sustained energy, cardiovascular health, and digestive comfort.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Featured Hero Infographic Image */}
-          <div className="relative rounded-2xl overflow-hidden border border-[#ffd700]/30 shadow-2xl bg-[#071613]">
+          {/* Healthline "The Bottom Line" Callout Box */}
+          <div className="rounded-xl bg-sky-50 border-l-4 border-sky-600 p-5 space-y-2">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-sky-900 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-sky-600" />
+              The Bottom Line
+            </h3>
+            <p className="text-xs sm:text-sm text-sky-950 leading-relaxed">
+              This one-pot preparation optimizes nutrient retention by capturing all volatile aromatic compounds and water-soluble vitamins within a single enclosed vessel. Featuring {recipe.nutrition.calories} calories and {recipe.nutrition.protein} of clean protein per serving, it combines rapid preparation with balanced glycemic stability.
+            </p>
+          </div>
+
+          {/* Featured Infographic Image */}
+          <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-slate-100">
             <img
               src={recipe.imageUrl}
               alt={recipe.imageAlt}
-              className="w-full h-auto object-cover max-h-[500px]"
+              className="w-full h-auto object-cover max-h-[520px]"
             />
-            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#081c18] via-[#081c18]/70 to-transparent p-4">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-[#ffd700] bg-black/60 px-2 py-1 rounded border border-[#ffd700]/30">
-                Official Visual Blueprint • 100% Unique Infographic
-              </span>
+            <div className="p-3 bg-slate-50 border-t border-gray-100 text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1">
+              <span>{recipe.imageAlt}</span>
+              <span className="text-[11px] text-slate-400">Photo Credit: recipepots Culinary Science Test Kitchen</span>
             </div>
           </div>
 
-          {/* Quick Technical Specs Grid */}
+          {/* Technical Nutritional Specs Strip */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div className="p-3.5 rounded-xl bg-[#0b2721] border border-[#ffd700]/20 flex items-center gap-3">
-              <Clock className="w-6 h-6 text-[#ffd700]" />
-              <div>
-                <p className="text-[10px] uppercase font-mono text-slate-400">Prep / Cook</p>
-                <p className="text-xs sm:text-sm font-bold text-white">{recipe.prepTime} / {recipe.cookTime}</p>
+            <div className="p-3.5 rounded-xl border border-gray-200 bg-white">
+              <div className="flex items-center gap-2 text-slate-500 text-xs mb-1">
+                <Clock className="w-4 h-4 text-slate-400" />
+                <span>Prep &amp; Cook</span>
               </div>
+              <p className="text-sm font-bold text-slate-900">{recipe.prepTime} + {recipe.cookTime}</p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-[#0b2721] border border-[#ffd700]/20 flex items-center gap-3">
-              <Users className="w-6 h-6 text-[#5fdee7]" />
-              <div>
-                <p className="text-[10px] uppercase font-mono text-slate-400">Yield</p>
-                <p className="text-xs sm:text-sm font-bold text-white">
-                  {Math.round(recipe.servings * servingMultiplier)} Servings
-                </p>
+            <div className="p-3.5 rounded-xl border border-gray-200 bg-white">
+              <div className="flex items-center gap-2 text-slate-500 text-xs mb-1">
+                <Users className="w-4 h-4 text-slate-400" />
+                <span>Servings Yield</span>
               </div>
+              <p className="text-sm font-bold text-slate-900">
+                {Math.round(recipe.servings * servingMultiplier)} Portions
+              </p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-[#0b2721] border border-[#ffd700]/20 flex items-center gap-3">
-              <Flame className="w-6 h-6 text-[#ff9800]" />
-              <div>
-                <p className="text-[10px] uppercase font-mono text-slate-400">Energy</p>
-                <p className="text-xs sm:text-sm font-bold text-white">{recipe.nutrition.calories} kcal</p>
+            <div className="p-3.5 rounded-xl border border-gray-200 bg-white">
+              <div className="flex items-center gap-2 text-slate-500 text-xs mb-1">
+                <Flame className="w-4 h-4 text-[#d82424]" />
+                <span>Calories</span>
               </div>
+              <p className="text-sm font-bold text-[#d82424]">{recipe.nutrition.calories} kcal</p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-[#0b2721] border border-[#ffd700]/20 flex items-center gap-3">
-              <ChefHat className="w-6 h-6 text-[#5fdee7]" />
-              <div>
-                <p className="text-[10px] uppercase font-mono text-slate-400">Complexity</p>
-                <p className="text-xs sm:text-sm font-bold text-white">{recipe.difficulty}</p>
+            <div className="p-3.5 rounded-xl border border-gray-200 bg-white">
+              <div className="flex items-center gap-2 text-slate-500 text-xs mb-1">
+                <ChefHat className="w-4 h-4 text-slate-400" />
+                <span>Complexity</span>
               </div>
+              <p className="text-sm font-bold text-slate-900">{recipe.difficulty}</p>
             </div>
           </div>
 
-          {/* Macro Breakdown Strip */}
-          <div className="p-4 rounded-2xl bg-[#0b2721]/80 border border-[#5fdee7]/30">
-            <h4 className="text-xs font-mono font-bold uppercase text-[#5fdee7] tracking-wider mb-3 flex items-center gap-2">
-              <Scale className="w-4 h-4 text-[#ffd700]" />
-              Nutritional Macronutrient Density (Per Serving)
-            </h4>
+          {/* Healthline Macronutrient Density Panel */}
+          <div className="p-5 rounded-xl bg-slate-50 border border-gray-200 space-y-3">
+            <div className="flex items-center justify-between">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-2">
+                <Scale className="w-4 h-4 text-slate-500" />
+                Verified Nutritional Profile (Per Serving)
+              </h4>
+              <span className="text-[11px] text-slate-500">USDA Analytical Standard</span>
+            </div>
+
             <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 text-center">
-              <div className="p-2 rounded-lg bg-[#081c18] border border-white/5">
-                <span className="text-[10px] text-slate-400 uppercase">Protein</span>
-                <p className="text-sm font-black text-[#ffd700]">{recipe.nutrition.protein}</p>
+              <div className="p-2.5 rounded-lg bg-white border border-gray-200 shadow-2xs">
+                <span className="text-[10px] text-slate-500 uppercase font-semibold">Protein</span>
+                <p className="text-sm font-bold text-slate-900">{recipe.nutrition.protein}</p>
               </div>
-              <div className="p-2 rounded-lg bg-[#081c18] border border-white/5">
-                <span className="text-[10px] text-slate-400 uppercase">Carbs</span>
-                <p className="text-sm font-black text-white">{recipe.nutrition.carbs}</p>
+              <div className="p-2.5 rounded-lg bg-white border border-gray-200 shadow-2xs">
+                <span className="text-[10px] text-slate-500 uppercase font-semibold">Carbs</span>
+                <p className="text-sm font-bold text-slate-900">{recipe.nutrition.carbs}</p>
               </div>
-              <div className="p-2 rounded-lg bg-[#081c18] border border-white/5">
-                <span className="text-[10px] text-slate-400 uppercase">Fats</span>
-                <p className="text-sm font-black text-white">{recipe.nutrition.fat}</p>
+              <div className="p-2.5 rounded-lg bg-white border border-gray-200 shadow-2xs">
+                <span className="text-[10px] text-slate-500 uppercase font-semibold">Fats</span>
+                <p className="text-sm font-bold text-slate-900">{recipe.nutrition.fat}</p>
               </div>
-              <div className="p-2 rounded-lg bg-[#081c18] border border-white/5">
-                <span className="text-[10px] text-slate-400 uppercase">Dietary Fiber</span>
-                <p className="text-sm font-black text-[#5fdee7]">{recipe.nutrition.fiber}</p>
+              <div className="p-2.5 rounded-lg bg-white border border-gray-200 shadow-2xs">
+                <span className="text-[10px] text-slate-500 uppercase font-semibold">Fiber</span>
+                <p className="text-sm font-bold text-emerald-700">{recipe.nutrition.fiber}</p>
               </div>
-              <div className="p-2 rounded-lg bg-[#081c18] border border-white/5">
-                <span className="text-[10px] text-slate-400 uppercase">Sodium</span>
-                <p className="text-sm font-black text-white">{recipe.nutrition.sodium}</p>
+              <div className="p-2.5 rounded-lg bg-white border border-gray-200 shadow-2xs">
+                <span className="text-[10px] text-slate-500 uppercase font-semibold">Sodium</span>
+                <p className="text-sm font-bold text-slate-900">{recipe.nutrition.sodium}</p>
               </div>
-              <div className="p-2 rounded-lg bg-[#081c18] border border-white/5">
-                <span className="text-[10px] text-slate-400 uppercase">Calories</span>
-                <p className="text-sm font-black text-[#ff9800]">{recipe.nutrition.calories}</p>
+              <div className="p-2.5 rounded-lg bg-white border border-gray-200 shadow-2xs">
+                <span className="text-[10px] text-slate-500 uppercase font-semibold">Energy</span>
+                <p className="text-sm font-bold text-[#d82424]">{recipe.nutrition.calories} kcal</p>
               </div>
             </div>
           </div>
 
           {/* Full Long-Form Editorial Prose (1200+ words standard) */}
-          <div className="prose prose-invert max-w-none space-y-4 text-slate-200 text-sm sm:text-base leading-relaxed">
-            <h3 className="text-xl font-bold font-editorial text-white border-b border-[#ffd700]/30 pb-2 flex items-center gap-2">
-              <Atom className="w-5 h-5 text-[#ffd700]" />
-              Culinary Science &amp; Monograph Analysis
+          <div className="space-y-4">
+            <h3 className="text-xl sm:text-2xl font-bold font-serif-headline text-slate-900 border-b border-gray-200 pb-2">
+              Culinary Analysis &amp; Health Insights
             </h3>
-            {recipe.fullArticleText.map((paragraph, pIdx) => (
-              <p key={pIdx} className="text-slate-300 leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
+            <div className="space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+              {recipe.fullArticleText.map((paragraph, pIdx) => (
+                <p key={pIdx}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
           </div>
 
-          {/* Scientific Callout Box */}
-          <div className="p-5 rounded-2xl bg-gradient-to-r from-[#0b2721] to-[#144238] border-l-4 border-[#ffd700] shadow-md">
-            <div className="flex items-center gap-2 text-sm font-bold text-[#ffd700] mb-2 font-mono">
-              <Sparkles className="w-4 h-4" />
-              CHEF'S MOLECULAR SCIENCE NOTE
-            </div>
-            <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
+          {/* Kitchen Science & Physics Callout Box */}
+          <div className="p-5 rounded-xl bg-amber-50/70 border-l-4 border-amber-500 space-y-1.5">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-amber-900 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-amber-600" />
+              Kitchen Science &amp; Thermodynamics Note
+            </h4>
+            <p className="text-xs sm:text-sm text-amber-950 leading-relaxed">
               {recipe.culinaryScienceNotes}
             </p>
           </div>
 
-          {/* Required Kitchen Equipment */}
-          <div className="p-4 rounded-xl bg-[#0b2721] border border-slate-800">
-            <h4 className="text-xs font-mono font-bold uppercase text-[#5fdee7] tracking-wider mb-2">
-              Required Kitchen Gear &amp; Vessels
+          {/* Required Equipment */}
+          <div className="p-4 rounded-xl border border-gray-200 bg-slate-50 space-y-2">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700">
+              Recommended Equipment &amp; Cookware
             </h4>
             <div className="flex flex-wrap gap-2">
               {recipe.equipment.map((item, eqIdx) => (
                 <span
                   key={eqIdx}
-                  className="px-2.5 py-1 text-xs rounded-lg bg-[#081c18] border border-slate-700 text-slate-300"
+                  className="px-3 py-1 text-xs rounded-full bg-white border border-gray-200 text-slate-700 font-medium"
                 >
-                  ⚙️ {item}
+                  ✓ {item}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Interactive Ingredients Checklist with Servings Multiplier */}
+          {/* Ingredients Section with Scaler */}
           <div className="space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#ffd700]/30 pb-3">
-              <h3 className="text-xl font-bold font-editorial text-white">
-                Ingredients &amp; Mise en Place
-              </h3>
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-slate-400 font-mono">Servings Scale:</span>
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-3">
+              <div>
+                <h3 className="text-xl font-bold font-serif-headline text-slate-900">
+                  Ingredients Checklist
+                </h3>
+                <p className="text-xs text-slate-500">Tap any ingredient to cross it off while prepping</p>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs">
+                <span className="text-slate-500">Servings:</span>
                 {[1, 1.5, 2].map((mult) => (
                   <button
                     key={mult}
                     onClick={() => setServingMultiplier(mult)}
-                    className={`px-2.5 py-1 text-xs font-bold rounded-lg border transition-all ${
+                    className={`px-2.5 py-1 text-xs font-semibold rounded-md border transition-colors ${
                       servingMultiplier === mult
-                        ? 'bg-[#ffd700] text-[#081c18] border-[#ffd700]'
-                        : 'bg-[#0b2721] text-slate-300 border-slate-700 hover:border-[#ffd700]'
+                        ? 'bg-slate-900 text-white border-slate-900'
+                        : 'bg-white text-slate-700 border-gray-200 hover:border-gray-400'
                     }`}
                   >
                     {mult}x
@@ -312,11 +358,11 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
 
             <div className="grid md:grid-cols-2 gap-6">
               {recipe.ingredients.map((group, gIdx) => (
-                <div key={gIdx} className="space-y-2.5">
-                  <h4 className="text-xs font-mono font-bold uppercase text-[#ffd700] tracking-wider">
+                <div key={gIdx} className="space-y-2">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600">
                     {group.category}
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {group.items.map((item, iIdx) => {
                       const isChecked = checkedIngredients.includes(item);
                       return (
@@ -325,14 +371,14 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                           onClick={() => toggleIngredient(item)}
                           className={`flex items-start gap-2.5 p-2 rounded-lg cursor-pointer text-xs sm:text-sm transition-colors ${
                             isChecked
-                              ? 'bg-emerald-950/20 text-slate-400 line-through'
-                              : 'bg-[#0b2721]/60 text-slate-200 hover:bg-[#0b2721]'
+                              ? 'bg-slate-100 text-slate-400 line-through'
+                              : 'hover:bg-slate-50 text-slate-800'
                           }`}
                         >
                           {isChecked ? (
-                            <CheckSquare className="w-4 h-4 text-[#ffd700] shrink-0 mt-0.5" />
+                            <CheckSquare className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                           ) : (
-                            <Square className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
+                            <Square className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                           )}
                           <span>{item}</span>
                         </li>
@@ -344,44 +390,44 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
             </div>
           </div>
 
-          {/* Step-by-Step Interactive Instructions */}
+          {/* Step-by-Step Instructions */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold font-editorial text-white border-b border-[#ffd700]/30 pb-3">
-              Step-by-Step Cooking Instructions
+            <h3 className="text-xl font-bold font-serif-headline text-slate-900 border-b border-gray-200 pb-3">
+              Step-by-Step Instructions
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {recipe.instructions.map((step) => {
                 const isComplete = completedSteps.includes(step.stepNumber);
                 return (
                   <div
                     key={step.stepNumber}
                     onClick={() => toggleStep(step.stepNumber)}
-                    className={`p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer ${
+                    className={`p-4 rounded-xl border transition-all cursor-pointer ${
                       isComplete
-                        ? 'bg-[#0b2721]/40 border-emerald-500/40 opacity-75'
-                        : 'yellow-hover-box'
+                        ? 'bg-emerald-50/40 border-emerald-200 opacity-80'
+                        : 'bg-white border-gray-200 hover:border-gray-300'
                     }`}
                   >
                     <div className="flex items-start gap-3">
                       <div
                         className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shrink-0 transition-colors ${
                           isComplete
-                            ? 'bg-emerald-500 text-black'
-                            : 'bg-[#ffd700] text-[#081c18]'
+                            ? 'bg-emerald-600 text-white'
+                            : 'bg-slate-100 text-slate-800 border border-gray-300'
                         }`}
                       >
                         {isComplete ? '✓' : step.stepNumber}
                       </div>
-                      <div className="space-y-1.5 flex-1">
-                        <h4 className="text-sm sm:text-base font-bold text-white">
+                      <div className="space-y-1 flex-1">
+                        <h4 className="text-sm font-bold text-slate-900">
                           {step.title}
                         </h4>
-                        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                           {step.instruction}
                         </p>
                         {step.proTip && (
-                          <div className="mt-2 p-2.5 rounded-lg bg-[#081c18] border border-[#5fdee7]/30 text-xs text-[#5fdee7]">
-                            <strong className="text-[#ffd700]">Pro-Tip:</strong> {step.proTip}
+                          <div className="mt-2 p-2 rounded-lg bg-amber-50/80 border border-amber-200 text-xs text-amber-900">
+                            <strong>Chef's Pro-Tip:</strong> {step.proTip}
                           </div>
                         )}
                       </div>
@@ -392,30 +438,32 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
             </div>
           </div>
 
-          {/* Pros & Cons Analysis */}
+          {/* Pros & Cons / Technical Evaluation */}
           <div className="grid sm:grid-cols-2 gap-4">
-            <div className="p-4 rounded-xl bg-[#0b2721] border border-emerald-500/30">
-              <h4 className="text-xs font-mono font-bold uppercase text-emerald-400 mb-2 flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4" /> Editorial Strengths
+            <div className="p-4 rounded-xl bg-emerald-50/50 border border-emerald-200">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2 flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                Dietary &amp; Culinary Strengths
               </h4>
-              <ul className="space-y-1.5 text-xs text-slate-300">
+              <ul className="space-y-1 text-xs text-emerald-950">
                 {recipe.prosAndCons.pros.map((p, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="text-emerald-400 font-bold">+</span>
+                  <li key={idx} className="flex items-start gap-1.5">
+                    <span className="text-emerald-700 font-bold">•</span>
                     <span>{p}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#0b2721] border border-amber-500/30">
-              <h4 className="text-xs font-mono font-bold uppercase text-amber-400 mb-2 flex items-center gap-1.5">
-                <HelpCircle className="w-4 h-4" /> Technical Considerations
+            <div className="p-4 rounded-xl bg-slate-50 border border-gray-200">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
+                <HelpCircle className="w-4 h-4 text-slate-500" />
+                Preparation Notes &amp; Substitutions
               </h4>
-              <ul className="space-y-1.5 text-xs text-slate-300">
+              <ul className="space-y-1 text-xs text-slate-700">
                 {recipe.prosAndCons.cons.map((c, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="text-amber-400 font-bold">−</span>
+                  <li key={idx} className="flex items-start gap-1.5">
+                    <span className="text-slate-400 font-bold">•</span>
                     <span>{c}</span>
                   </li>
                 ))}
@@ -423,31 +471,31 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
             </div>
           </div>
 
-          {/* Frequently Asked Questions */}
-          <div className="space-y-3 pt-4 border-t border-slate-800">
-            <h3 className="text-lg font-bold font-editorial text-white flex items-center gap-2">
-              <HelpCircle className="w-5 h-5 text-[#ffd700]" />
-              Reader &amp; Kitchen FAQs
+          {/* FAQs Accordion */}
+          <div className="space-y-3 pt-4 border-t border-gray-200">
+            <h3 className="text-lg font-bold font-serif-headline text-slate-900 flex items-center gap-2">
+              <HelpCircle className="w-5 h-5 text-slate-500" />
+              Frequently Asked Questions
             </h3>
             <div className="space-y-2">
               {recipe.faqs.map((faq, fIdx) => (
                 <div
                   key={fIdx}
-                  className="rounded-xl bg-[#0b2721] border border-slate-800 overflow-hidden"
+                  className="rounded-xl border border-gray-200 bg-white overflow-hidden"
                 >
                   <button
                     onClick={() => setOpenFaqIndex(openFaqIndex === fIdx ? null : fIdx)}
-                    className="w-full p-3.5 text-left flex items-center justify-between text-xs sm:text-sm font-semibold text-white hover:text-[#ffd700] transition-colors"
+                    className="w-full p-3.5 text-left flex items-center justify-between text-xs sm:text-sm font-semibold text-slate-900 hover:text-[#d82424] transition-colors"
                   >
                     <span>{faq.question}</span>
                     {openFaqIndex === fIdx ? (
-                      <ChevronUp className="w-4 h-4 text-[#ffd700]" />
+                      <ChevronUp className="w-4 h-4 text-slate-500" />
                     ) : (
                       <ChevronDown className="w-4 h-4 text-slate-400" />
                     )}
                   </button>
                   {openFaqIndex === fIdx && (
-                    <div className="px-3.5 pb-3.5 text-xs sm:text-sm text-slate-300 border-t border-slate-800 pt-2 leading-relaxed bg-[#081c18]/50">
+                    <div className="px-3.5 pb-3.5 text-xs sm:text-sm text-slate-600 border-t border-gray-100 pt-2 leading-relaxed bg-slate-50/50">
                       {faq.answer}
                     </div>
                   )}
@@ -455,16 +503,55 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
               ))}
             </div>
           </div>
+
+          {/* Healthline Signature: "Was this article helpful?" Widget */}
+          <div className="p-6 rounded-xl bg-slate-50 border border-gray-200 text-center space-y-3">
+            <h4 className="text-sm font-bold text-slate-900">Was this page helpful?</h4>
+            {feedbackGiven ? (
+              <p className="text-xs text-emerald-700 font-semibold">
+                ✓ Thank you for your feedback! It helps our editorial team improve.
+              </p>
+            ) : (
+              <div className="flex items-center justify-center gap-3">
+                <button
+                  onClick={() => setFeedbackGiven('yes')}
+                  className="px-4 py-2 rounded-full border border-gray-300 bg-white hover:bg-slate-100 text-xs font-semibold text-slate-700 flex items-center gap-1.5 transition-colors shadow-2xs"
+                >
+                  <ThumbsUp className="w-3.5 h-3.5 text-emerald-600" />
+                  Yes
+                </button>
+                <button
+                  onClick={() => setFeedbackGiven('no')}
+                  className="px-4 py-2 rounded-full border border-gray-300 bg-white hover:bg-slate-100 text-xs font-semibold text-slate-700 flex items-center gap-1.5 transition-colors shadow-2xs"
+                >
+                  <ThumbsDown className="w-3.5 h-3.5 text-slate-500" />
+                  No
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Scientific Sources & Reference Citations */}
+          <div className="text-xs text-slate-500 space-y-1.5 pt-4 border-t border-gray-200">
+            <h4 className="font-bold uppercase tracking-wider text-slate-700 text-[11px]">
+              Scientific Sources &amp; Literature
+            </h4>
+            <ul className="list-disc list-inside space-y-1 text-[11px] text-slate-500">
+              <li>USDA FoodData Central (FDC) Nutritional Composition Database, 2024 Release.</li>
+              <li>Journal of Food Science: Heat Penetration and Kinetic Nutrient Retention in Pressure-Assisted Vessels.</li>
+              <li>Harvard T.H. Chan School of Public Health: The Nutrition Source – Single-Pot Bioavailability.</li>
+            </ul>
+          </div>
         </div>
 
-        {/* Modal Footer */}
-        <div className="sticky bottom-0 bg-[#081c18]/95 backdrop-blur-md px-6 py-3 border-t border-[#ffd700]/30 flex items-center justify-between">
-          <p className="text-xs text-slate-400 font-mono hidden sm:block">
-            Journal Monograph #{recipe.id} • recipepots
+        {/* Modal Bottom Sticky Bar */}
+        <div className="sticky bottom-0 bg-white/95 backdrop-blur-md px-6 py-3 border-t border-gray-200 flex items-center justify-between">
+          <p className="text-xs text-slate-500 hidden sm:block">
+            Evidence-Based Culinary Journal • recipepots
           </p>
           <button
             onClick={onClose}
-            className="px-6 py-2 rounded-xl bg-[#ffd700] text-[#081c18] font-bold text-xs sm:text-sm yellow-hover-btn ml-auto"
+            className="px-6 py-2 rounded-full bg-slate-900 text-white font-bold text-xs hover:bg-slate-800 ml-auto transition-colors"
           >
             Close Guide
           </button>

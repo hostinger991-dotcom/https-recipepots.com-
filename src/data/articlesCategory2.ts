@@ -478,7 +478,7 @@ export const articlesCategory2: RecipeArticle[] = [
     cookTime: '8 hrs',
     servings: 6,
     difficulty: 'Intermediate',
-    imageUrl: '/src/assets/images/beef_roast_179292242729.jpg',
+    imageUrl: '/src/assets/images/slow_cooker_beef_roast_1793000647307.jpg',
     imageAlt: 'High-Tech Culinary Infographic for Slow Cooker Beef Roast',
     excerpt: 'Turn an ordinary chuck roast into an extraordinary Sunday centerpiece. Master the art of the hard sear, aromatic deglazing, and rich velouté gravy reduction.',
     equipment: ['6-Quart Oval Slow Cooker', 'Heavy 12-inch Cast Iron Skillet', 'Carving Board', 'Fat Separator'],

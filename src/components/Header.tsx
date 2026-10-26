@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChefHat, Search, BookOpen, Sparkles, X, Menu, Flame } from 'lucide-react';
+import { Search, BookOpen, X, Menu, ShieldCheck, Mail, Phone, ChevronRight } from 'lucide-react';
 import { CategoryId } from '../types/recipe';
 import { categoriesMeta } from '../data/articlesIndex';
 
@@ -23,65 +23,103 @@ export const Header: React.FC<HeaderProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
 
+  const trendingTopics = [
+    { label: 'Instant Pot Chicken', query: 'instant pot chicken' },
+    { label: 'High-Protein', query: 'high protein' },
+    { label: 'Keto One-Pot', query: 'keto' },
+    { label: 'Slow Cooker Stew', query: 'beef stew' },
+    { label: '15-Minute Meals', query: '15 minute' },
+    { label: 'Meal Prep', query: 'meal prep' },
+    { label: 'Low Carb Crockpot', query: 'low carb' },
+    { label: 'Sheet Pan Chicken', query: 'sheet pan' },
+    { label: 'Gluten-Free Dinners', query: 'gluten free' },
+  ];
+
   return (
-    <header className="sticky top-0 z-40 bg-[#081c18]/95 backdrop-blur-md border-b border-[#ffd700]/20">
-      {/* Top Banner Tagline */}
-      <div className="bg-gradient-to-r from-[#0b2721] via-[#103830] to-[#0b2721] border-b border-[#5fdee7]/25 px-4 py-1.5 text-center text-[11px] sm:text-xs font-semibold tracking-wider text-[#5fdee7] flex items-center justify-center gap-2">
-        <Sparkles className="w-3.5 h-3.5 text-[#ffd700] animate-pulse" />
-        <span>DELICIOUS ONE-POT RECIPES &amp; KITCHEN GEAR GUIDES - PUBLISHED DAILY</span>
-        <Sparkles className="w-3.5 h-3.5 text-[#ffd700] animate-pulse" />
+    <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
+      {/* Top Healthline Trust & Contact Bar */}
+      <div className="bg-slate-900 text-slate-200 text-xs py-1.5 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-[11px] font-medium">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1 font-semibold text-emerald-400">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              PEER-REVIEWED &amp; LABORATORY TESTED
+            </span>
+            <span className="hidden md:inline text-slate-500">•</span>
+            <span className="hidden md:inline text-slate-300">
+              Evidence-based culinary nutrition &amp; one-pot cooking science
+            </span>
+          </div>
+
+          <div className="flex items-center gap-4 text-slate-300">
+            <a
+              href="tel:03046308631"
+              className="flex items-center gap-1 hover:text-white transition-colors"
+              title="Editorial Support Helpline"
+            >
+              <Phone className="w-3 h-3 text-[#d82424]" />
+              <span>03046308631</span>
+            </a>
+            <span className="text-slate-600">|</span>
+            <a
+              href="mailto:mz751136000@gmail.com"
+              className="flex items-center gap-1 hover:text-white transition-colors"
+              title="Editorial Office"
+            >
+              <Mail className="w-3 h-3 text-[#d82424]" />
+              <span>mz751136000@gmail.com</span>
+            </a>
+          </div>
+        </div>
       </div>
 
+      {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo & Brand Identity */}
-          <button
-            onClick={() => onNavigate('home')}
-            className="flex items-center gap-3.5 group text-left focus:outline-none"
-          >
-            <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-[#0b2721] to-[#15463b] border-2 border-[#ffd700] p-2 flex items-center justify-center shadow-[0_0_15px_rgba(255,215,0,0.25)] group-hover:shadow-[0_0_25px_rgba(255,215,0,0.6)] group-hover:border-[#ffcc00] transition-all duration-300">
-              <ChefHat className="w-7 h-7 text-[#ffd700] group-hover:scale-110 transition-transform duration-300" />
-              <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5fdee7] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-[#5fdee7]"></span>
-              </span>
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-2xl sm:text-3xl font-black tracking-tight text-white group-hover:text-[#ffd700] transition-colors">
-                  recipe<span className="text-[#ffd700]">pots</span>
-                </span>
-                <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-[#ffd700]/10 border border-[#ffd700]/40 text-[#ffd700] font-bold">
-                  v2.6
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-400 hidden sm:block tracking-wide">
-                One-Pot Dinners &amp; Slow Cooker Journal
-              </p>
-            </div>
-          </button>
+        <div className="flex items-center justify-between h-18">
+          {/* Left: Hamburger & Healthline-Style Brand Wordmark */}
+          <div className="flex items-center gap-3 md:gap-5">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 -ml-2 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors focus:outline-none"
+              aria-label="Toggle Navigation Menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
             <button
               onClick={() => onNavigate('home')}
-              className={`px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all yellow-hover-btn ${
+              className="group flex items-baseline gap-1 text-left focus:outline-none select-none"
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 group-hover:text-slate-950 transition-colors">
+                  recipe<span className="text-[#d82424]">pots</span>
+                </span>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#d82424] self-center -ml-0.5"></span>
+              </div>
+            </button>
+          </div>
+
+          {/* Desktop Categories (Healthline Clean Links) */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+            <button
+              onClick={() => onNavigate('home')}
+              className={`text-sm font-semibold tracking-tight transition-colors pb-1 border-b-2 ${
                 currentView === 'home'
-                  ? 'bg-[#ffd700] text-[#081c18] font-bold shadow-[0_0_15px_rgba(255,215,0,0.4)]'
-                  : 'text-slate-300 hover:text-white'
+                  ? 'border-[#d82424] text-[#d82424]'
+                  : 'border-transparent text-slate-700 hover:text-slate-950 hover:border-slate-300'
               }`}
             >
-              Home Feed
+              Home
             </button>
 
             {categoriesMeta.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => onNavigate('category', cat.id)}
-                className={`px-2.5 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all yellow-hover-btn whitespace-nowrap ${
+                className={`text-sm font-semibold tracking-tight transition-colors pb-1 border-b-2 whitespace-nowrap ${
                   currentView === `cat-${cat.id}`
-                    ? 'bg-[#ffd700] text-[#081c18] font-bold shadow-[0_0_15px_rgba(255,215,0,0.4)]'
-                    : 'text-slate-300 hover:text-white'
+                    ? 'border-[#d82424] text-[#d82424]'
+                    : 'border-transparent text-slate-700 hover:text-slate-950 hover:border-slate-300'
                 }`}
               >
                 {cat.name}
@@ -90,184 +128,279 @@ export const Header: React.FC<HeaderProps> = ({
 
             <button
               onClick={() => onNavigate('about')}
-              className={`px-2.5 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all yellow-hover-btn ${
+              className={`text-sm font-semibold tracking-tight transition-colors pb-1 border-b-2 ${
                 currentView === 'about'
-                  ? 'bg-[#ffd700] text-[#081c18] font-bold shadow-[0_0_15px_rgba(255,215,0,0.4)]'
-                  : 'text-slate-300 hover:text-white'
+                  ? 'border-[#d82424] text-[#d82424]'
+                  : 'border-transparent text-slate-700 hover:text-slate-950 hover:border-slate-300'
               }`}
             >
               About
             </button>
 
             <button
-              onClick={() => onNavigate('editors')}
-              className={`px-2.5 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all yellow-hover-btn ${
-                currentView === 'editors'
-                  ? 'bg-[#ffd700] text-[#081c18] font-bold shadow-[0_0_15px_rgba(255,215,0,0.4)]'
-                  : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              Editors
-            </button>
-
-            <button
               onClick={() => onNavigate('contact')}
-              className={`px-2.5 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all yellow-hover-btn ${
+              className={`text-sm font-semibold tracking-tight transition-colors pb-1 border-b-2 ${
                 currentView === 'contact'
-                  ? 'bg-[#ffd700] text-[#081c18] font-bold shadow-[0_0_15px_rgba(255,215,0,0.4)]'
-                  : 'text-slate-300 hover:text-white'
+                  ? 'border-[#d82424] text-[#d82424]'
+                  : 'border-transparent text-slate-700 hover:text-slate-950 hover:border-slate-300'
               }`}
             >
               Contact
             </button>
           </nav>
 
-          {/* Right Action Icons: Search & Bookmarks */}
+          {/* Right: Search, Saved Cookbook, and Newsletter CTA */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Search Button */}
             <button
               onClick={() => setShowSearchModal(true)}
-              className="p-2 sm:px-3 sm:py-2 rounded-xl bg-[#0b2721] border border-[#ffd700]/30 text-slate-300 hover:text-[#ffd700] hover:border-[#ffd700] hover:shadow-[0_0_15px_rgba(255,215,0,0.3)] transition-all flex items-center gap-2 text-xs"
-              title="Search all 20 recipes and guides"
+              className="flex items-center gap-2 px-3 py-2 rounded-full border border-gray-300 bg-slate-50 text-slate-600 hover:border-gray-400 hover:bg-white transition-all text-xs"
+              title="Search recipes and guides"
             >
-              <Search className="w-4 h-4 text-[#ffd700]" />
-              <span className="hidden md:inline text-slate-300">Search recipes...</span>
-              <kbd className="hidden md:inline px-1.5 py-0.5 text-[10px] bg-[#081c18] border border-slate-700 rounded text-slate-400">
-                /
-              </kbd>
+              <Search className="w-4 h-4 text-slate-500" />
+              <span className="hidden sm:inline">Search...</span>
             </button>
 
+            {/* Saved Cookbook Button */}
             <button
               onClick={onOpenSaved}
-              className="relative p-2.5 rounded-xl bg-[#0b2721] border border-[#ffd700]/30 text-slate-300 hover:text-[#ffd700] hover:border-[#ffd700] hover:shadow-[0_0_15px_rgba(255,215,0,0.3)] transition-all"
-              title="View your saved cookbook"
+              className="relative p-2 rounded-full border border-gray-300 bg-white text-slate-700 hover:text-slate-950 hover:border-gray-400 transition-colors"
+              title="Saved recipes"
             >
-              <BookOpen className="w-5 h-5 text-[#ffd700]" />
+              <BookOpen className="w-4 h-4" />
               {savedCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-[#ffd700] text-[#081c18] text-[10px] font-black rounded-full w-5 h-5 flex items-center justify-center shadow-md animate-bounce">
+                <span className="absolute -top-1.5 -right-1.5 bg-[#d82424] text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-sm">
                   {savedCount}
                 </span>
               )}
-            </button>
-
-            {/* Mobile Menu Hamburger */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2.5 rounded-xl bg-[#0b2721] border border-[#ffd700]/30 text-[#ffd700] hover:border-[#ffd700] transition-colors"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0b2721] border-b border-[#ffd700]/30 px-4 pt-3 pb-6 space-y-2 animate-fadeIn">
-          <button
-            onClick={() => {
-              onNavigate('home');
-              setMobileMenuOpen(false);
-            }}
-            className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-white hover:bg-[#ffd700] hover:text-[#081c18] transition-colors"
-          >
-            Home Feed
-          </button>
-          {categoriesMeta.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => {
-                onNavigate('category', cat.id);
-                setMobileMenuOpen(false);
-              }}
-              className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-[#ffd700] hover:text-[#081c18] transition-colors"
-            >
-              {cat.name}
-            </button>
-          ))}
-          <div className="pt-2 border-t border-slate-700/50 space-y-1">
-            <button
-              onClick={() => {
-                onNavigate('about');
-                setMobileMenuOpen(false);
-              }}
-              className="w-full text-left px-3 py-2 rounded-lg text-xs text-slate-400 hover:text-white"
-            >
-              About The Blog
-            </button>
-            <button
-              onClick={() => {
-                onNavigate('editors');
-                setMobileMenuOpen(false);
-              }}
-              className="w-full text-left px-3 py-2 rounded-lg text-xs text-slate-400 hover:text-white"
-            >
-              Culinary Editors &amp; Peer Review
-            </button>
-            <button
-              onClick={() => {
-                onNavigate('contact');
-                setMobileMenuOpen(false);
-              }}
-              className="w-full text-left px-3 py-2 rounded-lg text-xs text-slate-400 hover:text-white"
-            >
-              Contact Editorial Staff
-            </button>
+      {/* Healthline Horizontal Category Taxonomy Ribbon */}
+      <div className="border-t border-gray-100 bg-slate-50 overflow-x-auto scrollbar-none py-2 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex items-center gap-2 text-xs">
+          <span className="font-bold text-slate-500 text-[11px] uppercase tracking-wider whitespace-nowrap shrink-0 flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d82424]"></span>
+            Trending:
+          </span>
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-0.5">
+            {trendingTopics.map((topic) => (
+              <button
+                key={topic.query}
+                onClick={() => {
+                  onSearchChange(topic.query);
+                  if (currentView !== 'home') onNavigate('home');
+                }}
+                className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${
+                  searchQuery.toLowerCase() === topic.query.toLowerCase()
+                    ? 'bg-slate-900 text-white'
+                    : 'bg-white border border-gray-200 text-slate-700 hover:border-gray-400 hover:text-slate-900'
+                }`}
+              >
+                {topic.label}
+              </button>
+            ))}
           </div>
+        </div>
+      </div>
+
+      {/* Healthline Slide-Out Mega Menu (Drawer) */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex">
+          <div className="w-full max-w-sm bg-white h-full overflow-y-auto shadow-2xl p-6 flex flex-col justify-between animate-fadeIn">
+            <div>
+              {/* Header inside drawer */}
+              <div className="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-2xl font-black text-slate-900">
+                    recipe<span className="text-[#d82424]">pots</span>
+                  </span>
+                  <span className="w-2 h-2 rounded-full bg-[#d82424]"></span>
+                </div>
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Navigation Topics */}
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                    Categories
+                  </h3>
+                  <div className="space-y-1">
+                    <button
+                      onClick={() => {
+                        onNavigate('home');
+                        setMobileMenuOpen(false);
+                      }}
+                      className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-900 hover:bg-slate-100 flex items-center justify-between"
+                    >
+                      <span>Home Feed</span>
+                      <ChevronRight className="w-4 h-4 text-slate-400" />
+                    </button>
+                    {categoriesMeta.map((cat) => (
+                      <button
+                        key={cat.id}
+                        onClick={() => {
+                          onNavigate('category', cat.id);
+                          setMobileMenuOpen(false);
+                        }}
+                        className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 flex items-center justify-between"
+                      >
+                        <span>{cat.name}</span>
+                        <ChevronRight className="w-4 h-4 text-slate-400" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                    Editorial &amp; Trust
+                  </h3>
+                  <div className="space-y-1 text-sm">
+                    <button
+                      onClick={() => {
+                        onNavigate('about');
+                        setMobileMenuOpen(false);
+                      }}
+                      className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
+                    >
+                      About Us &amp; Our Mission
+                    </button>
+                    <button
+                      onClick={() => {
+                        onNavigate('contact');
+                        setMobileMenuOpen(false);
+                      }}
+                      className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
+                    >
+                      Contact Us &amp; Help Desk
+                    </button>
+                    <button
+                      onClick={() => {
+                        onNavigate('standards');
+                        setMobileMenuOpen(false);
+                      }}
+                      className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
+                    >
+                      Medical &amp; Culinary Standards
+                    </button>
+                    <button
+                      onClick={() => {
+                        onNavigate('privacy');
+                        setMobileMenuOpen(false);
+                      }}
+                      className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
+                    >
+                      Privacy Policy
+                    </button>
+                    <button
+                      onClick={() => {
+                        onNavigate('terms');
+                        setMobileMenuOpen(false);
+                      }}
+                      className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
+                    >
+                      Terms of Use
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer inside drawer */}
+            <div className="pt-6 border-t border-gray-200 space-y-3">
+              <div className="text-xs text-slate-500 space-y-1">
+                <p className="flex items-center gap-2">
+                  <Phone className="w-3.5 h-3.5 text-[#d82424]" />
+                  <a href="tel:03046308631" className="font-semibold text-slate-800 hover:underline">
+                    03046308631
+                  </a>
+                </p>
+                <p className="flex items-center gap-2">
+                  <Mail className="w-3.5 h-3.5 text-[#d82424]" />
+                  <a href="mailto:mz751136000@gmail.com" className="font-semibold text-slate-800 hover:underline">
+                    mz751136000@gmail.com
+                  </a>
+                </p>
+              </div>
+              <p className="text-[11px] text-slate-400">
+                © {new Date().getFullYear()} recipepots. Evidence-based culinary journal.
+              </p>
+            </div>
+          </div>
+          <div className="flex-1" onClick={() => setMobileMenuOpen(false)}></div>
         </div>
       )}
 
-      {/* Search Modal */}
+      {/* Healthline Search Modal */}
       {showSearchModal && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-start justify-center pt-24 px-4">
-          <div className="bg-[#0b2721] border-2 border-[#ffd700] rounded-2xl w-full max-w-2xl p-6 shadow-[0_0_50px_rgba(255,215,0,0.35)]">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-700">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-start justify-center pt-20 px-4">
+          <div className="bg-white rounded-2xl w-full max-w-2xl p-6 shadow-2xl border border-gray-200 animate-fadeIn">
+            <div className="flex items-center justify-between pb-3 border-b border-gray-200">
               <div className="flex items-center gap-2">
-                <Search className="w-5 h-5 text-[#ffd700]" />
-                <h3 className="text-lg font-bold text-white">Search recipepots Journal</h3>
+                <Search className="w-5 h-5 text-[#d82424]" />
+                <h3 className="text-base font-bold text-slate-900">Search recipepots</h3>
               </div>
               <button
                 onClick={() => setShowSearchModal(false)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/10"
+                className="text-slate-400 hover:text-slate-800 p-1 rounded-lg"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
+
             <div className="mt-4">
               <input
                 type="text"
                 autoFocus
-                placeholder="Search keywords: instant pot, dutch oven, keto, pulled pork, pasta..."
+                placeholder="Search recipes, ingredients, nutrients, slow cooker guides..."
                 value={searchQuery}
                 onChange={(e) => onSearchChange(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') setShowSearchModal(false);
                 }}
-                className="w-full px-4 py-3 rounded-xl bg-[#081c18] border border-[#ffd700]/50 text-white placeholder-slate-400 focus:outline-none focus:border-[#ffd700] focus:ring-2 focus:ring-[#ffd700]/30 text-base"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#d82424] focus:ring-2 focus:ring-[#d82424]/20 text-base"
               />
             </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <span className="text-xs text-slate-400 flex items-center gap-1">
-                <Flame className="w-3.5 h-3.5 text-[#ffd700]" /> Popular searches:
-              </span>
-              {['instant pot chicken', 'dutch oven stew', 'slow cooker pulled pork', 'keto one pot', '15 minute dinner'].map((tag) => (
+
+            <div className="mt-4 flex flex-wrap gap-2 items-center">
+              <span className="text-xs font-semibold text-slate-500">Popular:</span>
+              {['instant pot chicken', 'dutch oven beef stew', 'crockpot chili', 'keto one pot', '15 minute dinner'].map((tag) => (
                 <button
                   key={tag}
                   onClick={() => {
                     onSearchChange(tag);
                     setShowSearchModal(false);
                   }}
-                  className="px-2.5 py-1 text-xs rounded-full bg-[#081c18] border border-[#5fdee7]/40 text-[#5fdee7] hover:border-[#ffd700] hover:text-[#ffd700] transition-colors"
+                  className="px-2.5 py-1 text-xs rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-colors"
                 >
                   {tag}
                 </button>
               ))}
             </div>
-            <div className="mt-6 flex justify-end">
+
+            <div className="mt-6 flex justify-between items-center pt-4 border-t border-gray-100">
+              {searchQuery ? (
+                <button
+                  onClick={() => onSearchChange('')}
+                  className="text-xs text-slate-500 hover:text-slate-800 underline"
+                >
+                  Clear search
+                </button>
+              ) : <div />}
               <button
                 onClick={() => setShowSearchModal(false)}
-                className="px-5 py-2 rounded-xl bg-[#ffd700] text-[#081c18] font-bold text-sm yellow-hover-btn"
+                className="px-5 py-2 rounded-full bg-[#d82424] text-white font-bold text-xs hover:bg-[#b91c1c] transition-colors"
               >
-                View Results
+                View Articles
               </button>
             </div>
           </div>

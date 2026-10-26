@@ -25,25 +25,25 @@ export const CookieConsent: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 animate-slideUp">
-      <div className="p-4 sm:p-5 rounded-2xl bg-[#0b2721] border-2 border-[#ffd700] shadow-[0_0_30px_rgba(255,215,0,0.3)] backdrop-blur-xl">
+    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-md z-50 animate-fadeIn">
+      <div className="p-4 sm:p-5 rounded-2xl bg-white border border-gray-300 shadow-2xl text-slate-800">
         <div className="flex items-start gap-3">
-          <ShieldCheck className="w-6 h-6 text-[#ffd700] shrink-0 mt-0.5" />
+          <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
           <div className="space-y-2">
-            <h4 className="text-sm font-bold text-white">Privacy &amp; Cookie Consent</h4>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              recipepots uses essential cookies to remember your serving scale preferences and cookbook bookmarks in accordance with GDPR &amp; AdSense compliance standards.
+            <h4 className="text-sm font-bold text-slate-900">Privacy &amp; Cookie Preferences</h4>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              recipepots uses essential cookies to save your cookbook bookmarks and scale serving sizes. We adhere strictly to GDPR, CCPA, and publisher standards.
             </p>
-            <div className="flex items-center gap-2 pt-2">
+            <div className="flex items-center gap-2 pt-1">
               <button
                 onClick={handleAccept}
-                className="px-4 py-1.5 rounded-lg bg-[#ffd700] text-[#081c18] font-bold text-xs yellow-hover-btn"
+                className="px-4 py-1.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors"
               >
                 Accept All
               </button>
               <button
                 onClick={handleDecline}
-                className="px-3 py-1.5 rounded-lg bg-[#081c18] border border-slate-700 text-slate-400 hover:text-white text-xs"
+                className="px-3 py-1.5 rounded-full bg-slate-100 border border-gray-200 text-slate-700 hover:bg-slate-200 text-xs font-semibold transition-colors"
               >
                 Essential Only
               </button>

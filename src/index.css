@@ -2,46 +2,44 @@
 
 @layer base {
   body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    background-color: #081c18;
-    color: #f1f5f9;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #ebf0f5;
+    color: #1e293b;
+    -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, .font-editorial {
-    font-family: 'Playfair Display', Georgia, serif;
+  h1, h2, h3, .font-serif-headline {
+    font-family: 'Newsreader', Georgia, Cambria, 'Times New Roman', Times, serif;
+    letter-spacing: -0.015em;
   }
   .font-mono-code {
     font-family: 'JetBrains Mono', monospace;
   }
 }
 
-/* Vivid Full-Yellow Glowing Hover Interaction */
-.yellow-hover-box {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid rgba(255, 215, 0, 0.15);
-  background: rgba(11, 39, 33, 0.72);
-  backdrop-filter: blur(14px);
-  position: relative;
+/* Healthline Clean Card Elevation & Contrast on #ebf0f5 background */
+.healthline-card {
+  background-color: #ffffff;
+  border: 1px solid #dbe2ea;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.yellow-hover-box:hover {
-  border-color: #ffd700 !important;
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.38), 0 0 60px rgba(255, 204, 0, 0.22), inset 0 0 15px rgba(255, 215, 0, 0.15) !important;
-  transform: translateY(-4px);
+.healthline-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.12), 0 4px 8px -4px rgba(15, 23, 42, 0.06);
+  transform: translateY(-2px);
 }
 
-.yellow-hover-btn {
-  transition: all 0.25s ease-out;
-  border: 1px solid rgba(255, 215, 0, 0.3);
+/* Healthline Pill / Tag Styles */
+.healthline-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.yellow-hover-btn:hover {
-  background-color: #ffd700 !important;
-  color: #081c18 !important;
-  border-color: #ffd700 !important;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.45) !important;
-}
-
-/* Continuous Marquee Ticker */
+/* Continuous Marquee Ticker - Clean Editorial Bar */
 @keyframes ticker {
   0% {
     transform: translate3d(0, 0, 0);
@@ -54,26 +52,47 @@
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: ticker 32s linear infinite;
+  animation: ticker 36s linear infinite;
 }
 
 .ticker-track:hover {
   animation-play-state: paused;
 }
 
-/* Custom Scrollbar */
+/* Clean Neutral Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #081c18;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #153830;
+  background: #cbd5e1;
   border-radius: 4px;
-  border: 1px solid rgba(255, 215, 0, 0.2);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffd700;
+  background: #94a3b8;
+}
+
+/* Reading container styles */
+.prose-editorial p {
+  line-height: 1.8;
+  color: #334155;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out forwards;
 }
