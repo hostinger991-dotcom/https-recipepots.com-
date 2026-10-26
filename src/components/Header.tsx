@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search, BookOpen, X, Menu, ShieldCheck, Mail, Phone, ChevronRight } from 'lucide-react';
 import { CategoryId } from '../types/recipe';
 import { categoriesMeta } from '../data/articlesIndex';
+import { Logo } from './Logo';
 
 interface HeaderProps {
   currentView: string;
@@ -88,14 +89,10 @@ export const Header: React.FC<HeaderProps> = ({
 
             <button
               onClick={() => onNavigate('home')}
-              className="group flex items-baseline gap-1 text-left focus:outline-none select-none"
+              className="text-left focus:outline-none"
+              aria-label="recipepots home"
             >
-              <div className="flex items-center gap-2">
-                <span className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 group-hover:text-slate-950 transition-colors">
-                  recipe<span className="text-[#d82424]">pots</span>
-                </span>
-                <span className="w-2.5 h-2.5 rounded-full bg-[#d82424] self-center -ml-0.5"></span>
-              </div>
+              <Logo size="md" showTagline={true} />
             </button>
           </div>
 
@@ -213,12 +210,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div>
               {/* Header inside drawer */}
               <div className="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-2xl font-black text-slate-900">
-                    recipe<span className="text-[#d82424]">pots</span>
-                  </span>
-                  <span className="w-2 h-2 rounded-full bg-[#d82424]"></span>
-                </div>
+                <Logo size="sm" showTagline={false} />
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100"

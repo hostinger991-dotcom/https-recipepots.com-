@@ -1,57 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
-    <!-- Background Gradient -->
-    <radialGradient id="potGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ffd700" stop-opacity="0.35"/>
-      <stop offset="70%" stop-color="#5fdee7" stop-opacity="0.1"/>
-      <stop offset="100%" stop-color="#081c18" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fff176"/>
-      <stop offset="50%" stop-color="#ffd700"/>
-      <stop offset="100%" stop-color="#ff9800"/>
+    <!-- Healthline Ruby-Red Gradient -->
+    <linearGradient id="favBadge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="45%" stop-color="#d82424" />
+      <stop offset="100%" stop-color="#991b1b" />
     </linearGradient>
-    <linearGradient id="cyanAccent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#5fdee7"/>
-      <stop offset="100%" stop-color="#00e5ff"/>
+
+    <linearGradient id="gloss" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
     </linearGradient>
-    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="1.5" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
 
-  <!-- Deep Obsidian Hex-Rounded Container -->
-  <rect x="2" y="2" width="60" height="60" rx="14" fill="#081c18" stroke="#ffd700" stroke-width="1.8"/>
-  <circle cx="32" cy="34" r="24" fill="url(#potGlow)"/>
+  <!-- Squircle Rounded Badge Background -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#favBadge)" />
+  <rect x="4" y="4" width="56" height="26" rx="13" fill="url(#gloss)" />
 
-  <!-- High-Tech Steam Waves -->
-  <path d="M24 18 C22 13, 27 10, 25 6" fill="none" stroke="url(#cyanAccent)" stroke-width="2" stroke-linecap="round" opacity="0.9" filter="url(#neon)"/>
-  <path d="M32 17 C30 11, 35 9, 33 5" fill="none" stroke="#ffd700" stroke-width="2.2" stroke-linecap="round" opacity="0.95" filter="url(#neon)"/>
-  <path d="M40 18 C38 13, 43 10, 41 6" fill="none" stroke="url(#cyanAccent)" stroke-width="2" stroke-linecap="round" opacity="0.9" filter="url(#neon)"/>
+  <!-- Steam Curves -->
+  <path d="M26 16 C24 12, 28 10, 27 6" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" opacity="0.85" />
+  <path d="M32 15 C30 10, 35 9, 33 4.5" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" />
+  <path d="M38 16 C36 12, 40 10, 39 6" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" opacity="0.85" />
 
-  <!-- Glowing Pot Lid Handle -->
-  <circle cx="32" cy="22" r="3" fill="url(#goldGradient)"/>
-  <rect x="29" y="24" width="6" height="2" rx="1" fill="#ffd700"/>
+  <!-- Pot Lid Handle -->
+  <ellipse cx="32" cy="19" rx="4.5" ry="2.5" fill="#ffffff" />
+  <rect x="30" y="20.5" width="4" height="2.5" rx="1" fill="#fecdd3" />
 
-  <!-- Dutch Oven / Stockpot Lid -->
-  <path d="M16 28 C16 25, 48 25, 48 28 L51 30 L13 30 Z" fill="url(#goldGradient)" filter="url(#neon)"/>
+  <!-- Pot Lid -->
+  <path d="M17 27 C17 23.5, 23 21.5, 32 21.5 C41 21.5, 47 23.5, 47 27 Z" fill="#ffffff" opacity="0.95" />
 
-  <!-- Pot Main Body -->
-  <path d="M14 32 L16 46 C17 51, 47 51, 48 46 L50 32 Z" fill="#0b2721" stroke="url(#goldGradient)" stroke-width="2.2"/>
+  <!-- Pot Body -->
+  <path d="M16 28.5 C16 28.5, 17.5 43, 19.5 46 C21.5 48.5, 25.5 50, 32 50 C38.5 50, 42.5 48.5, 44.5 46 C46.5 43, 48 28.5, 48 28.5 Z" fill="#ffffff" />
 
-  <!-- High-Tech Circuit Accent Ring on Pot -->
-  <line x1="20" y1="39" x2="44" y2="39" stroke="#5fdee7" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.85"/>
+  <!-- Inner Soup / Simmer Layer -->
+  <ellipse cx="32" cy="30" rx="12" ry="2.5" fill="#ffe4e6" />
 
   <!-- Pot Side Handles -->
-  <path d="M14 34 C10 34, 10 40, 14 40" fill="none" stroke="url(#goldGradient)" stroke-width="2" stroke-linecap="round"/>
-  <path d="M50 34 C54 34, 54 40, 50 40" fill="none" stroke="url(#goldGradient)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M16 31 C12.5 31, 12.5 37, 16 37" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" />
+  <path d="M48 31 C51.5 31, 51.5 37, 48 37" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" />
 
-  <!-- Digital Heat Flame Dots under Pot -->
-  <circle cx="26" cy="54" r="1.5" fill="#ffd700"/>
-  <circle cx="32" cy="55.5" r="2" fill="#5fdee7" filter="url(#neon)"/>
-  <circle cx="38" cy="54" r="1.5" fill="#ffd700"/>
+  <!-- Center Accent Heart / Ember Dot -->
+  <circle cx="32" cy="38" r="2.2" fill="#d82424" />
 </svg>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Phone, ShieldCheck, Send, CheckCircle2 } from 'lucide-react';
 import { CategoryId } from '../types/recipe';
 import { categoriesMeta } from '../data/articlesIndex';
+import { LogoIcon } from './Logo';
 
 interface FooterProps {
   onNavigate: (view: string, categoryId?: CategoryId) => void;
@@ -30,12 +31,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="lg:col-span-2 space-y-4">
             <button
               onClick={() => onNavigate('home')}
-              className="flex items-center gap-1.5 text-left group focus:outline-none"
+              className="flex items-center gap-3 text-left group focus:outline-none"
             >
-              <span className="text-3xl font-black text-white group-hover:text-slate-100 transition-colors">
-                recipe<span className="text-[#d82424]">pots</span>
-              </span>
-              <span className="w-2.5 h-2.5 rounded-full bg-[#d82424]"></span>
+              <LogoIcon size={40} />
+              <div className="flex flex-col">
+                <span className="text-2xl sm:text-3xl font-black text-white group-hover:text-slate-100 transition-colors leading-none">
+                  recipe<span className="text-[#d82424]">pots</span>
+                  <span className="inline-block w-2 h-2 rounded-full bg-[#d82424] ml-1 mb-0.5"></span>
+                </span>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1">
+                  Evidence-Based Culinary Journal
+                </span>
+              </div>
             </button>
 
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
