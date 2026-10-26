@@ -10,6 +10,7 @@ import { Footer } from './components/Footer';
 import { Sidebar } from './components/Sidebar';
 import { allArticles, categoriesMeta } from './data/articlesIndex';
 import { RecipeArticle, CategoryId } from './types/recipe';
+import { handleImageFallback } from './utils/imageUtils';
 import {
   ShieldCheck,
   Filter,
@@ -168,6 +169,7 @@ export default function App() {
                       <img
                         src={leadHero.imageUrl}
                         alt={leadHero.imageAlt}
+                        onError={(e) => handleImageFallback(e, leadHero.categoryId)}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-4 left-4">
@@ -240,6 +242,7 @@ export default function App() {
                           <img
                             src={story.imageUrl}
                             alt={story.imageAlt}
+                            onError={(e) => handleImageFallback(e, story.categoryId)}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                         </div>

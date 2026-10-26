@@ -29,10 +29,21 @@ app.get('/app-ads.txt', (req, res) => {
   res.status(404).send('Not Found');
 });
 
-// Serve static production build files
+// Resilient static asset serving
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath, { maxAge: '1y', etag: true }));
 }
+app.use('/images', express.static(path.join(distPath, 'images')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
+app.use('/src/assets/images', express.static(path.join(distPath, 'images')));
+app.use('/src/assets/images', express.static(path.join(__dirname, 'images')));
+app.use('/src/assets/images', express.static(path.join(__dirname, 'public', 'images')));
+app.use('/assets/images', express.static(path.join(distPath, 'images')));
+app.use('/assets/images', express.static(path.join(__dirname, 'images')));
+app.use('/assets/images', express.static(path.join(__dirname, 'public', 'images')));
+app.use(express.static(path.join(__dirname, 'images')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // SPA fallback: Route all other requests to dist/index.html
 app.get('*', (req, res) => {

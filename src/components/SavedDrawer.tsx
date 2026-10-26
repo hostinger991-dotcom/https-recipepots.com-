@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, BookOpen, Trash2, ArrowRight, ChefHat } from 'lucide-react';
 import { RecipeArticle } from '../types/recipe';
+import { handleImageFallback } from '../utils/imageUtils';
 
 interface SavedDrawerProps {
   isOpen: boolean;
@@ -66,6 +67,7 @@ export const SavedDrawer: React.FC<SavedDrawerProps> = ({
                   <img
                     src={article.imageUrl}
                     alt={article.imageAlt}
+                    onError={(e) => handleImageFallback(e, article.categoryId)}
                     className="w-16 h-16 rounded-lg object-cover border border-gray-100 shrink-0"
                   />
                   <div className="flex-1 min-w-0">

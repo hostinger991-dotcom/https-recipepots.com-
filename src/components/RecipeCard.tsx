@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Bookmark, ShieldCheck, ChefHat, Clock, Flame, Users } from 'lucide-react';
 import { RecipeArticle } from '../types/recipe';
+import { handleImageFallback } from '../utils/imageUtils';
 
 interface RecipeCardProps {
   recipe: RecipeArticle;
@@ -17,8 +18,6 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
   onToggleSave,
   layout = 'grid',
 }) => {
-  const [imageError, setImageError] = useState(false);
-
   if (layout === 'horizontal') {
     return (
       <article
@@ -26,20 +25,13 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         className="healthline-card p-3 sm:p-4 cursor-pointer flex flex-col sm:flex-row gap-4 group transition-all"
       >
         <div className="relative aspect-[16/9] sm:w-48 sm:aspect-square shrink-0 overflow-hidden rounded-lg bg-slate-100">
-          {!imageError ? (
-            <img
-              src={recipe.imageUrl}
-              alt={recipe.imageAlt}
-              onError={() => setImageError(true)}
-              loading="lazy"
-              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
-            />
-          ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-slate-100 text-slate-400">
-              <ChefHat className="w-8 h-8 mb-1 text-slate-400" />
-              <span className="text-[10px] font-bold uppercase">{recipe.categoryName}</span>
-            </div>
-          )}
+          <img
+            src={recipe.imageUrl}
+            alt={recipe.imageAlt}
+            onError={(e) => handleImageFallback(e, recipe.categoryId)}
+            loading="lazy"
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+          />
         </div>
 
         <div className="flex-1 flex flex-col justify-between">
@@ -85,20 +77,13 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
     >
       {/* 16:9 Photographic Header */}
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
-        {!imageError ? (
-          <img
-            src={recipe.imageUrl}
-            alt={recipe.imageAlt}
-            onError={() => setImageError(true)}
-            loading="lazy"
-            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
-          />
-        ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-slate-100 text-slate-400">
-            <ChefHat className="w-10 h-10 text-slate-400 mb-1" />
-            <span className="text-xs font-bold uppercase">{recipe.categoryName}</span>
-          </div>
-        )}
+        <img
+          src={recipe.imageUrl}
+          alt={recipe.imageAlt}
+          onError={(e) => handleImageFallback(e, recipe.categoryId)}
+          loading="lazy"
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+        />
 
         {/* Category Badge overlay */}
         <div className="absolute top-3 left-3">

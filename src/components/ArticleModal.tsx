@@ -22,6 +22,7 @@ import {
   BookOpen,
 } from 'lucide-react';
 import { RecipeArticle } from '../types/recipe';
+import { handleImageFallback } from '../utils/imageUtils';
 
 interface ArticleModalProps {
   recipe: RecipeArticle | null;
@@ -204,6 +205,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
             <img
               src={recipe.imageUrl}
               alt={recipe.imageAlt}
+              onError={(e) => handleImageFallback(e, recipe.categoryId)}
               className="w-full h-auto object-cover max-h-[520px]"
             />
             <div className="p-3 bg-slate-50 border-t border-gray-100 text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1">
