@@ -75,21 +75,29 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-2 text-xs text-slate-400">
               {categoriesMeta.map((cat) => (
                 <li key={cat.id}>
-                  <button
-                    onClick={() => onNavigate('category', cat.id)}
-                    className="hover:text-white transition-colors text-left"
+                  <a
+                    href={`/category/${cat.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate('category', cat.id);
+                    }}
+                    className="hover:text-white transition-colors text-left block"
                   >
                     {cat.name}
-                  </button>
+                  </a>
                 </li>
               ))}
               <li>
-                <button
-                  onClick={() => onNavigate('home')}
-                  className="hover:text-white transition-colors text-left"
+                <a
+                  href="/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('home');
+                  }}
+                  className="hover:text-white transition-colors text-left block"
                 >
                   All 20 Recipe Monograms
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -101,34 +109,87 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
-                <button onClick={() => onNavigate('about')} className="hover:text-white transition-colors">
+                <a
+                  href="/about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('about');
+                  }}
+                  className="hover:text-white transition-colors block"
+                >
                   About Us
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate('standards')} className="hover:text-white transition-colors">
+                <a
+                  href="/standards"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('standards');
+                  }}
+                  className="hover:text-white transition-colors block"
+                >
                   Our Editorial Process
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate('editors')} className="hover:text-white transition-colors">
+                <a
+                  href="/editors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('editors');
+                  }}
+                  className="hover:text-white transition-colors block"
+                >
                   Medical &amp; Culinary Board
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors">
+                <a
+                  href="/contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('contact');
+                  }}
+                  className="hover:text-white transition-colors block"
+                >
                   Contact Us
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate('privacy')} className="hover:text-white transition-colors">
+                <a
+                  href="/privacy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('privacy');
+                  }}
+                  className="hover:text-white transition-colors block"
+                >
                   Privacy Policy
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => onNavigate('terms')} className="hover:text-white transition-colors">
+                <a
+                  href="/terms"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('terms');
+                  }}
+                  className="hover:text-white transition-colors block"
+                >
                   Terms of Use
-                </button>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/sitemap.xml"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1 text-slate-400"
+                >
+                  XML Sitemap
+                  <span className="text-[9px] px-1 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">XML</span>
+                </a>
               </li>
             </ul>
           </div>

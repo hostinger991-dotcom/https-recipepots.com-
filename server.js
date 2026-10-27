@@ -29,6 +29,46 @@ app.get('/app-ads.txt', (req, res) => {
   res.status(404).send('Not Found');
 });
 
+// Serve sitemap.xml directly with correct XML content type
+app.get('/sitemap.xml', (req, res) => {
+  const sitemapDist = path.join(distPath, 'sitemap.xml');
+  const sitemapPub = path.join(__dirname, 'public', 'sitemap.xml');
+  const sitemapRoot = path.join(__dirname, 'sitemap.xml');
+  const target = fs.existsSync(sitemapDist) ? sitemapDist : (fs.existsSync(sitemapPub) ? sitemapPub : sitemapRoot);
+  if (fs.existsSync(target)) {
+    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+    return res.sendFile(target);
+  }
+  res.status(404).send('Sitemap Not Found');
+});
+
+// Serve robots.txt directly
+app.get('/robots.txt', (req, res) => {
+  const robotsDist = path.join(distPath, 'robots.txt');
+  const robotsPub = path.join(__dirname, 'public', 'robots.txt');
+  const robotsRoot = path.join(__dirname, 'robots.txt');
+  const target = fs.existsSync(robotsDist) ? robotsDist : (fs.existsSync(robotsPub) ? robotsPub : robotsRoot);
+  if (fs.existsSync(target)) {
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    return res.sendFile(target);
+  }
+  res.status(404).send('Robots.txt Not Found');
+});
+
+// Serve Google Search Console HTML verification files
+app.get('/google:hash.html', (req, res) => {
+  const fileName = `google${req.params.hash}.html`;
+  const fileDist = path.join(distPath, fileName);
+  const filePub = path.join(__dirname, 'public', fileName);
+  const fileRoot = path.join(__dirname, fileName);
+  const target = fs.existsSync(fileDist) ? fileDist : (fs.existsSync(filePub) ? filePub : fileRoot);
+  if (fs.existsSync(target)) {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    return res.sendFile(target);
+  }
+  res.status(404).send('Verification File Not Found');
+});
+
 // Resilient static asset serving
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath, { maxAge: '1y', etag: true }));

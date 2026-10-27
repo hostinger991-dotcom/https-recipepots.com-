@@ -53,8 +53,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         <nav className="space-y-1.5">
           {/* All Categories Option */}
-          <button
-            onClick={() => onSelectCategory('all')}
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              onSelectCategory('all');
+            }}
             className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-between group ${
               currentCategory === 'all'
                 ? 'bg-[#d82424] text-white shadow-xs'
@@ -70,16 +74,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
             }`}>
               20
             </span>
-          </button>
+          </a>
 
           {/* Individual Categories */}
           {categoriesMeta.map((cat) => {
             const isActive = currentCategory === cat.id;
             const count = getCategoryCount(cat.id);
             return (
-              <button
+              <a
                 key={cat.id}
-                onClick={() => onSelectCategory(cat.id)}
+                href={`/category/${cat.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelectCategory(cat.id);
+                }}
                 className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center justify-between group ${
                   isActive
                     ? 'bg-[#d82424] text-white shadow-xs font-bold'
@@ -95,7 +103,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 }`}>
                   {count}
                 </span>
-              </button>
+              </a>
             );
           })}
         </nav>
@@ -135,10 +143,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         <div className="space-y-3">
           {trendingPicks.map((pick) => (
-            <div
+            <a
               key={pick.id}
-              onClick={() => onSelectRecipe(pick)}
-              className="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 cursor-pointer group transition-colors"
+              href={`/recipe/${pick.slug}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onSelectRecipe(pick);
+              }}
+              className="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 cursor-pointer group transition-colors block"
             >
               <img
                 src={pick.imageUrl}
@@ -156,7 +168,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   ⏱ {pick.cookTime} • {pick.nutrition.calories} kcal
                 </span>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
@@ -172,13 +184,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <p className="text-xs text-slate-600 leading-relaxed">
           Every guide is kitchen-tested 3x and reviewed by <strong>Elena Rostova, M.Sc., RD</strong> to confirm micronutrient retention and thermal accuracy.
         </p>
-        <button
-          onClick={() => onNavigatePage('standards')}
-          className="text-xs font-bold text-[#d82424] hover:underline flex items-center gap-1"
+        <a
+          href="/standards"
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigatePage('standards');
+          }}
+          className="text-xs font-bold text-[#d82424] hover:underline flex items-center gap-1 inline-flex"
         >
           <span>Read Our Testing Process</span>
           <ArrowRight className="w-3 h-3" />
-        </button>
+        </a>
       </div>
 
       {/* 5. Support & Direct Helpline Card */}

@@ -1,0 +1,16 @@
+# robots.txt for https://recipepots.com
+User-agent: *
+Allow: /
+Allow: /images/
+Allow: /public/
+Allow: /recipe/
+Allow: /category/
+Allow: /about
+Allow: /contact
+Allow: /privacy
+Allow: /terms
+Allow: /standards
+Allow: /editors
+
+# Sitemaps
+Sitemap: https://recipepots.com/sitemap.xml

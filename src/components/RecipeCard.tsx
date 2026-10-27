@@ -24,7 +24,14 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         onClick={() => onSelect(recipe)}
         className="healthline-card p-3 sm:p-4 cursor-pointer flex flex-col sm:flex-row gap-4 group transition-all"
       >
-        <div className="relative aspect-[16/9] sm:w-48 sm:aspect-square shrink-0 overflow-hidden rounded-lg bg-slate-100">
+        <a
+          href={`/recipe/${recipe.slug}`}
+          onClick={(e) => {
+            e.preventDefault();
+            onSelect(recipe);
+          }}
+          className="relative aspect-[16/9] sm:w-48 sm:aspect-square shrink-0 overflow-hidden rounded-lg bg-slate-100 block"
+        >
           <img
             src={recipe.imageUrl}
             alt={recipe.imageAlt}
@@ -32,14 +39,20 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             loading="lazy"
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
           />
-        </div>
+        </a>
 
         <div className="flex-1 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between gap-2 mb-1.5">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#d82424]">
+              <a
+                href={`/category/${recipe.categoryId}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+                className="text-[11px] font-bold uppercase tracking-wider text-[#d82424] hover:underline"
+              >
                 {recipe.categoryName}
-              </span>
+              </a>
               <button
                 onClick={(e) => onToggleSave(recipe.id, e)}
                 className="text-slate-400 hover:text-[#d82424] p-1"
@@ -49,8 +62,17 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
               </button>
             </div>
 
-            <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-[#d82424] transition-colors leading-snug line-clamp-2">
-              {recipe.title}
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug line-clamp-2">
+              <a
+                href={`/recipe/${recipe.slug}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelect(recipe);
+                }}
+                className="hover:text-[#d82424] transition-colors"
+              >
+                {recipe.title}
+              </a>
             </h3>
 
             <p className="text-xs text-slate-600 line-clamp-2 mt-1.5 leading-relaxed">
@@ -76,7 +98,14 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
       className="healthline-card overflow-hidden cursor-pointer flex flex-col group h-full transition-all"
     >
       {/* 16:9 Photographic Header */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
+      <a
+        href={`/recipe/${recipe.slug}`}
+        onClick={(e) => {
+          e.preventDefault();
+          onSelect(recipe);
+        }}
+        className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100 block"
+      >
         <img
           src={recipe.imageUrl}
           alt={recipe.imageAlt}
@@ -116,7 +145,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             {recipe.nutrition.calories} kcal
           </span>
         </div>
-      </div>
+      </a>
 
       {/* Editorial Content */}
       <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
@@ -131,8 +160,17 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           </div>
 
           {/* Title */}
-          <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#d82424] transition-colors leading-snug line-clamp-2">
-            {recipe.title}
+          <h3 className="text-lg font-bold text-slate-900 leading-snug line-clamp-2">
+            <a
+              href={`/recipe/${recipe.slug}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onSelect(recipe);
+              }}
+              className="hover:text-[#d82424] transition-colors"
+            >
+              {recipe.title}
+            </a>
           </h3>
 
           {/* Excerpt */}
@@ -153,9 +191,16 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
               {recipe.author.name}
             </span>
           </div>
-          <span className="text-[11px] text-[#d82424] font-bold group-hover:underline">
+          <a
+            href={`/recipe/${recipe.slug}`}
+            onClick={(e) => {
+              e.preventDefault();
+              onSelect(recipe);
+            }}
+            className="text-[11px] text-[#d82424] font-bold group-hover:underline"
+          >
             Read Guide →
-          </span>
+          </a>
         </div>
       </div>
     </article>

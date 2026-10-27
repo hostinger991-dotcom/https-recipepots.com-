@@ -64,9 +64,16 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
       {/* Top Breadcrumb Navigation */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-200 pb-4">
         <div className="flex items-center gap-2 text-xs text-slate-500">
-          <button onClick={onNavigateHome} className="text-[#d82424] hover:underline font-semibold flex items-center gap-1">
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigateHome();
+            }}
+            className="text-[#d82424] hover:underline font-semibold flex items-center gap-1"
+          >
             <span>‹ Home</span>
-          </button>
+          </a>
           <span>/</span>
           <span className="text-slate-900 font-bold capitalize">
             {currentTab === 'about' && 'About Us'}
@@ -89,17 +96,21 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               { id: 'standards', label: 'Editorial Standards' },
               { id: 'editors', label: 'Review Board' },
             ].map((tab) => (
-              <button
+              <a
                 key={tab.id}
-                onClick={() => onNavigate(tab.id)}
-                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+                href={`/${tab.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate(tab.id);
+                }}
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors block ${
                   currentTab === tab.id
                     ? 'bg-[#d82424] text-white shadow-xs'
                     : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                 }`}
               >
                 {tab.label}
-              </button>
+              </a>
             ))}
           </div>
         )}

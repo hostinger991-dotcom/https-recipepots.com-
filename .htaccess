@@ -24,6 +24,15 @@
   RewriteCond %{REQUEST_URI} !^/dist/
   RewriteRule ^$ dist/index.html [L]
 
+  # Pass sitemap.xml and robots.txt through directly
+  RewriteCond %{REQUEST_URI} ^/(sitemap\.xml|robots\.txt|ads\.txt|app-ads\.txt|google[a-z0-9]+\.html)$
+  RewriteCond %{DOCUMENT_ROOT}/public/$1 -f
+  RewriteRule ^(.*)$ public/$1 [L]
+
+  RewriteCond %{REQUEST_URI} ^/(sitemap\.xml|robots\.txt|ads\.txt|app-ads\.txt|google[a-z0-9]+\.html)$
+  RewriteCond %{DOCUMENT_ROOT}/dist/$1 -f
+  RewriteRule ^(.*)$ dist/$1 [L]
+
   # Existing files and directories
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d

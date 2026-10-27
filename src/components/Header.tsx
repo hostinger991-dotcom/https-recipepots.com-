@@ -87,19 +87,27 @@ export const Header: React.FC<HeaderProps> = ({
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
 
-            <button
-              onClick={() => onNavigate('home')}
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('home');
+              }}
               className="text-left focus:outline-none"
               aria-label="recipepots home"
             >
               <Logo size="md" showTagline={true} />
-            </button>
+            </a>
           </div>
 
           {/* Desktop Categories (Healthline Clean Links) */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-            <button
-              onClick={() => onNavigate('home')}
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('home');
+              }}
               className={`text-sm font-semibold tracking-tight transition-colors pb-1 border-b-2 ${
                 currentView === 'home'
                   ? 'border-[#d82424] text-[#d82424]'
@@ -107,12 +115,16 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               Home
-            </button>
+            </a>
 
             {categoriesMeta.map((cat) => (
-              <button
+              <a
                 key={cat.id}
-                onClick={() => onNavigate('category', cat.id)}
+                href={`/category/${cat.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('category', cat.id);
+                }}
                 className={`text-sm font-semibold tracking-tight transition-colors pb-1 border-b-2 whitespace-nowrap ${
                   currentView === `cat-${cat.id}`
                     ? 'border-[#d82424] text-[#d82424]'
@@ -120,11 +132,15 @@ export const Header: React.FC<HeaderProps> = ({
                 }`}
               >
                 {cat.name}
-              </button>
+              </a>
             ))}
 
-            <button
-              onClick={() => onNavigate('about')}
+            <a
+              href="/about"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('about');
+              }}
               className={`text-sm font-semibold tracking-tight transition-colors pb-1 border-b-2 ${
                 currentView === 'about'
                   ? 'border-[#d82424] text-[#d82424]'
@@ -132,10 +148,14 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               About
-            </button>
+            </a>
 
-            <button
-              onClick={() => onNavigate('contact')}
+            <a
+              href="/contact"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('contact');
+              }}
               className={`text-sm font-semibold tracking-tight transition-colors pb-1 border-b-2 ${
                 currentView === 'contact'
                   ? 'border-[#d82424] text-[#d82424]'
@@ -143,7 +163,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               Contact
-            </button>
+            </a>
           </nav>
 
           {/* Right: Search, Saved Cookbook, and Newsletter CTA */}
@@ -226,8 +246,10 @@ export const Header: React.FC<HeaderProps> = ({
                     Categories
                   </h3>
                   <div className="space-y-1">
-                    <button
-                      onClick={() => {
+                    <a
+                      href="/"
+                      onClick={(e) => {
+                        e.preventDefault();
                         onNavigate('home');
                         setMobileMenuOpen(false);
                       }}
@@ -235,11 +257,13 @@ export const Header: React.FC<HeaderProps> = ({
                     >
                       <span>Home Feed</span>
                       <ChevronRight className="w-4 h-4 text-slate-400" />
-                    </button>
+                    </a>
                     {categoriesMeta.map((cat) => (
-                      <button
+                      <a
                         key={cat.id}
-                        onClick={() => {
+                        href={`/category/${cat.id}`}
+                        onClick={(e) => {
+                          e.preventDefault();
                           onNavigate('category', cat.id);
                           setMobileMenuOpen(false);
                         }}
@@ -247,7 +271,7 @@ export const Header: React.FC<HeaderProps> = ({
                       >
                         <span>{cat.name}</span>
                         <ChevronRight className="w-4 h-4 text-slate-400" />
-                      </button>
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -257,51 +281,70 @@ export const Header: React.FC<HeaderProps> = ({
                     Editorial &amp; Trust
                   </h3>
                   <div className="space-y-1 text-sm">
-                    <button
-                      onClick={() => {
+                    <a
+                      href="/about"
+                      onClick={(e) => {
+                        e.preventDefault();
                         onNavigate('about');
                         setMobileMenuOpen(false);
                       }}
-                      className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
+                      className="w-full block text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
                     >
                       About Us &amp; Our Mission
-                    </button>
-                    <button
-                      onClick={() => {
+                    </a>
+                    <a
+                      href="/contact"
+                      onClick={(e) => {
+                        e.preventDefault();
                         onNavigate('contact');
                         setMobileMenuOpen(false);
                       }}
-                      className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
+                      className="w-full block text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
                     >
                       Contact Us &amp; Help Desk
-                    </button>
-                    <button
-                      onClick={() => {
+                    </a>
+                    <a
+                      href="/standards"
+                      onClick={(e) => {
+                        e.preventDefault();
                         onNavigate('standards');
                         setMobileMenuOpen(false);
                       }}
-                      className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
+                      className="w-full block text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
                     >
                       Medical &amp; Culinary Standards
-                    </button>
-                    <button
-                      onClick={() => {
+                    </a>
+                    <a
+                      href="/privacy"
+                      onClick={(e) => {
+                        e.preventDefault();
                         onNavigate('privacy');
                         setMobileMenuOpen(false);
                       }}
-                      className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
+                      className="w-full block text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
                     >
                       Privacy Policy
-                    </button>
-                    <button
-                      onClick={() => {
+                    </a>
+                    <a
+                      href="/terms"
+                      onClick={(e) => {
+                        e.preventDefault();
                         onNavigate('terms');
                         setMobileMenuOpen(false);
                       }}
-                      className="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
+                      className="w-full block text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100"
                     >
                       Terms of Use
-                    </button>
+                    </a>
+                    <a
+                      href="/sitemap.xml"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full block text-left px-3 py-2 rounded-lg text-slate-500 hover:bg-slate-100 flex items-center justify-between text-xs font-mono"
+                    >
+                      <span>XML Sitemap</span>
+                      <span className="text-[10px] text-slate-400">sitemap.xml</span>
+                    </a>
                   </div>
                 </div>
               </div>

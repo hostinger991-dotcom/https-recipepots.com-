@@ -65,26 +65,104 @@ export default function App() {
     }
   };
 
+  // Synchronize URL with active state (deep-linking & SEO friendly navigation)
+  useEffect(() => {
+    const handleUrlRoute = () => {
+      const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+      const hash = window.location.hash.replace(/^#\/?/, '');
+      const target = path || hash;
+
+      if (!target) {
+        setCurrentView('home');
+        setSelectedCategory('all');
+        setSelectedRecipe(null);
+        return;
+      }
+
+      if (target.startsWith('recipe/') || target.startsWith('post/')) {
+        const slug = target.split('/')[1];
+        const match = allArticles.find((a) => a.slug === slug || a.id === slug);
+        if (match) {
+          setSelectedRecipe(match);
+        }
+      } else if (target.startsWith('category/')) {
+        const catId = target.split('/')[1] as CategoryId;
+        if (categoriesMeta.some((c) => c.id === catId)) {
+          setSelectedCategory(catId);
+          setCurrentView(`cat-${catId}`);
+        }
+      } else if (['about', 'contact', 'privacy', 'terms', 'standards', 'editors'].includes(target)) {
+        setCurrentView(target);
+        setSelectedRecipe(null);
+      }
+    };
+
+    handleUrlRoute();
+    window.addEventListener('popstate', handleUrlRoute);
+    return () => window.removeEventListener('popstate', handleUrlRoute);
+  }, []);
+
+  const handleOpenRecipe = (recipe: RecipeArticle) => {
+    setSelectedRecipe(recipe);
+    try {
+      window.history.pushState({ recipeId: recipe.id }, '', `/recipe/${recipe.slug}`);
+    } catch {
+      // Ignore in non-standard environments
+    }
+  };
+
+  const handleCloseRecipe = () => {
+    setSelectedRecipe(null);
+    try {
+      if (currentView.startsWith('cat-') && selectedCategory !== 'all') {
+        window.history.pushState(null, '', `/category/${selectedCategory}`);
+      } else if (currentView !== 'home') {
+        window.history.pushState(null, '', `/${currentView}`);
+      } else {
+        window.history.pushState(null, '', '/');
+      }
+    } catch {
+      // Ignore
+    }
+  };
+
   const handleNavigate = (view: string, categoryId?: CategoryId) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    setSelectedRecipe(null);
     if (view === 'category' && categoryId) {
       setCurrentView(`cat-${categoryId}`);
       setSelectedCategory(categoryId);
+      try {
+        window.history.pushState(null, '', `/category/${categoryId}`);
+      } catch {}
     } else if (view === 'home') {
       setCurrentView('home');
       setSelectedCategory('all');
+      try {
+        window.history.pushState(null, '', '/');
+      } catch {}
     } else {
       setCurrentView(view);
+      try {
+        window.history.pushState(null, '', `/${view}`);
+      } catch {}
     }
   };
 
   const handleSelectCategoryFromSidebar = (catId: CategoryId | 'all') => {
+    setSelectedRecipe(null);
     if (catId === 'all') {
       setSelectedCategory('all');
       setCurrentView('home');
+      try {
+        window.history.pushState(null, '', '/');
+      } catch {}
     } else {
       setSelectedCategory(catId);
       setCurrentView(`cat-${catId}`);
+      try {
+        window.history.pushState(null, '', `/category/${catId}`);
+      } catch {}
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -162,7 +240,7 @@ export default function App() {
                 <div className="grid lg:grid-cols-12 gap-6">
                   {/* Healthline Lead Featured Story (7 Cols) */}
                   <div
-                    onClick={() => setSelectedRecipe(leadHero)}
+                    onClick={() => handleOpenRecipe(leadHero)}
                     className="lg:col-span-7 healthline-card overflow-hidden cursor-pointer group flex flex-col justify-between"
                   >
                     <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
@@ -190,8 +268,17 @@ export default function App() {
                           <span>{leadHero.readTime}</span>
                         </div>
 
-                        <h1 className="text-2xl sm:text-3xl font-bold font-serif-headline text-slate-950 group-hover:text-[#d82424] transition-colors leading-tight">
-                          {leadHero.title}
+                        <h1 className="text-2xl sm:text-3xl font-bold font-serif-headline text-slate-950 leading-tight">
+                          <a
+                            href={`/recipe/${leadHero.slug}`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleOpenRecipe(leadHero);
+                            }}
+                            className="group-hover:text-[#d82424] transition-colors"
+                          >
+                            {leadHero.title}
+                          </a>
                         </h1>
 
                         <p className="text-sm text-slate-600 leading-relaxed line-clamp-2">
@@ -222,10 +309,17 @@ export default function App() {
                             <p className="text-[10px] text-slate-500">{leadHero.publishDate}</p>
                           </div>
                         </div>
-                        <span className="text-xs font-bold text-[#d82424] group-hover:underline flex items-center gap-1">
+                        <a
+                          href={`/recipe/${leadHero.slug}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleOpenRecipe(leadHero);
+                          }}
+                          className="text-xs font-bold text-[#d82424] group-hover:underline flex items-center gap-1"
+                        >
                           <span>Read Full Guide</span>
                           <ArrowRight className="w-3.5 h-3.5" />
-                        </span>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -233,10 +327,14 @@ export default function App() {
                   {/* Healthline Companion Stories Stack (5 Cols) */}
                   <div className="lg:col-span-5 flex flex-col gap-3.5">
                     {companionStories.map((story) => (
-                      <div
+                      <a
                         key={story.id}
-                        onClick={() => setSelectedRecipe(story)}
-                        className="healthline-card p-3.5 cursor-pointer group flex gap-3.5 transition-all"
+                        href={`/recipe/${story.slug}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleOpenRecipe(story);
+                        }}
+                        className="healthline-card p-3.5 cursor-pointer group flex gap-3.5 transition-all block"
                       >
                         <div className="w-28 sm:w-32 aspect-square shrink-0 rounded-lg overflow-hidden bg-slate-100">
                           <img
@@ -260,7 +358,7 @@ export default function App() {
                             <span className="text-[#d82424] font-semibold text-xs">Read →</span>
                           </div>
                         </div>
-                      </div>
+                      </a>
                     ))}
 
                     {/* Testing Lab Trust Callout Banner */}
@@ -369,7 +467,7 @@ export default function App() {
                       <RecipeCard
                         key={recipe.id}
                         recipe={recipe}
-                        onSelect={(rec) => setSelectedRecipe(rec)}
+                        onSelect={(rec) => handleOpenRecipe(rec)}
                         isSaved={savedArticleIds.includes(recipe.id)}
                         onToggleSave={handleToggleSave}
                       />
@@ -383,7 +481,7 @@ export default function App() {
                 <Sidebar
                   currentCategory={selectedCategory}
                   onSelectCategory={handleSelectCategoryFromSidebar}
-                  onSelectRecipe={(recipe) => setSelectedRecipe(recipe)}
+                  onSelectRecipe={(recipe) => handleOpenRecipe(recipe)}
                   savedCount={savedArticleIds.length}
                   onOpenSaved={() => setIsSavedDrawerOpen(true)}
                   onNavigatePage={(page) => handleNavigate(page)}
@@ -404,9 +502,11 @@ export default function App() {
       {/* Interactive 1200-Word Monograph Modal */}
       <ArticleModal
         recipe={selectedRecipe}
-        onClose={() => setSelectedRecipe(null)}
+        onClose={handleCloseRecipe}
         isSaved={selectedRecipe ? savedArticleIds.includes(selectedRecipe.id) : false}
         onToggleSave={(id) => handleToggleSave(id)}
+        onSelectRecipe={(recipe) => handleOpenRecipe(recipe)}
+        onNavigate={handleNavigate}
       />
 
       {/* Saved Cookbook Drawer */}
@@ -414,7 +514,7 @@ export default function App() {
         isOpen={isSavedDrawerOpen}
         onClose={() => setIsSavedDrawerOpen(false)}
         savedArticles={savedArticlesList}
-        onSelectRecipe={(recipe) => setSelectedRecipe(recipe)}
+        onSelectRecipe={(recipe) => handleOpenRecipe(recipe)}
         onRemoveSaved={(id) => handleToggleSave(id)}
         onClearAll={handleClearAllSaved}
       />

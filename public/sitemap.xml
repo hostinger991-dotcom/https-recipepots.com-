@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+
+  <!-- ============================================== -->
+  <!-- 1. HOMEPAGE & MAIN FEEDS                       -->
+  <!-- ============================================== -->
+  <url>
+    <loc>https://recipepots.com/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ============================================== -->
+  <!-- 2. CATEGORY HUBS                               -->
+  <!-- ============================================== -->
+  <url>
+    <loc>https://recipepots.com/category/easy-one-pot-dinners</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://recipepots.com/category/slow-cooker-crockpot-classics</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://recipepots.com/category/quick-easy-weeknight-dinners</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://recipepots.com/category/special-diets-healthy-eating</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ============================================== -->
+  <!-- 3. EDITORIAL & INSTITUTIONAL TRUST PAGES        -->
+  <!-- ============================================== -->
+  <url>
+    <loc>https://recipepots.com/about</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://recipepots.com/contact</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://recipepots.com/privacy</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://recipepots.com/terms</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://recipepots.com/standards</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://recipepots.com/editors</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ============================================== -->
+  <!-- 4. ALL 20 RECIPE POSTS / ARTICLES              -->
+  <!-- ============================================== -->
+  
+  <!-- Post 1: Instant Pot Chicken Recipes -->
+  <url>
+    <loc>https://recipepots.com/recipe/instant-pot-chicken-recipes</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/instant_pot_chicken_1792922370441.jpg</image:loc>
+      <image:title>Mastering Instant Pot Chicken Recipes: Pressure Cooking Physics &amp; Succulent Results</image:title>
+      <image:caption>Culinary science guide to high-pressure steam saturation and tender chicken breast vs thighs.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 2: Dutch Oven Beef Stew -->
+  <url>
+    <loc>https://recipepots.com/recipe/dutch-oven-beef-stew</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/dutch_oven_beef_stew_1792922371215.jpg</image:loc>
+      <image:title>The Ultimate Dutch Oven Beef Stew: Cast Iron Thermodynamics &amp; Deep Glaze Chemistry</image:title>
+      <image:caption>Cast iron heat retention and deep Maillard reaction fond deglazing for beef chuck stew.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 3: 30 Minute One Pot Pasta -->
+  <url>
+    <loc>https://recipepots.com/recipe/30-minute-one-pot-pasta</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/one_pot_pasta_1792922213144.jpg</image:loc>
+      <image:title>30 Minute One Pot Pasta: The Starch Emulsification Revolution</image:title>
+      <image:caption>How unrinsed pasta amylose starch binds oil and broth into a velvety gloss sauce.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 4: Healthy Instant Pot Soup Recipes -->
+  <url>
+    <loc>https://recipepots.com/recipe/healthy-instant-pot-soup-recipes</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/healthy_instant_pot_soup_1793000644733.jpg</image:loc>
+      <image:title>Healthy Instant Pot Soup Recipes: Nutrient Retention &amp; Deep Flavor Infusion</image:title>
+      <image:caption>Sealed steam chamber preserves water-soluble vitamin B complexes and delicate antioxidants.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 5: Easy One Pot Dinners Guide -->
+  <url>
+    <loc>https://recipepots.com/recipe/easy-one-pot-dinners-guide</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/easy_one_pot_guide_1793000647686.jpg</image:loc>
+      <image:title>The Comprehensive Easy One Pot Dinners Guide: Vessel Physics &amp; Gear Strategy</image:title>
+      <image:caption>Dutch oven vs cast iron skillet vs electric multi-cooker thermodynamic selection matrix.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 6: Best Crockpot Recipes for Dinner -->
+  <url>
+    <loc>https://recipepots.com/recipe/best-crockpot-recipes-for-dinner</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/best_crockpot_1792922240847.jpg</image:loc>
+      <image:title>The Best Crockpot Recipes for Dinner: Low-Temperature Thermodynamics &amp; Moisture Retention</image:title>
+      <image:caption>Gentle temperature elevation and moisture vapor condensation dynamics in slow cooking.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 7: Slow Cooker Pulled Pork -->
+  <url>
+    <loc>https://recipepots.com/recipe/slow-cooker-pulled-pork</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/slow_cooker_pulled_pork_1792922372433.jpg</image:loc>
+      <image:title>Slow Cooker Pulled Pork: The Science of Collagen Breakdown &amp; Smoke Rub Chemistry</image:title>
+      <image:caption>Transform Boston butt pork shoulder into juicy shredded barbecue via gelatin uncoiling.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 8: Crockpot Chili Recipe -->
+  <url>
+    <loc>https://recipepots.com/recipe/crockpot-chili-recipe</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/crockpot_chili_1792922213259.jpg</image:loc>
+      <image:title>The Ultimate Crockpot Chili Recipe: Umami Synergies &amp; Slow Simmer Chemistry</image:title>
+      <image:caption>Harmonizing dark Dutch cocoa powder with roasted chiles, ground chuck beef, and kidney beans.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 9: Healthy Slow Cooker Meal Prep -->
+  <url>
+    <loc>https://recipepots.com/recipe/healthy-slow-cooker-meal-prep</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/slow_cooker_meal_prep_1792922242266.jpg</image:loc>
+      <image:title>Healthy Slow Cooker Meal Prep: Batch Cooking Efficiency &amp; Macro Optimization</image:title>
+      <image:caption>Eight high-protein glass containers prepared in one slow cooker cycle with salsa verde chicken.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 10: Slow Cooker Beef Roast -->
+  <url>
+    <loc>https://recipepots.com/recipe/slow-cooker-beef-roast</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/slow_cooker_beef_roast_1793000647307.jpg</image:loc>
+      <image:title>Slow Cooker Beef Roast: Tenderness Chemistry &amp; Herb-Garlic Butter Basting</image:title>
+      <image:caption>Sunday pot roast with seared chuck, red wine deglaze, and French beurre manie silky gravy.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 11: 15 Minute Dinner Recipes -->
+  <url>
+    <loc>https://recipepots.com/recipe/15-minute-dinner-recipes</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/minute_dinner_1792922215419.jpg</image:loc>
+      <image:title>High-Heat 15 Minute Dinner Recipes: Flash Cooking, Wok Chemistry &amp; Rapid Assembly</image:title>
+      <image:caption>High surface area flash-cooking in carbon steel wok for 15-minute shrimp and broccolini.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 12: 5 Ingredient Dinner Ideas -->
+  <url>
+    <loc>https://recipepots.com/recipe/5-ingredient-dinner-ideas</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/five_ingredient_dinner_1793000647316.jpg</image:loc>
+      <image:title>Minimalist 5 Ingredient Dinner Ideas: High-Impact Flavor Chemistry</image:title>
+      <image:caption>Maximizing natural glutamates and fat emulsions with minimal pantry ingredients.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 13: Sheet Pan Chicken and Veggies -->
+  <url>
+    <loc>https://recipepots.com/recipe/sheet-pan-chicken-and-veggies</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/sheet_pan_chicken_veggies_1792922374017.jpg</image:loc>
+      <image:title>Sheet Pan Chicken and Veggies: High Heat Roasting &amp; Zero-Panic Cleanup</image:title>
+      <image:caption>Preheated heavy gauge aluminum sheet pan eliminates condensation for maximum caramelization.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 14: Quick Healthy Weeknight Meals -->
+  <url>
+    <loc>https://recipepots.com/recipe/quick-healthy-weeknight-meals</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/quick_healthy_weeknight_1793000661651.jpg</image:loc>
+      <image:title>Quick Healthy Weeknight Meals: Nutritional Density &amp; Metabolic Energy</image:title>
+      <image:caption>Fast balanced meals delivering sustained energy and clean micronutrient profiles.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 15: Easy Ground Beef Recipes -->
+  <url>
+    <loc>https://recipepots.com/recipe/easy-ground-beef-recipes</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/easy_ground_beef_1793000665365.jpg</image:loc>
+      <image:title>Easy Ground Beef Recipes: Skillet Thermodynamics &amp; Global Street Flavors</image:title>
+      <image:caption>Korean sweet garlic ground beef bowls with toasted sesame and rapid stovetop browning.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 16: Keto One Pot Recipes -->
+  <url>
+    <loc>https://recipepots.com/recipe/keto-one-pot-recipes</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/keto_one_pot_recipes_1792922374556.jpg</image:loc>
+      <image:title>Keto One Pot Recipes: Low Carb High Fat Macros &amp; Skillet Chemistry</image:title>
+      <image:caption>Creamy Tuscan garlic skillet chicken delivering 41g protein and only 4g net carbohydrates.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 17: Easy Vegan Dinner Ideas -->
+  <url>
+    <loc>https://recipepots.com/recipe/easy-vegan-dinner-ideas</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/vegan_dinner_1792922216492.jpg</image:loc>
+      <image:title>Easy Vegan Dinner Ideas: Plant-Protein Synthesis &amp; Deep Umami Alchemy</image:title>
+      <image:caption>Red lentil coconut curry with freshly ground ginger and cold-pressed turmeric root.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 18: Gluten Free Meal Prep Recipes -->
+  <url>
+    <loc>https://recipepots.com/recipe/gluten-free-meal-prep-recipes</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/gluten_free_meal_prep_1793000664786.jpg</image:loc>
+      <image:title>Gluten Free Meal Prep Recipes: Celiac-Safe Prep &amp; Cross-Contamination Physics</image:title>
+      <image:caption>Strictly tested gluten-free Mediterranean quinoa bowls with tender lemon-herb chicken breast.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 19: Low Carb Slow Cooker Meals -->
+  <url>
+    <loc>https://recipepots.com/recipe/low-carb-slow-cooker-meals</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/low_carb_slow_cooker_1793000664998.jpg</image:loc>
+      <image:title>Low Carb Slow Cooker Meals: Gentle Braising &amp; Ketogenic Flavor Density</image:title>
+      <image:caption>Herb butter braised chicken thighs and riced cauliflower with minimal carbohydrate impact.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Post 20: High Protein Dinner Recipes -->
+  <url>
+    <loc>https://recipepots.com/recipe/high-protein-dinner-recipes</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://recipepots.com/images/high_protein_dinner_1792922217263.jpg</image:loc>
+      <image:title>High Protein Dinner Recipes: Lean Hypertrophy &amp; Protein Synthesis Optimization</image:title>
+      <image:caption>Golden turkey cutlets pan-seared with rosemary and garlic delivering 48g muscle-building protein.</image:caption>
+    </image:image>
+  </url>
+
+</urlset>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   X,
   Clock,
@@ -20,15 +20,21 @@ import {
   ThumbsDown,
   CheckCircle2,
   BookOpen,
+  ArrowRight,
+  ChevronRight,
+  ExternalLink,
 } from 'lucide-react';
-import { RecipeArticle } from '../types/recipe';
+import { RecipeArticle, CategoryId } from '../types/recipe';
 import { handleImageFallback } from '../utils/imageUtils';
+import { allArticles } from '../data/articlesIndex';
 
 interface ArticleModalProps {
   recipe: RecipeArticle | null;
   onClose: () => void;
   isSaved: boolean;
   onToggleSave: (recipeId: string) => void;
+  onSelectRecipe?: (recipe: RecipeArticle) => void;
+  onNavigate?: (view: string, categoryId?: CategoryId) => void;
 }
 
 export const ArticleModal: React.FC<ArticleModalProps> = ({
@@ -36,6 +42,8 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
   onClose,
   isSaved,
   onToggleSave,
+  onSelectRecipe,
+  onNavigate,
 }) => {
   if (!recipe) return null;
 
@@ -43,6 +51,14 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   const [checkedIngredients, setCheckedIngredients] = useState<string[]>([]);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
+  // Cross-linked related recipes for rich internal linking
+  const relatedRecipes = useMemo(() => {
+    if (!recipe) return [];
+    const sameCat = allArticles.filter((a) => a.categoryId === recipe.categoryId && a.id !== recipe.id);
+    const otherCat = allArticles.filter((a) => a.categoryId !== recipe.categoryId && a.id !== recipe.id);
+    return [...sameCat, ...otherCat].slice(0, 3);
+  }, [recipe]);
   const [showShareToast, setShowShareToast] = useState(false);
   const [feedbackGiven, setFeedbackGiven] = useState<'yes' | 'no' | null>(null);
   const [showEditorialInfo, setShowEditorialInfo] = useState(false);
@@ -133,12 +149,51 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
 
         {/* Modal Scrollable Body */}
         <div className="p-4 sm:p-8 space-y-8 max-h-[85vh] overflow-y-auto">
+          {/* Internal Link Breadcrumbs */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-slate-500 pb-2 border-b border-gray-100 flex-wrap">
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onClose();
+                onNavigate?.('home');
+              }}
+              className="hover:text-[#d82424] hover:underline text-slate-600 font-semibold"
+            >
+              Home
+            </a>
+            <span>/</span>
+            <a
+              href={`/category/${recipe.categoryId}`}
+              onClick={(e) => {
+                e.preventDefault();
+                onClose();
+                onNavigate?.('category', recipe.categoryId);
+              }}
+              className="hover:text-[#d82424] hover:underline font-bold text-[#d82424]"
+            >
+              {recipe.categoryName}
+            </a>
+            <span>/</span>
+            <span className="text-slate-800 font-medium truncate max-w-xs sm:max-w-md">
+              {recipe.title}
+            </span>
+          </nav>
+
           {/* Article Header & Healthline Medical Review Badge */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#d82424]">
+              <a
+                href={`/category/${recipe.categoryId}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onClose();
+                  onNavigate?.('category', recipe.categoryId);
+                }}
+                className="text-xs font-bold uppercase tracking-wider text-[#d82424] hover:underline"
+              >
                 {recipe.categoryName}
-              </span>
+              </a>
               <span className="text-slate-300">•</span>
               <span className="text-xs text-slate-500 font-medium">Culinary Nutrition &amp; Science</span>
             </div>
@@ -158,25 +213,60 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                   <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span>
                     Medically &amp; Scientifically Reviewed by{' '}
-                    <strong className="text-slate-900 font-bold">Elena Rostova, M.Sc., RD</strong>
+                    <a
+                      href="/editors"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        onClose();
+                        onNavigate?.('editors');
+                      }}
+                      className="text-slate-900 font-bold hover:text-[#d82424] hover:underline"
+                    >
+                      Elena Rostova, M.Sc., RD
+                    </a>
                   </span>
                 </div>
                 <span className="text-slate-500 text-[11px]">
-                  Updated on October 24, 2026
+                  Updated on {recipe.publishDate}
                 </span>
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs pt-2 border-t border-gray-200/60">
                 <p className="text-slate-600">
-                  Written by <strong className="text-slate-800 font-semibold">{recipe.author.name}</strong>, {recipe.author.role}
+                  Written by{' '}
+                  <a
+                    href="/editors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onClose();
+                      onNavigate?.('editors');
+                    }}
+                    className="text-slate-800 font-semibold hover:text-[#d82424] hover:underline"
+                  >
+                    {recipe.author.name}
+                  </a>
+                  , {recipe.author.role}
                 </p>
-                <button
-                  onClick={() => setShowEditorialInfo(!showEditorialInfo)}
-                  className="text-xs text-[#d82424] hover:underline font-semibold flex items-center gap-1"
-                >
-                  <span>Our Editorial Process</span>
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showEditorialInfo ? 'rotate-180' : ''}`} />
-                </button>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="/standards"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onClose();
+                      onNavigate?.('standards');
+                    }}
+                    className="text-xs text-[#d82424] hover:underline font-semibold"
+                  >
+                    Testing Protocol
+                  </a>
+                  <button
+                    onClick={() => setShowEditorialInfo(!showEditorialInfo)}
+                    className="text-xs text-slate-500 hover:text-slate-800 font-medium flex items-center gap-1"
+                  >
+                    <span>Editorial Standards</span>
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showEditorialInfo ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
               </div>
 
               {showEditorialInfo && (
@@ -531,6 +621,90 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                 </button>
               </div>
             )}
+          </div>
+
+          {/* Related Peer-Reviewed Recipes & Monograms (Internal Linking) */}
+          <div className="space-y-4 pt-6 border-t border-gray-200">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#d82424]"></span>
+                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900">
+                  Related Peer-Reviewed Recipes &amp; Guides
+                </h3>
+              </div>
+              <a
+                href={`/category/${recipe.categoryId}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onClose();
+                  onNavigate?.('category', recipe.categoryId);
+                }}
+                className="text-xs font-bold text-[#d82424] hover:underline flex items-center gap-1"
+              >
+                <span>All {recipe.categoryName}</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {relatedRecipes.map((rel) => (
+                <a
+                  key={rel.id}
+                  href={`/recipe/${rel.slug}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onSelectRecipe) {
+                      onSelectRecipe(rel);
+                    }
+                  }}
+                  className="group p-3 rounded-xl border border-gray-200 bg-white hover:border-[#d82424]/40 hover:shadow-sm transition-all flex flex-col justify-between"
+                >
+                  <div className="space-y-2">
+                    <div className="aspect-[16/9] w-full rounded-lg overflow-hidden bg-slate-100">
+                      <img
+                        src={rel.imageUrl}
+                        alt={rel.imageAlt}
+                        onError={(e) => handleImageFallback(e, rel.categoryId)}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <span className="text-[10px] font-bold text-[#d82424] uppercase tracking-wider block">
+                      {rel.categoryName}
+                    </span>
+                    <h4 className="text-xs font-bold text-slate-900 group-hover:text-[#d82424] transition-colors line-clamp-2 leading-snug">
+                      {rel.title}
+                    </h4>
+                  </div>
+                  <div className="pt-2 mt-2 border-t border-gray-100 flex items-center justify-between text-[10px] text-slate-500 font-medium">
+                    <span>⏱ {rel.cookTime}</span>
+                    <span className="text-[#d82424] font-bold group-hover:underline">Open Guide →</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {/* Category Hub Banner Link */}
+            <div className="p-4 rounded-xl bg-slate-100/80 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="space-y-0.5">
+                <span className="text-xs font-bold text-slate-900">
+                  Looking for more in {recipe.categoryName}?
+                </span>
+                <p className="text-[11px] text-slate-500">
+                  Explore full nutrient profiles, cooking vessels, and preparation tips in this topic.
+                </p>
+              </div>
+              <a
+                href={`/category/${recipe.categoryId}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onClose();
+                  onNavigate?.('category', recipe.categoryId);
+                }}
+                className="shrink-0 px-4 py-2 rounded-full bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition-colors text-center"
+              >
+                Explore Category Hub
+              </a>
+            </div>
           </div>
 
           {/* Scientific Sources & Reference Citations */}
