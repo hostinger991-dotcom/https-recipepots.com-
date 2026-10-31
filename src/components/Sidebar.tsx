@@ -43,12 +43,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div className="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-xs space-y-4">
         <div className="flex items-center justify-between pb-3 border-b border-gray-100">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
             <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900">
               Recipe Categories
             </h3>
           </div>
-          <span className="text-[11px] font-semibold text-slate-500">20 Guides</span>
+          <span className="text-[11px] font-semibold text-slate-500">{allArticles.length} Recipes</span>
         </div>
 
         <nav className="space-y-1.5">
@@ -61,18 +61,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
             }}
             className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-between group ${
               currentCategory === 'all'
-                ? 'bg-amber-500 text-slate-950 shadow-xs'
+                ? 'bg-yellow-400 text-slate-950 shadow-xs'
                 : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
             }`}
           >
             <div className="flex items-center gap-2.5">
               <Layers className="w-4 h-4 shrink-0" />
-              <span>All 20 Monographs</span>
+              <span>All {allArticles.length} Recipes</span>
             </div>
-            <span className={`text-[10px] px-2 py-0.5 rounded-full ${
+            <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
               currentCategory === 'all' ? 'bg-slate-950/20 text-slate-950 font-black' : 'bg-slate-100 text-slate-600'
             }`}>
-              20
+              {allArticles.length}
             </span>
           </a>
 
@@ -90,12 +90,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 }}
                 className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center justify-between group ${
                   isActive
-                    ? 'bg-amber-500 text-slate-950 shadow-xs font-bold'
+                    ? 'bg-yellow-400 text-slate-950 shadow-xs font-bold'
                     : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900 border border-transparent hover:border-slate-200'
                 }`}
               >
                 <div className="flex items-center gap-2.5 truncate pr-2">
-                  <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-slate-950' : 'bg-amber-500'}`}></span>
+                  <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-slate-950' : 'bg-yellow-500'}`}></span>
                   <span className="truncate">{cat.name}</span>
                 </div>
                 <span className={`text-[10px] px-2 py-0.5 rounded-full shrink-0 font-bold ${
@@ -113,12 +113,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div className="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-xs space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-amber-500" />
+            <BookOpen className="w-4 h-4 text-yellow-500" />
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
               My Recipe Box
             </h4>
           </div>
-          <span className="text-xs font-bold text-amber-600">{savedCount} saved</span>
+          <span className="text-xs font-bold text-yellow-700">{savedCount} saved</span>
         </div>
         <p className="text-xs text-slate-500 leading-relaxed">
           Bookmark recipes while browsing for rapid offline kitchen reference and serving scaling.
@@ -135,7 +135,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* 3. Trending Editor's Picks */}
       <div className="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-xs space-y-4">
         <div className="flex items-center gap-2 pb-2 border-b border-gray-100">
-          <Flame className="w-4 h-4 text-amber-500" />
+          <Flame className="w-4 h-4 text-yellow-500" />
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
             Editor's Top Picks
           </h4>
@@ -158,10 +158,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 className="w-14 h-14 rounded-lg object-cover border border-slate-200 shrink-0"
               />
               <div className="flex-1 min-w-0">
-                <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wider block">
+                <span className="text-[10px] font-bold text-yellow-700 uppercase tracking-wider block">
                   {pick.categoryName}
                 </span>
-                <h5 className="text-xs font-bold text-slate-900 group-hover:text-amber-600 transition-colors truncate">
+                <h5 className="text-xs font-bold text-slate-900 group-hover:text-yellow-700 transition-colors truncate">
                   {pick.title}
                 </h5>
                 <span className="text-[10px] text-slate-400 mt-0.5 block">
@@ -190,7 +190,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             e.preventDefault();
             onNavigatePage('standards');
           }}
-          className="text-xs font-bold text-amber-600 hover:text-amber-700 hover:underline flex items-center gap-1 inline-flex"
+          className="text-xs font-bold text-yellow-700 hover:text-yellow-800 hover:underline flex items-center gap-1 inline-flex"
         >
           <span>Read Our Testing Process</span>
           <ArrowRight className="w-3 h-3" />
@@ -200,7 +200,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* 5. Support & Direct Helpline Card */}
       <div className="bg-slate-900 text-white rounded-2xl p-5 shadow-sm space-y-3">
         <div className="flex items-center gap-2">
-          <ChefHat className="w-4 h-4 text-amber-500" />
+          <ChefHat className="w-4 h-4 text-yellow-400" />
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200">
             Editorial Helpline
           </h4>
@@ -210,13 +210,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </p>
         <div className="pt-1 space-y-2 text-xs">
           <p className="flex items-center gap-2 font-mono">
-            <Phone className="w-3.5 h-3.5 text-amber-500" />
+            <Phone className="w-3.5 h-3.5 text-yellow-400" />
             <a href="tel:03046308631" className="text-white hover:underline font-bold">
               03046308631
             </a>
           </p>
           <p className="flex items-center gap-2 font-mono">
-            <Mail className="w-3.5 h-3.5 text-amber-500" />
+            <Mail className="w-3.5 h-3.5 text-yellow-400" />
             <a href="mailto:mz751136000@gmail.com" className="text-white hover:underline font-bold break-all">
               mz751136000@gmail.com
             </a>

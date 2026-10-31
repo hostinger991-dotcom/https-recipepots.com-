@@ -20,21 +20,21 @@ export const LogoIcon: React.FC<{ size?: number; className?: string }> = ({
       className={`shrink-0 drop-shadow-xs transition-transform duration-300 group-hover:scale-105 ${className}`}
     >
       <defs>
-        {/* Main Badge Gradient - Warm Golden Amber */}
+        {/* Main Badge Gradient - Deep Rich Golden Yellow */}
         <linearGradient id="logoBadgeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#fbbf24" />
-          <stop offset="50%" stopColor="#f59e0b" />
-          <stop offset="100%" stopColor="#d97706" />
+          <stop offset="0%" stopColor="#fde047" />
+          <stop offset="50%" stopColor="#eab308" />
+          <stop offset="100%" stopColor="#ca8a04" />
         </linearGradient>
 
         {/* Soft Shadow Filter */}
         <filter id="badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
-          <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#f59e0b" floodOpacity="0.3" />
+          <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#ca8a04" floodOpacity="0.35" />
         </filter>
 
         {/* Gloss highlight */}
         <linearGradient id="glossHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.3" />
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.35" />
           <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
         </linearGradient>
       </defs>
@@ -54,7 +54,7 @@ export const LogoIcon: React.FC<{ size?: number; className?: string }> = ({
 
       {/* Modern Pot Lid Handle (Silver/White knob) */}
       <ellipse cx="24" cy="14" rx="3.5" ry="2" fill="#ffffff" />
-      <rect x="22.5" y="15" width="3" height="2" rx="0.5" fill="#fecdd3" />
+      <rect x="22.5" y="15" width="3" height="2" rx="0.5" fill="#fef08a" />
 
       {/* Pot Lid Dome */}
       <path
@@ -69,8 +69,8 @@ export const LogoIcon: React.FC<{ size?: number; className?: string }> = ({
         fill="#ffffff"
       />
 
-      {/* Inside Liquid / Food Line (Warm Amber/Coral Depth) */}
-      <ellipse cx="24" cy="22" rx="9" ry="2" fill="#ffe4e6" />
+      {/* Inside Liquid / Food Line (Warm Deep Yellow Depth) */}
+      <ellipse cx="24" cy="22" rx="9" ry="2" fill="#fef9c3" />
 
       {/* Ergonomic Pot Side Handles */}
       <path
@@ -114,7 +114,7 @@ export const LogoIcon: React.FC<{ size?: number; className?: string }> = ({
       />
 
       {/* Health / Nutrition Accent Star / Ember Dot */}
-      <circle cx="24" cy="28" r="1.5" fill="#f59e0b" />
+      <circle cx="24" cy="28" r="1.5" fill="#ca8a04" />
     </svg>
   );
 };
@@ -145,9 +145,9 @@ export const Logo: React.FC<LogoProps> = ({
       <div className="flex flex-col justify-center">
         <div className="flex items-baseline gap-1">
           <span className={`${titleSizes[size]} font-black tracking-tight text-slate-900 group-hover:text-slate-950 transition-colors leading-none`}>
-            recipe<span className="text-amber-500">pots</span>
+            recipe<span className="text-yellow-500">pots</span>
           </span>
-          <span className="w-2 h-2 rounded-full bg-amber-500 self-center -mb-0.5"></span>
+          <span className="w-2 h-2 rounded-full bg-yellow-500 self-center -mb-0.5"></span>
         </div>
         {showTagline && (
           <span className="text-[10px] font-bold text-slate-500 tracking-wider uppercase hidden sm:block mt-0.5">

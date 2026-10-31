@@ -36,8 +36,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <LogoIcon size={40} />
               <div className="flex flex-col">
                 <span className="text-2xl sm:text-3xl font-black text-white group-hover:text-slate-100 transition-colors leading-none">
-                  recipe<span className="text-amber-500">pots</span>
-                  <span className="inline-block w-2 h-2 rounded-full bg-amber-500 ml-1 mb-0.5"></span>
+                  recipe<span className="text-yellow-400">pots</span>
+                  <span className="inline-block w-2 h-2 rounded-full bg-yellow-400 ml-1 mb-0.5"></span>
                 </span>
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1">
                   Evidence-Based Culinary Journal
@@ -51,14 +51,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
             <div className="pt-2 text-xs text-slate-300 space-y-2">
               <p className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-amber-400" />
+                <Phone className="w-3.5 h-3.5 text-yellow-400" />
                 <span className="text-slate-400">Helpline / WhatsApp:</span>
                 <a href="tel:03046308631" className="font-semibold text-white hover:underline">
                   03046308631
                 </a>
               </p>
               <p className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-amber-400" />
+                <Mail className="w-3.5 h-3.5 text-yellow-400" />
                 <span className="text-slate-400">Editorial Inquiries:</span>
                 <a href="mailto:mz751136000@gmail.com" className="font-semibold text-white hover:underline break-all">
                   mz751136000@gmail.com
@@ -216,11 +216,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     placeholder="Enter email address"
                     value={emailInput}
                     onChange={(e) => setEmailInput(e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                    className="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-yellow-400"
                   />
                   <button
                     type="submit"
-                    className="absolute right-1 top-1 bottom-1 px-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-md text-xs flex items-center justify-center transition-colors"
+                    className="absolute right-1 top-1 bottom-1 px-3 bg-yellow-400 hover:bg-yellow-500 text-slate-950 font-bold rounded-md text-xs flex items-center justify-center transition-colors"
                   >
                     <Send className="w-3.5 h-3.5" />
                   </button>

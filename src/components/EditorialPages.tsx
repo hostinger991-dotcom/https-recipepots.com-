@@ -70,7 +70,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               e.preventDefault();
               onNavigateHome();
             }}
-            className="text-amber-600 hover:underline font-semibold flex items-center gap-1"
+            className="text-yellow-700 hover:underline font-semibold flex items-center gap-1"
           >
             <span>‹ Home</span>
           </a>
@@ -105,7 +105,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                 }}
                 className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors block ${
                   currentTab === tab.id
-                    ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
+                    ? 'bg-yellow-400 text-slate-950 font-bold shadow-xs'
                     : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                 }`}
               >
@@ -122,7 +122,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
       {currentTab === 'about' && (
         <div className="space-y-10">
           <div className="space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
+            <span className="text-xs font-bold uppercase tracking-wider text-yellow-700">
               About recipepots • Evidence-Based Cooking
             </span>
             <h1 className="text-3xl sm:text-5xl font-bold font-serif-headline text-slate-950 leading-tight">
@@ -136,7 +136,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
           {/* Core Mission Statement */}
           <div className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-gray-200 space-y-4">
             <h2 className="text-2xl font-bold font-serif-headline text-slate-900 flex items-center gap-2.5">
-              <ChefHat className="w-6 h-6 text-amber-500" />
+              <ChefHat className="w-6 h-6 text-yellow-600" />
               Our Core Mission: The Single-Vessel Revolution
             </h2>
             <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
@@ -150,12 +150,12 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
           {/* 4 Pillars Grid */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold font-serif-headline text-slate-900 flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-amber-500" />
+              <Sparkles className="w-5 h-5 text-yellow-600" />
               Our Four Culinary &amp; Dietary Pillars
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="p-5 rounded-xl border border-gray-200 bg-white space-y-2 hover:border-gray-300 transition-colors">
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
+                <span className="text-xs font-bold uppercase tracking-wider text-yellow-700">
                   Pillar 1 • One-Pot Dinners
                 </span>
                 <h4 className="text-base font-bold text-slate-900">Vessel Conduction &amp; Deglazing</h4>
@@ -165,7 +165,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               </div>
 
               <div className="p-5 rounded-xl border border-gray-200 bg-white space-y-2 hover:border-gray-300 transition-colors">
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
+                <span className="text-xs font-bold uppercase tracking-wider text-yellow-700">
                   Pillar 2 • Slow Cooker Classics
                 </span>
                 <h4 className="text-base font-bold text-slate-900">Gentle Low-and-Slow Braising</h4>
@@ -175,7 +175,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               </div>
 
               <div className="p-5 rounded-xl border border-gray-200 bg-white space-y-2 hover:border-gray-300 transition-colors">
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
+                <span className="text-xs font-bold uppercase tracking-wider text-yellow-700">
                   Pillar 3 • Quick Weeknight Meals
                 </span>
                 <h4 className="text-base font-bold text-slate-900">Speedy Skillet &amp; Sheet Pan Dinners</h4>
@@ -185,7 +185,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               </div>
 
               <div className="p-5 rounded-xl border border-gray-200 bg-white space-y-2 hover:border-gray-300 transition-colors">
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
+                <span className="text-xs font-bold uppercase tracking-wider text-yellow-700">
                   Pillar 4 • Healthy &amp; Special Diets
                 </span>
                 <h4 className="text-base font-bold text-slate-900">Balanced, Wholesome Nutrition</h4>
@@ -232,7 +232,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                     className="w-16 h-16 rounded-full object-cover mx-auto border border-gray-200 shadow-xs"
                   />
                   <h4 className="text-sm font-bold text-slate-900">{staff.name}</h4>
-                  <p className="text-[11px] text-amber-600 font-semibold">{staff.role}</p>
+                  <p className="text-[11px] text-yellow-700 font-semibold">{staff.role}</p>
                   <p className="text-xs text-slate-600 line-clamp-3">{staff.bio}</p>
                 </div>
               ))}
@@ -247,7 +247,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
       {currentTab === 'contact' && (
         <div className="space-y-10">
           <div className="space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
+            <span className="text-xs font-bold uppercase tracking-wider text-yellow-700">
               Contact Us • Editorial &amp; Reader Support
             </span>
             <h1 className="text-3xl sm:text-5xl font-bold font-serif-headline text-slate-950">
@@ -262,8 +262,8 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
           <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
             {/* Phone & WhatsApp */}
             <div className="p-6 rounded-2xl border border-gray-200 bg-white space-y-3 hover:border-gray-300 hover:shadow-xs transition-all">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center">
-                <Phone className="w-5 h-5 text-amber-600" />
+              <div className="w-10 h-10 rounded-xl bg-yellow-50 border border-yellow-300 flex items-center justify-center">
+                <Phone className="w-5 h-5 text-yellow-700" />
               </div>
               <div>
                 <h3 className="text-base font-bold text-slate-900">Phone &amp; WhatsApp</h3>
@@ -271,7 +271,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               </div>
               <a
                 href="tel:03046308631"
-                className="block text-xl font-bold text-slate-900 hover:text-amber-600 transition-colors"
+                className="block text-xl font-bold text-slate-900 hover:text-yellow-700 transition-colors"
               >
                 03046308631
               </a>
@@ -279,7 +279,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                 href="https://wa.me/923046308631"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:underline"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-yellow-700 hover:underline"
               >
                 <span>Chat on WhatsApp</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -288,8 +288,8 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
 
             {/* Official Email */}
             <div className="p-6 rounded-2xl border border-gray-200 bg-white space-y-3 hover:border-gray-300 hover:shadow-xs transition-all">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center">
-                <Mail className="w-5 h-5 text-amber-600" />
+              <div className="w-10 h-10 rounded-xl bg-yellow-50 border border-yellow-300 flex items-center justify-center">
+                <Mail className="w-5 h-5 text-yellow-700" />
               </div>
               <div>
                 <h3 className="text-base font-bold text-slate-900">Official Email Desk</h3>
@@ -297,13 +297,13 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               </div>
               <a
                 href="mailto:mz751136000@gmail.com"
-                className="block text-sm sm:text-base font-bold text-slate-900 hover:text-amber-600 transition-colors break-all"
+                className="block text-sm sm:text-base font-bold text-slate-900 hover:text-yellow-700 transition-colors break-all"
               >
                 mz751136000@gmail.com
               </a>
               <a
                 href="mailto:mz751136000@gmail.com"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:underline"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-yellow-700 hover:underline"
               >
                 <span>Send Email</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -332,7 +332,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
           {/* Interactive Message Dispatch Form */}
           <div className="p-6 sm:p-8 rounded-2xl border border-gray-200 bg-slate-50 shadow-xs">
             <div className="flex items-center gap-2 mb-2">
-              <MessageSquare className="w-5 h-5 text-amber-600" />
+              <MessageSquare className="w-5 h-5 text-yellow-700" />
               <h2 className="text-xl sm:text-2xl font-bold font-serif-headline text-slate-900">
                 Send a Message to the Editorial Team
               </h2>
@@ -356,7 +356,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                 <div className="grid sm:grid-cols-3 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Your Name <span className="text-amber-600">*</span>
+                      Your Name <span className="text-yellow-700">*</span>
                     </label>
                     <input
                       type="text"
@@ -364,13 +364,13 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Sarah Jenkins"
-                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500"
+                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Your Email <span className="text-amber-600">*</span>
+                      Your Email <span className="text-yellow-700">*</span>
                     </label>
                     <input
                       type="email"
@@ -378,7 +378,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="name@example.com"
-                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500"
+                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500"
                     />
                   </div>
 
@@ -391,7 +391,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="03046308631"
-                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500"
+                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500"
                     />
                   </div>
                 </div>
@@ -399,12 +399,12 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Topic <span className="text-amber-600">*</span>
+                      Topic <span className="text-yellow-700">*</span>
                     </label>
                     <select
                       value={formData.topic}
                       onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
+                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-yellow-500"
                     >
                       <option value="Recipe Technical Question">Recipe Question &amp; Cooking Tips</option>
                       <option value="Equipment Review Request">Kitchen Gear &amp; Cookware Question</option>
@@ -415,7 +415,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
 
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Subject <span className="text-amber-600">*</span>
+                      Subject <span className="text-yellow-700">*</span>
                     </label>
                     <input
                       type="text"
@@ -423,14 +423,14 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       placeholder="e.g. Dutch Oven Beef Stew cooking time"
-                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
+                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-yellow-500"
                     />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                    Your Message <span className="text-amber-600">*</span>
+                    Your Message <span className="text-yellow-700">*</span>
                   </label>
                   <textarea
                     rows={4}
@@ -438,7 +438,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Provide your question or comments..."
-                    className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-yellow-500"
                   />
                 </div>
 
@@ -448,7 +448,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                   </p>
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-colors"
+                    className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-yellow-400 hover:bg-yellow-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-colors"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>Submit Message</span>
@@ -466,7 +466,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
       {currentTab === 'privacy' && (
         <div className="space-y-6">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
+            <span className="text-xs font-bold uppercase tracking-wider text-yellow-700">
               Legal &amp; Privacy Policy
             </span>
             <h1 className="text-3xl sm:text-5xl font-bold font-serif-headline text-slate-950">
@@ -480,7 +480,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
           <div className="p-6 sm:p-8 rounded-2xl border border-gray-200 bg-white space-y-6 text-xs sm:text-sm text-slate-700 leading-relaxed shadow-2xs">
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Lock className="w-4 h-4 text-amber-500" /> 1. Introduction &amp; Scope
+                <Lock className="w-4 h-4 text-yellow-600" /> 1. Introduction &amp; Scope
               </h2>
               <p>
                 Welcome to <strong>recipepots</strong> ("we", "our", or "us"). We operate this digital culinary publication dedicated to delicious one-pot recipes and kitchen gear guides. This Privacy Policy informs you of our practices regarding data privacy, cookie usage, and your rights under applicable regulations including GDPR, CCPA/CPRA, and Google AdSense publisher policies.
@@ -489,7 +489,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
 
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Globe className="w-4 h-4 text-amber-500" /> 2. Information We Collect
+                <Globe className="w-4 h-4 text-yellow-600" /> 2. Information We Collect
               </h2>
               <ul className="list-disc list-inside space-y-1.5 ml-1">
                 <li><strong>Log Data &amp; Web Telemetry:</strong> Standard web server logs including IP addresses, browser types, timestamps, and page views to ensure site performance and security.</li>
@@ -500,7 +500,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
 
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-amber-500" /> 3. Cookies &amp; Advertising Policies
+                <Sparkles className="w-4 h-4 text-yellow-600" /> 3. Cookies &amp; Advertising Policies
               </h2>
               <p>
                 Third-party vendors, including Google, use cookies to serve ads based on prior visits to our website. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to recipepots and/or other sites on the Internet.
@@ -512,7 +512,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
 
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-amber-500" /> 4. GDPR &amp; CCPA Rights
+                <ShieldCheck className="w-4 h-4 text-yellow-600" /> 4. GDPR &amp; CCPA Rights
               </h2>
               <p>
                 Users residing in the European Union (GDPR) and California (CCPA/CPRA) possess rights to access, rectify, delete, or port their personal information. <strong>recipepots does not sell or rent personal information to third parties.</strong>
@@ -526,8 +526,8 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               </p>
               <div className="p-3.5 rounded-lg bg-slate-50 border border-gray-200 text-xs space-y-1">
                 <p><strong>Website:</strong> recipepots</p>
-                <p><strong>Email:</strong> <a href="mailto:mz751136000@gmail.com" className="text-amber-600 hover:underline font-semibold">mz751136000@gmail.com</a></p>
-                <p><strong>Telephone / WhatsApp:</strong> <a href="tel:03046308631" className="text-amber-600 hover:underline font-semibold">03046308631</a></p>
+                <p><strong>Email:</strong> <a href="mailto:mz751136000@gmail.com" className="text-yellow-700 hover:underline font-semibold">mz751136000@gmail.com</a></p>
+                <p><strong>Telephone / WhatsApp:</strong> <a href="tel:03046308631" className="text-yellow-700 hover:underline font-semibold">03046308631</a></p>
               </div>
             </section>
           </div>
@@ -540,7 +540,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
       {currentTab === 'terms' && (
         <div className="space-y-6">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
+            <span className="text-xs font-bold uppercase tracking-wider text-yellow-700">
               Legal Governance
             </span>
             <h1 className="text-3xl sm:text-5xl font-bold font-serif-headline text-slate-950">
@@ -554,7 +554,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
           <div className="p-6 sm:p-8 rounded-2xl border border-gray-200 bg-white space-y-6 text-xs sm:text-sm text-slate-700 leading-relaxed shadow-2xs">
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <FileText className="w-4 h-4 text-amber-500" /> 1. Agreement to Terms
+                <FileText className="w-4 h-4 text-yellow-600" /> 1. Agreement to Terms
               </h2>
               <p>
                 By accessing or using <strong>recipepots</strong>, you agree to comply with and be bound by these Terms of Use and all applicable laws and regulations.
@@ -563,7 +563,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
 
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <AlertTriangle className="w-4 h-4 text-amber-500" /> 2. Culinary &amp; Dietary Disclaimer
+                <AlertTriangle className="w-4 h-4 text-yellow-600" /> 2. Culinary &amp; Dietary Disclaimer
               </h2>
               <p>
                 All recipes, cooking times, and nutritional macro estimates published on recipepots are provided for general educational, home-cooking, and informational purposes. Always adhere to certified food safety procedures and inspect ingredient labels for potential allergens.
@@ -572,7 +572,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
 
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Award className="w-4 h-4 text-amber-500" /> 3. Intellectual Property Rights
+                <Award className="w-4 h-4 text-yellow-600" /> 3. Intellectual Property Rights
               </h2>
               <p>
                 All editorial texts, recipe monographs, and recipe photo assets are protected under copyright law and remain the property of recipepots. Users may print or save recipe pages for personal, non-commercial home cooking use only.
@@ -583,8 +583,8 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               <h2 className="text-sm font-bold text-slate-900">4. Legal Contact Information</h2>
               <div className="p-3.5 rounded-lg bg-slate-50 border border-gray-200 text-xs space-y-1">
                 <p><strong>Publication:</strong> recipepots</p>
-                <p><strong>Email:</strong> <a href="mailto:mz751136000@gmail.com" className="text-amber-600 hover:underline font-semibold">mz751136000@gmail.com</a></p>
-                <p><strong>Phone:</strong> <a href="tel:03046308631" className="text-amber-600 hover:underline font-semibold">03046308631</a></p>
+                <p><strong>Email:</strong> <a href="mailto:mz751136000@gmail.com" className="text-yellow-700 hover:underline font-semibold">mz751136000@gmail.com</a></p>
+                <p><strong>Phone:</strong> <a href="tel:03046308631" className="text-yellow-700 hover:underline font-semibold">03046308631</a></p>
               </div>
             </section>
           </div>
@@ -597,7 +597,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
       {currentTab === 'standards' && (
         <div className="space-y-6">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
+            <span className="text-xs font-bold uppercase tracking-wider text-yellow-700">
               Editorial Rigor
             </span>
             <h1 className="text-3xl sm:text-5xl font-bold font-serif-headline text-slate-950">
@@ -636,7 +636,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
       {currentTab === 'editors' && (
         <div className="space-y-6">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
+            <span className="text-xs font-bold uppercase tracking-wider text-yellow-700">
               The Masthead
             </span>
             <h1 className="text-3xl sm:text-5xl font-bold font-serif-headline text-slate-950">
@@ -660,7 +660,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                     className="w-20 h-20 rounded-full object-cover mx-auto border border-gray-200 mb-4 shadow-xs"
                   />
                   <h3 className="text-base font-bold text-slate-900 text-center">{staff.name}</h3>
-                  <p className="text-xs text-amber-600 text-center font-semibold">{staff.role}</p>
+                  <p className="text-xs text-yellow-700 text-center font-semibold">{staff.role}</p>
                   <p className="text-xs text-slate-600 mt-2 leading-relaxed text-center">
                     {staff.bio}
                   </p>

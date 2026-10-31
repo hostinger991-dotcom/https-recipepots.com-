@@ -203,7 +203,7 @@ export default function App() {
   const companionStories = [allArticles[1], allArticles[5], allArticles[10]]; // Dutch oven beef stew, best crockpot, 15 min dinner
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#ebf0f5] text-slate-800 selection:bg-amber-400 selection:text-slate-950">
+    <div className="min-h-screen flex flex-col bg-[#ebf0f5] text-slate-800 selection:bg-yellow-400 selection:text-slate-950">
       {/* Top Main Navigation Header (Without Top Newsletter CTA) */}
       <Header
         currentView={currentView}
@@ -227,13 +227,13 @@ export default function App() {
               <section className="space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-300 pb-2">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
                     <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900">
-                      Lead Monograph &amp; Featured Story
+                      Lead Recipe &amp; Featured Story
                     </h2>
                   </div>
                   <span className="text-xs text-slate-500 font-medium hidden sm:inline">
-                    Updated Daily • Peer-Reviewed Recipes
+                    Updated Daily • Tested Recipes
                   </span>
                 </div>
 
@@ -251,7 +251,7 @@ export default function App() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-md bg-white/95 text-slate-900 shadow-xs">
+                        <span className="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-md bg-yellow-400 text-slate-950 shadow-xs">
                           {leadHero.categoryName}
                         </span>
                       </div>
@@ -275,7 +275,7 @@ export default function App() {
                               e.preventDefault();
                               handleOpenRecipe(leadHero);
                             }}
-                            className="group-hover:text-amber-600 transition-colors"
+                            className="group-hover:text-yellow-700 transition-colors"
                           >
                             {leadHero.title}
                           </a>
@@ -286,13 +286,13 @@ export default function App() {
                         </p>
 
                         {/* Healthline Takeaway Bullets Preview */}
-                        <div className="p-3 rounded-lg bg-amber-50/80 border-l-4 border-amber-500 text-xs text-amber-950 space-y-0.5">
-                          <strong className="font-bold uppercase tracking-wider text-[11px] text-amber-900 block">
-                            Key Nutrition Takeaways:
+                        <div className="p-3 rounded-lg bg-yellow-50 border-l-4 border-yellow-500 text-xs text-yellow-950 space-y-0.5">
+                          <strong className="font-bold uppercase tracking-wider text-[11px] text-yellow-900 block">
+                            Key Recipe Highlights:
                           </strong>
-                          <ul className="list-disc list-inside space-y-0.5 text-amber-950/90 text-[11px]">
-                            <li>Pressure confinement retains 94% of volatile aromatic chicken collagen.</li>
-                            <li>{leadHero.nutrition.calories} kcal with {leadHero.nutrition.protein} protein per serving.</li>
+                          <ul className="list-disc list-inside space-y-0.5 text-yellow-950/90 text-[11px]">
+                            <li>Tender garlic chicken breasts finished with a creamy spinach pan sauce in under 30 minutes.</li>
+                            <li>{leadHero.nutrition.calories} kcal with {leadHero.nutrition.protein} of protein per serving.</li>
                           </ul>
                         </div>
                       </div>
@@ -315,7 +315,7 @@ export default function App() {
                             e.preventDefault();
                             handleOpenRecipe(leadHero);
                           }}
-                          className="text-xs font-bold text-amber-600 group-hover:underline flex items-center gap-1"
+                          className="text-xs font-bold text-yellow-700 group-hover:underline flex items-center gap-1"
                         >
                           <span>Read Full Guide</span>
                           <ArrowRight className="w-3.5 h-3.5" />
@@ -346,16 +346,16 @@ export default function App() {
                         </div>
                         <div className="flex-1 flex flex-col justify-between">
                           <div>
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600 block mb-0.5">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-yellow-700 block mb-0.5">
                               {story.categoryName}
                             </span>
-                            <h3 className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-600 transition-colors line-clamp-2 leading-snug">
+                            <h3 className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-yellow-700 transition-colors line-clamp-2 leading-snug">
                               {story.title}
                             </h3>
                           </div>
                           <div className="text-[11px] text-slate-500 flex items-center justify-between pt-1.5 border-t border-slate-100 mt-2">
                             <span>⏱ {story.cookTime}</span>
-                            <span className="text-amber-600 font-semibold text-xs">Read →</span>
+                            <span className="text-yellow-700 font-semibold text-xs">Read →</span>
                           </div>
                         </div>
                       </a>
@@ -421,7 +421,7 @@ export default function App() {
                     onClick={() => handleSelectCategoryFromSidebar('all')}
                     className={`px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
                       selectedCategory === 'all'
-                        ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
+                        ? 'bg-yellow-400 text-slate-950 font-bold shadow-xs'
                         : 'bg-white text-slate-700 border border-slate-200'
                     }`}
                   >
@@ -433,7 +433,7 @@ export default function App() {
                       onClick={() => handleSelectCategoryFromSidebar(cat.id)}
                       className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
                         selectedCategory === cat.id
-                          ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
+                          ? 'bg-yellow-400 text-slate-950 font-bold shadow-xs'
                           : 'bg-white text-slate-700 border border-slate-200'
                       }`}
                     >

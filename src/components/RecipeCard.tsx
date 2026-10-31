@@ -49,16 +49,16 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
-                className="text-[11px] font-bold uppercase tracking-wider text-amber-600 hover:underline"
+                className="text-[11px] font-bold uppercase tracking-wider text-yellow-700 hover:underline"
               >
                 {recipe.categoryName}
               </a>
               <button
                 onClick={(e) => onToggleSave(recipe.id, e)}
-                className="text-slate-400 hover:text-amber-600 p-1"
+                className="text-slate-400 hover:text-yellow-700 p-1"
                 title={isSaved ? 'Remove from saved' : 'Save recipe'}
               >
-                <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-amber-500 text-amber-500' : ''}`} />
+                <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-yellow-500 text-yellow-500' : ''}`} />
               </button>
             </div>
 
@@ -69,7 +69,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
                   e.preventDefault();
                   onSelect(recipe);
                 }}
-                className="hover:text-amber-600 transition-colors"
+                className="hover:text-yellow-700 transition-colors"
               >
                 {recipe.title}
               </a>
@@ -126,8 +126,8 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           onClick={(e) => onToggleSave(recipe.id, e)}
           className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-xs transition-all z-10 ${
             isSaved
-              ? 'bg-amber-500 text-slate-950 shadow-md'
-              : 'bg-white/90 text-slate-700 hover:text-amber-600 hover:bg-white shadow-xs'
+              ? 'bg-yellow-400 text-slate-950 font-bold shadow-md'
+              : 'bg-white/90 text-slate-700 hover:text-yellow-700 hover:bg-white shadow-xs'
           }`}
           title={isSaved ? 'Remove from saved' : 'Save recipe'}
         >
@@ -140,8 +140,8 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             <Clock className="w-3 h-3 text-slate-600" />
             {recipe.cookTime}
           </span>
-          <span className="px-2 py-0.5 rounded bg-white/90 backdrop-blur-xs shadow-xs text-amber-600 font-bold text-[10px] flex items-center gap-1">
-            <Flame className="w-3 h-3" />
+          <span className="px-2 py-0.5 rounded bg-white/90 backdrop-blur-xs shadow-xs text-yellow-800 font-bold text-[10px] flex items-center gap-1">
+            <Flame className="w-3 h-3 text-yellow-600" />
             {recipe.nutrition.calories} kcal
           </span>
         </div>
@@ -167,7 +167,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
                 e.preventDefault();
                 onSelect(recipe);
               }}
-              className="hover:text-amber-600 transition-colors"
+              className="hover:text-yellow-700 transition-colors"
             >
               {recipe.title}
             </a>
@@ -197,7 +197,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
               e.preventDefault();
               onSelect(recipe);
             }}
-            className="text-[11px] text-amber-600 font-bold group-hover:underline"
+            className="text-[11px] text-yellow-700 font-bold group-hover:underline"
           >
             Read Guide →
           </a>
