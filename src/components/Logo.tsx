@@ -20,16 +20,16 @@ export const LogoIcon: React.FC<{ size?: number; className?: string }> = ({
       className={`shrink-0 drop-shadow-xs transition-transform duration-300 group-hover:scale-105 ${className}`}
     >
       <defs>
-        {/* Main Badge Gradient */}
+        {/* Main Badge Gradient - Warm Golden Amber */}
         <linearGradient id="logoBadgeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#e11d48" />
-          <stop offset="50%" stopColor="#d82424" />
-          <stop offset="100%" stopColor="#991b1b" />
+          <stop offset="0%" stopColor="#fbbf24" />
+          <stop offset="50%" stopColor="#f59e0b" />
+          <stop offset="100%" stopColor="#d97706" />
         </linearGradient>
 
         {/* Soft Shadow Filter */}
         <filter id="badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
-          <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#d82424" floodOpacity="0.25" />
+          <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#f59e0b" floodOpacity="0.3" />
         </filter>
 
         {/* Gloss highlight */}
@@ -114,7 +114,7 @@ export const LogoIcon: React.FC<{ size?: number; className?: string }> = ({
       />
 
       {/* Health / Nutrition Accent Star / Ember Dot */}
-      <circle cx="24" cy="28" r="1.5" fill="#d82424" />
+      <circle cx="24" cy="28" r="1.5" fill="#f59e0b" />
     </svg>
   );
 };
@@ -145,9 +145,9 @@ export const Logo: React.FC<LogoProps> = ({
       <div className="flex flex-col justify-center">
         <div className="flex items-baseline gap-1">
           <span className={`${titleSizes[size]} font-black tracking-tight text-slate-900 group-hover:text-slate-950 transition-colors leading-none`}>
-            recipe<span className="text-[#d82424]">pots</span>
+            recipe<span className="text-amber-500">pots</span>
           </span>
-          <span className="w-2 h-2 rounded-full bg-[#d82424] self-center -mb-0.5"></span>
+          <span className="w-2 h-2 rounded-full bg-amber-500 self-center -mb-0.5"></span>
         </div>
         {showTagline && (
           <span className="text-[10px] font-bold text-slate-500 tracking-wider uppercase hidden sm:block mt-0.5">

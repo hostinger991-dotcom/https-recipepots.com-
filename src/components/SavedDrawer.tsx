@@ -30,9 +30,9 @@ export const SavedDrawer: React.FC<SavedDrawerProps> = ({
           {/* Header */}
           <div className="flex items-center justify-between pb-4 border-b border-gray-200">
             <div className="flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-[#d82424]" />
+              <BookOpen className="w-5 h-5 text-amber-500" />
               <h2 className="text-lg font-bold text-slate-900">Saved Articles</h2>
-              <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-red-50 text-[#d82424] border border-red-200">
+              <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300">
                 {savedArticles.length}
               </span>
             </div>
@@ -71,10 +71,10 @@ export const SavedDrawer: React.FC<SavedDrawerProps> = ({
                     className="w-16 h-16 rounded-lg object-cover border border-gray-100 shrink-0"
                   />
                   <div className="flex-1 min-w-0">
-                    <span className="text-[10px] font-bold text-[#d82424] uppercase tracking-wider">
+                    <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wider">
                       {article.categoryName}
                     </span>
-                    <h4 className="text-xs font-bold text-slate-900 group-hover:text-[#d82424] truncate mt-0.5">
+                    <h4 className="text-xs font-bold text-slate-900 group-hover:text-amber-600 truncate mt-0.5">
                       {article.title}
                     </h4>
                     <p className="text-[11px] text-slate-500 mt-0.5">

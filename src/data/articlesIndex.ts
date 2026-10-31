@@ -2,6 +2,7 @@ import { articlesCategory1 } from './articlesCategory1';
 import { articlesCategory2 } from './articlesCategory2';
 import { articlesCategory3 } from './articlesCategory3';
 import { articlesCategory4 } from './articlesCategory4';
+import { articlesCategory5 } from './articlesCategory5';
 import { RecipeArticle, CategoryId } from '../types/recipe';
 
 export const allArticles: RecipeArticle[] = [
@@ -9,6 +10,7 @@ export const allArticles: RecipeArticle[] = [
   ...articlesCategory2,
   ...articlesCategory3,
   ...articlesCategory4,
+  ...articlesCategory5,
 ];
 
 export interface CategoryMeta {
@@ -23,63 +25,63 @@ export const categoriesMeta: CategoryMeta[] = [
   {
     id: 'easy-one-pot-dinners',
     name: 'Easy One Pot Dinners',
-    tagline: 'Streamlined Skillet & Dutch Oven Magic',
-    description: 'High-heat searing, starchy emulsions, and minimal cleanup dinners built for weeknight sanity.',
-    count: 5,
+    tagline: 'Skillet & Dutch Oven Weeknight Comfort',
+    description: 'Golden seared meats, starchy pasta sauces, and cozy Dutch oven stews made with minimal cleanup.',
+    count: 7,
   },
   {
     id: 'slow-cooker-crockpot-classics',
     name: 'Slow Cooker & Crockpot Classics',
-    tagline: 'Low-Temperature Collagen Breakdown & Slow Simmers',
-    description: 'Set-it-and-forget-it mastery. Juicy barbecue pulled pork, savory stews, and Sunday roasts.',
-    count: 5,
+    tagline: 'Low-and-Slow Homestyle Braises & Tender Shredded Meats',
+    description: 'Set-it-and-forget-it dinners. Juicy barbecue pulled pork, savory Mexican barbacoa, and Sunday roasts.',
+    count: 6,
   },
   {
     id: 'quick-easy-weeknight-dinners',
     name: 'Quick & Easy Weeknight Dinners',
-    tagline: 'Quarter-Hour Flash Cooking & Single Sheet Pan Roasts',
-    description: 'High-velocity 15-minute stir-fries, 5-ingredient wonders, and crispy sheet pan chicken.',
-    count: 5,
+    tagline: 'Under 30-Minute Skillets & Sheet Pan Roasts',
+    description: 'Lightning-fast 15-minute stir-fries, 5-ingredient wonders, and crispy sheet pan chicken dinners.',
+    count: 6,
   },
   {
     id: 'special-diets-healthy-eating',
     name: 'Special Diets & Healthy Eating',
-    tagline: 'Keto, Vegan, Gluten-Free & High-Protein Power',
-    description: 'Scientifically calibrated macro-balanced meals that optimize metabolic energy and satiety.',
-    count: 5,
+    tagline: 'Keto, Vegan, Gluten-Free & High-Protein Fuel',
+    description: 'Nutrient-rich, macro-balanced meals that nourish your family with wholesome ingredients.',
+    count: 6,
   },
 ];
 
 export const tickerNewsItems = [
-  { text: 'BREAKING: New Research Validates Pressure Cooking Polyphenol Retention Over Stovetop Boiling', tag: 'CULINARY SCIENCE' },
-  { text: 'INSTANT POT MASTERCLASS: Why Deglazing Stainless Steel Fond Prevents 100% of Burn Codes', tag: 'KITCHEN TECH' },
-  { text: 'SLOW COOKER PROTOCOL: The 203°F Collagen Hydrolysis Threshold for Melt-in-Your-Mouth Pulled Pork', tag: 'BARBECUE PHYSICS' },
-  { text: 'ONE-POT PASTA REVOLUTION: How Amylose Starch Emulsifies Olive Oil into Velvety Gloss', tag: 'GASTRONOMY' },
-  { text: 'SHEET PAN CRUNCH: Preheating Aluminum Pans Eliminates 95% of Soggy Vegetable Condensation', tag: 'CHEF SECRETS' },
-  { text: 'KETO SKILLET UPDATE: Tuscan Garlic Cream Delivers 41g Protein with Only 4g Net Carbs', tag: 'METABOLIC LAB' },
-  { text: 'HIGH PROTEIN MILESTONE: Turkey Cutlet Spoon-Basting Reaches Anabolic Leucine Saturation', tag: 'FITNESS DIET' },
+  { text: 'INSTANT POT TIP: Why deglazing your stainless steel pot prevents 100% of burn codes', tag: 'KITCHEN TIP' },
+  { text: 'SLOW COOKER SECRETS: Low and slow heat tenderizes beef chuck for juicy shredded barbacoa', tag: 'CHEF TRICK' },
+  { text: '20-MINUTE DINNER: Crispy pan-seared lemon garlic salmon cooked in one skillet', tag: 'QUICK MEALS' },
+  { text: 'ONE-POT PASTA: How cooking pasta directly in sauce creates a velvety restaurant glaze', tag: 'EASY COOKING' },
+  { text: 'SHEET PAN PERFECTION: Spreading veggies in a single layer gives you crispy, caramelized edges', tag: 'ROASTING' },
+  { text: 'MEDITERRANEAN COMFORT: Warm lemon chickpea stew packed with 11g of natural fiber', tag: 'HEALTHY EATING' },
+  { text: 'SUNDAY SUPPER: Classic French beef bourguignon braised in rich red wine and herbs', tag: 'HOMESTYLE' },
 ];
 
 export const editorialStaff = [
   {
     name: 'Chef Marcus Sterling',
-    role: 'Executive Culinary Technologist & Editor-in-Chief',
-    bio: 'Former sous-chef at Michelin-starred kitchens in Lyon and Chicago. Specializes in food thermodynamics, cast iron metallurgy, and modern pressure cooking dynamics.',
+    role: 'Executive Chef & Editor-in-Chief',
+    bio: 'Experienced chef with over 15 years in restaurant and test kitchens. Passionate about approachable single-vessel home cooking, hearty braises, and reliable kitchen techniques.',
     avatar: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&auto=format&fit=crop&q=80',
-    credentials: 'Le Cordon Bleu Paris, B.S. Food Science & Gastronomy',
+    credentials: 'Culinary Arts Graduate, 15+ Years Commercial & Test Kitchen Experience',
   },
   {
-    name: 'Elena Rostova, M.Sc.',
-    role: 'Senior Food Science & Nutrition Editor',
-    bio: 'Biochemist turned culinary researcher. Author of comparative studies on antioxidant retention in pressure cookers vs. conventional open braising.',
+    name: 'Elena Rostova, M.Sc., RD',
+    role: 'Nutrition Director & Recipe Developer',
+    bio: 'Registered dietitian and food writer dedicated to evidence-based nutrition, high-protein family meals, and delicious special-diet adaptations.',
     avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80',
-    credentials: 'M.Sc. Human Nutritional Biochemistry, University of Wisconsin',
+    credentials: 'M.Sc. Human Nutrition & Dietetics, Registered Dietitian (RD)',
   },
   {
     name: 'Chef Julian Vance',
-    role: 'Slow Cooking & Pitmaster Specialist',
-    bio: 'Native of Memphis, Tennessee. Devoted 15 years to perfecting low-and-slow collagen hydrolysis and wood smoke rubs in home kitchen environments.',
+    role: 'Slow Cooking & BBQ Specialist',
+    bio: 'Southern barbecue enthusiast and slow cooker expert. Dedicated to helping families prepare melt-in-your-mouth comfort food with minimal effort.',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
-    credentials: 'Certified Pitmaster, 2x Memphis in May Competition Finalist',
+    credentials: 'Pitmaster & Culinary Educator, 12+ Years Home Cooking Development',
   },
 ];

@@ -96,7 +96,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
         {/* Sticky Top Header Bar */}
         <div className="sticky top-0 z-30 bg-white/95 backdrop-blur-md px-4 sm:px-6 py-3 border-b border-gray-200 flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs text-slate-500">
-            <span className="font-bold text-[#d82424] uppercase tracking-wider">
+            <span className="font-bold text-amber-600 uppercase tracking-wider">
               {recipe.categoryName}
             </span>
             <span>•</span>
@@ -108,8 +108,8 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
               onClick={() => onToggleSave(recipe.id)}
               className={`p-2 rounded-full border transition-all ${
                 isSaved
-                  ? 'bg-[#d82424] text-white border-[#d82424]'
-                  : 'bg-white text-slate-700 hover:text-[#d82424] border-gray-200 hover:border-gray-300'
+                  ? 'bg-amber-500 text-slate-950 border-amber-500 font-bold'
+                  : 'bg-white text-slate-700 hover:text-amber-600 border-gray-200 hover:border-gray-300'
               }`}
               title={isSaved ? 'Saved in cookbook' : 'Save recipe'}
             >
@@ -158,7 +158,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                 onClose();
                 onNavigate?.('home');
               }}
-              className="hover:text-[#d82424] hover:underline text-slate-600 font-semibold"
+              className="hover:text-amber-600 hover:underline text-slate-600 font-semibold"
             >
               Home
             </a>
@@ -170,7 +170,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                 onClose();
                 onNavigate?.('category', recipe.categoryId);
               }}
-              className="hover:text-[#d82424] hover:underline font-bold text-[#d82424]"
+              className="hover:text-amber-600 hover:underline font-bold text-amber-600"
             >
               {recipe.categoryName}
             </a>
@@ -190,7 +190,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                   onClose();
                   onNavigate?.('category', recipe.categoryId);
                 }}
-                className="text-xs font-bold uppercase tracking-wider text-[#d82424] hover:underline"
+                className="text-xs font-bold uppercase tracking-wider text-amber-600 hover:underline"
               >
                 {recipe.categoryName}
               </a>
@@ -220,7 +220,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                         onClose();
                         onNavigate?.('editors');
                       }}
-                      className="text-slate-900 font-bold hover:text-[#d82424] hover:underline"
+                      className="text-slate-900 font-bold hover:text-amber-600 hover:underline"
                     >
                       Elena Rostova, M.Sc., RD
                     </a>
@@ -241,7 +241,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                       onClose();
                       onNavigate?.('editors');
                     }}
-                    className="text-slate-800 font-semibold hover:text-[#d82424] hover:underline"
+                    className="text-slate-800 font-semibold hover:text-amber-600 hover:underline"
                   >
                     {recipe.author.name}
                   </a>
@@ -255,7 +255,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                       onClose();
                       onNavigate?.('standards');
                     }}
-                    className="text-xs text-[#d82424] hover:underline font-semibold"
+                    className="text-xs text-amber-600 hover:underline font-semibold"
                   >
                     Testing Protocol
                   </a>
@@ -326,10 +326,10 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
 
             <div className="p-3.5 rounded-xl border border-gray-200 bg-white">
               <div className="flex items-center gap-2 text-slate-500 text-xs mb-1">
-                <Flame className="w-4 h-4 text-[#d82424]" />
+                <Flame className="w-4 h-4 text-amber-500" />
                 <span>Calories</span>
               </div>
-              <p className="text-sm font-bold text-[#d82424]">{recipe.nutrition.calories} kcal</p>
+              <p className="text-sm font-bold text-amber-600">{recipe.nutrition.calories} kcal</p>
             </div>
 
             <div className="p-3.5 rounded-xl border border-gray-200 bg-white">
@@ -374,7 +374,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
               </div>
               <div className="p-2.5 rounded-lg bg-white border border-gray-200 shadow-2xs">
                 <span className="text-[10px] text-slate-500 uppercase font-semibold">Energy</span>
-                <p className="text-sm font-bold text-[#d82424]">{recipe.nutrition.calories} kcal</p>
+                <p className="text-sm font-bold text-amber-600">{recipe.nutrition.calories} kcal</p>
               </div>
             </div>
           </div>
@@ -577,7 +577,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                 >
                   <button
                     onClick={() => setOpenFaqIndex(openFaqIndex === fIdx ? null : fIdx)}
-                    className="w-full p-3.5 text-left flex items-center justify-between text-xs sm:text-sm font-semibold text-slate-900 hover:text-[#d82424] transition-colors"
+                    className="w-full p-3.5 text-left flex items-center justify-between text-xs sm:text-sm font-semibold text-slate-900 hover:text-amber-600 transition-colors"
                   >
                     <span>{faq.question}</span>
                     {openFaqIndex === fIdx ? (
@@ -627,9 +627,9 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
           <div className="space-y-4 pt-6 border-t border-gray-200">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#d82424]"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900">
-                  Related Peer-Reviewed Recipes &amp; Guides
+                  Related Tested Recipes &amp; Guides
                 </h3>
               </div>
               <a
@@ -639,7 +639,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                   onClose();
                   onNavigate?.('category', recipe.categoryId);
                 }}
-                className="text-xs font-bold text-[#d82424] hover:underline flex items-center gap-1"
+                className="text-xs font-bold text-amber-600 hover:underline flex items-center gap-1"
               >
                 <span>All {recipe.categoryName}</span>
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -657,7 +657,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                       onSelectRecipe(rel);
                     }
                   }}
-                  className="group p-3 rounded-xl border border-gray-200 bg-white hover:border-[#d82424]/40 hover:shadow-sm transition-all flex flex-col justify-between"
+                  className="group p-3 rounded-xl border border-gray-200 bg-white hover:border-amber-400 hover:shadow-sm transition-all flex flex-col justify-between"
                 >
                   <div className="space-y-2">
                     <div className="aspect-[16/9] w-full rounded-lg overflow-hidden bg-slate-100">
@@ -668,16 +668,16 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <span className="text-[10px] font-bold text-[#d82424] uppercase tracking-wider block">
+                    <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wider block">
                       {rel.categoryName}
                     </span>
-                    <h4 className="text-xs font-bold text-slate-900 group-hover:text-[#d82424] transition-colors line-clamp-2 leading-snug">
+                    <h4 className="text-xs font-bold text-slate-900 group-hover:text-amber-600 transition-colors line-clamp-2 leading-snug">
                       {rel.title}
                     </h4>
                   </div>
                   <div className="pt-2 mt-2 border-t border-gray-100 flex items-center justify-between text-[10px] text-slate-500 font-medium">
                     <span>⏱ {rel.cookTime}</span>
-                    <span className="text-[#d82424] font-bold group-hover:underline">Open Guide →</span>
+                    <span className="text-amber-600 font-bold group-hover:underline">Open Guide →</span>
                   </div>
                 </a>
               ))}

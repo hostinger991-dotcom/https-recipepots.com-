@@ -36,8 +36,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <LogoIcon size={40} />
               <div className="flex flex-col">
                 <span className="text-2xl sm:text-3xl font-black text-white group-hover:text-slate-100 transition-colors leading-none">
-                  recipe<span className="text-[#d82424]">pots</span>
-                  <span className="inline-block w-2 h-2 rounded-full bg-[#d82424] ml-1 mb-0.5"></span>
+                  recipe<span className="text-amber-500">pots</span>
+                  <span className="inline-block w-2 h-2 rounded-full bg-amber-500 ml-1 mb-0.5"></span>
                 </span>
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1">
                   Evidence-Based Culinary Journal
@@ -46,19 +46,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </button>
 
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              recipepots is an independent culinary journal committed to evidence-based nutrition, thermal cooking science, and rapid one-pot recipes. Every guide is kitchen-tested 3x for nutrient retention and flavor optimization.
+              recipepots is an independent culinary journal committed to practical kitchen guidance, delicious home cooking, and fast one-pot meals. Every recipe is kitchen-tested 3x for reliable results and mouth-watering flavor.
             </p>
 
             <div className="pt-2 text-xs text-slate-300 space-y-2">
               <p className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#d82424]" />
+                <Phone className="w-3.5 h-3.5 text-amber-400" />
                 <span className="text-slate-400">Helpline / WhatsApp:</span>
                 <a href="tel:03046308631" className="font-semibold text-white hover:underline">
                   03046308631
                 </a>
               </p>
               <p className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#d82424]" />
+                <Mail className="w-3.5 h-3.5 text-amber-400" />
                 <span className="text-slate-400">Editorial Inquiries:</span>
                 <a href="mailto:mz751136000@gmail.com" className="font-semibold text-white hover:underline break-all">
                   mz751136000@gmail.com
@@ -96,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   }}
                   className="hover:text-white transition-colors text-left block"
                 >
-                  All 20 Recipe Monograms
+                  All 25 Tested Recipes
                 </a>
               </li>
             </ul>
@@ -200,7 +200,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               Health &amp; Meal Newsletter
             </h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Get science-backed recipes and weekly nutritional breakthroughs sent directly to your inbox.
+              Get tested recipes and weekly home-cooking tips sent directly to your inbox.
             </p>
             {subscribed ? (
               <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/50 text-xs text-emerald-300 flex items-center gap-2">
@@ -216,11 +216,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     placeholder="Enter email address"
                     value={emailInput}
                     onChange={(e) => setEmailInput(e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-[#d82424]"
+                    className="w-full px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
                   />
                   <button
                     type="submit"
-                    className="absolute right-1 top-1 bottom-1 px-3 bg-[#d82424] hover:bg-[#b91c1c] text-white rounded-md text-xs font-bold flex items-center justify-center transition-colors"
+                    className="absolute right-1 top-1 bottom-1 px-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-md text-xs flex items-center justify-center transition-colors"
                   >
                     <Send className="w-3.5 h-3.5" />
                   </button>

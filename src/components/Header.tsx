@@ -58,7 +58,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="flex items-center gap-1 hover:text-white transition-colors"
               title="Editorial Support Helpline"
             >
-              <Phone className="w-3 h-3 text-[#d82424]" />
+              <Phone className="w-3 h-3 text-amber-500" />
               <span>03046308631</span>
             </a>
             <span className="text-slate-600">|</span>
@@ -67,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="flex items-center gap-1 hover:text-white transition-colors"
               title="Editorial Office"
             >
-              <Mail className="w-3 h-3 text-[#d82424]" />
+              <Mail className="w-3 h-3 text-amber-500" />
               <span>mz751136000@gmail.com</span>
             </a>
           </div>
@@ -110,7 +110,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className={`text-sm font-semibold tracking-tight transition-colors pb-1 border-b-2 ${
                 currentView === 'home'
-                  ? 'border-[#d82424] text-[#d82424]'
+                  ? 'border-amber-500 text-amber-600'
                   : 'border-transparent text-slate-700 hover:text-slate-950 hover:border-slate-300'
               }`}
             >
@@ -127,7 +127,7 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className={`text-sm font-semibold tracking-tight transition-colors pb-1 border-b-2 whitespace-nowrap ${
                   currentView === `cat-${cat.id}`
-                    ? 'border-[#d82424] text-[#d82424]'
+                    ? 'border-amber-500 text-amber-600'
                     : 'border-transparent text-slate-700 hover:text-slate-950 hover:border-slate-300'
                 }`}
               >
@@ -143,7 +143,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className={`text-sm font-semibold tracking-tight transition-colors pb-1 border-b-2 ${
                 currentView === 'about'
-                  ? 'border-[#d82424] text-[#d82424]'
+                  ? 'border-amber-500 text-amber-600'
                   : 'border-transparent text-slate-700 hover:text-slate-950 hover:border-slate-300'
               }`}
             >
@@ -158,7 +158,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className={`text-sm font-semibold tracking-tight transition-colors pb-1 border-b-2 ${
                 currentView === 'contact'
-                  ? 'border-[#d82424] text-[#d82424]'
+                  ? 'border-amber-500 text-amber-600'
                   : 'border-transparent text-slate-700 hover:text-slate-950 hover:border-slate-300'
               }`}
             >
@@ -186,7 +186,7 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <BookOpen className="w-4 h-4" />
               {savedCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-[#d82424] text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-sm">
+                <span className="absolute -top-1.5 -right-1.5 bg-amber-500 text-slate-950 text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-xs">
                   {savedCount}
                 </span>
               )}
@@ -199,7 +199,7 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="border-t border-gray-100 bg-slate-50 overflow-x-auto scrollbar-none py-2 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex items-center gap-2 text-xs">
           <span className="font-bold text-slate-500 text-[11px] uppercase tracking-wider whitespace-nowrap shrink-0 flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#d82424]"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
             Trending:
           </span>
           <div className="flex items-center gap-1.5 overflow-x-auto pb-0.5">
@@ -354,13 +354,13 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="pt-6 border-t border-gray-200 space-y-3">
               <div className="text-xs text-slate-500 space-y-1">
                 <p className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-[#d82424]" />
+                  <Phone className="w-3.5 h-3.5 text-amber-500" />
                   <a href="tel:03046308631" className="font-semibold text-slate-800 hover:underline">
                     03046308631
                   </a>
                 </p>
                 <p className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-[#d82424]" />
+                  <Mail className="w-3.5 h-3.5 text-amber-500" />
                   <a href="mailto:mz751136000@gmail.com" className="font-semibold text-slate-800 hover:underline">
                     mz751136000@gmail.com
                   </a>
@@ -381,7 +381,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="bg-white rounded-2xl w-full max-w-2xl p-6 shadow-2xl border border-gray-200 animate-fadeIn">
             <div className="flex items-center justify-between pb-3 border-b border-gray-200">
               <div className="flex items-center gap-2">
-                <Search className="w-5 h-5 text-[#d82424]" />
+                <Search className="w-5 h-5 text-amber-500" />
                 <h3 className="text-base font-bold text-slate-900">Search recipepots</h3>
               </div>
               <button
@@ -402,7 +402,7 @@ export const Header: React.FC<HeaderProps> = ({
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') setShowSearchModal(false);
                 }}
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#d82424] focus:ring-2 focus:ring-[#d82424]/20 text-base"
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 text-base"
               />
             </div>
 
@@ -433,7 +433,7 @@ export const Header: React.FC<HeaderProps> = ({
               ) : <div />}
               <button
                 onClick={() => setShowSearchModal(false)}
-                className="px-5 py-2 rounded-full bg-[#d82424] text-white font-bold text-xs hover:bg-[#b91c1c] transition-colors"
+                className="px-5 py-2 rounded-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs transition-colors shadow-xs"
               >
                 View Articles
               </button>

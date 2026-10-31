@@ -70,7 +70,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               e.preventDefault();
               onNavigateHome();
             }}
-            className="text-[#d82424] hover:underline font-semibold flex items-center gap-1"
+            className="text-amber-600 hover:underline font-semibold flex items-center gap-1"
           >
             <span>‹ Home</span>
           </a>
@@ -105,7 +105,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                 }}
                 className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors block ${
                   currentTab === tab.id
-                    ? 'bg-[#d82424] text-white shadow-xs'
+                    ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
                     : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                 }`}
               >
@@ -122,7 +122,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
       {currentTab === 'about' && (
         <div className="space-y-10">
           <div className="space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#d82424]">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
               About recipepots • Evidence-Based Cooking
             </span>
             <h1 className="text-3xl sm:text-5xl font-bold font-serif-headline text-slate-950 leading-tight">
@@ -136,7 +136,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
           {/* Core Mission Statement */}
           <div className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-gray-200 space-y-4">
             <h2 className="text-2xl font-bold font-serif-headline text-slate-900 flex items-center gap-2.5">
-              <ChefHat className="w-6 h-6 text-[#d82424]" />
+              <ChefHat className="w-6 h-6 text-amber-500" />
               Our Core Mission: The Single-Vessel Revolution
             </h2>
             <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
@@ -150,12 +150,12 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
           {/* 4 Pillars Grid */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold font-serif-headline text-slate-900 flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-[#d82424]" />
+              <Sparkles className="w-5 h-5 text-amber-500" />
               Our Four Culinary &amp; Dietary Pillars
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="p-5 rounded-xl border border-gray-200 bg-white space-y-2 hover:border-gray-300 transition-colors">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#d82424]">
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
                   Pillar 1 • One-Pot Dinners
                 </span>
                 <h4 className="text-base font-bold text-slate-900">Vessel Conduction &amp; Deglazing</h4>
@@ -165,32 +165,32 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               </div>
 
               <div className="p-5 rounded-xl border border-gray-200 bg-white space-y-2 hover:border-gray-300 transition-colors">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#d82424]">
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
                   Pillar 2 • Slow Cooker Classics
                 </span>
-                <h4 className="text-base font-bold text-slate-900">Collagen Hydrolysis at 203°F</h4>
+                <h4 className="text-base font-bold text-slate-900">Gentle Low-and-Slow Braising</h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Understanding the cellular biology of tough cuts. Unraveling tough structural connective tissues into succulent gelatin without boiling off essential volatile terpenes and moisture.
+                  Understanding how slow cooking tenderizes meat and blends herbs into deep, aromatic broths without boiling away natural moisture.
                 </p>
               </div>
 
               <div className="p-5 rounded-xl border border-gray-200 bg-white space-y-2 hover:border-gray-300 transition-colors">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#d82424]">
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
                   Pillar 3 • Quick Weeknight Meals
                 </span>
-                <h4 className="text-base font-bold text-slate-900">Quarter-Hour Flash Heat Dynamics</h4>
+                <h4 className="text-base font-bold text-slate-900">Speedy Skillet &amp; Sheet Pan Dinners</h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Lightning-fast 15-minute stir-fries and 400°F sheet pan roasts that deliver restaurant-caliber crispness, high bioavailability, and virtually zero kitchen cleanup.
+                  Lightning-fast 20-minute stir-fries and roasted sheet pan dinners that deliver incredible taste and virtually zero kitchen cleanup.
                 </p>
               </div>
 
               <div className="p-5 rounded-xl border border-gray-200 bg-white space-y-2 hover:border-gray-300 transition-colors">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#d82424]">
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
                   Pillar 4 • Healthy &amp; Special Diets
                 </span>
-                <h4 className="text-base font-bold text-slate-900">Metabolically Calibrated Macros</h4>
+                <h4 className="text-base font-bold text-slate-900">Balanced, Wholesome Nutrition</h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Rigorous keto lipid ratios, anti-inflammatory vegan legume curries, celiac-certified gluten-free meal prep, and high-protein anabolic threshold optimization.
+                  Wholesome keto options, vibrant Mediterranean legume stews, gluten-free dinners, and protein-packed family meals.
                 </p>
               </div>
             </div>
@@ -205,15 +205,15 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
             <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                <span><strong>Triple Appliance Verification:</strong> Every recipe is tested across gas burners, induction cooktops, and electric convection ranges.</span>
+                <span><strong>Triple Kitchen Verification:</strong> Every recipe is tested across gas burners, induction cooktops, and electric ranges to ensure foolproof home results.</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                <span><strong>1,200 to 1,300 Word Technical Depth:</strong> No fluff or unnecessary life stories. Each guide delivers comprehensive cooking chemistry, equipment guides, pro-tips, and verified macros.</span>
+                <span><strong>Clear, Practical Instructions:</strong> No robotic filler or generic fluff. Real cooking times, sensory cues (golden-brown sear, sizzling edges), and helpful substitution tips.</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                <span><strong>100% Unique Visual Infographics:</strong> Every single recipe is accompanied by a custom, high-definition visual blueprint engineered exclusively for that keyword topic.</span>
+                <span><strong>High-Resolution Recipe Photography:</strong> High-definition photos accompany every guide so you know exactly what your dish looks like at every step.</span>
               </li>
             </ul>
           </div>
@@ -221,7 +221,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
           {/* Editorial Masthead Callout */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold font-serif-headline text-slate-900">
-              Meet Our Culinary Technologists
+              Meet Our Culinary Team
             </h3>
             <div className="grid sm:grid-cols-3 gap-4">
               {editorialStaff.map((staff, sIdx) => (
@@ -232,7 +232,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                     className="w-16 h-16 rounded-full object-cover mx-auto border border-gray-200 shadow-xs"
                   />
                   <h4 className="text-sm font-bold text-slate-900">{staff.name}</h4>
-                  <p className="text-[11px] text-[#d82424] font-semibold">{staff.role}</p>
+                  <p className="text-[11px] text-amber-600 font-semibold">{staff.role}</p>
                   <p className="text-xs text-slate-600 line-clamp-3">{staff.bio}</p>
                 </div>
               ))}
@@ -247,14 +247,14 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
       {currentTab === 'contact' && (
         <div className="space-y-10">
           <div className="space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#d82424]">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
               Contact Us • Editorial &amp; Reader Support
             </span>
             <h1 className="text-3xl sm:text-5xl font-bold font-serif-headline text-slate-950">
               Get in Touch with recipepots
             </h1>
             <p className="text-base text-slate-600 leading-relaxed max-w-2xl">
-              We welcome reader feedback, recipe questions, equipment inquiries, press requests, and technical corrections from home cooks and food professionals worldwide.
+              We welcome reader feedback, recipe questions, equipment inquiries, press requests, and home-cooking questions from food lovers worldwide.
             </p>
           </div>
 
@@ -262,8 +262,8 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
           <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
             {/* Phone & WhatsApp */}
             <div className="p-6 rounded-2xl border border-gray-200 bg-white space-y-3 hover:border-gray-300 hover:shadow-xs transition-all">
-              <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center">
-                <Phone className="w-5 h-5 text-[#d82424]" />
+              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center">
+                <Phone className="w-5 h-5 text-amber-600" />
               </div>
               <div>
                 <h3 className="text-base font-bold text-slate-900">Phone &amp; WhatsApp</h3>
@@ -271,7 +271,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               </div>
               <a
                 href="tel:03046308631"
-                className="block text-xl font-bold text-slate-900 hover:text-[#d82424] transition-colors"
+                className="block text-xl font-bold text-slate-900 hover:text-amber-600 transition-colors"
               >
                 03046308631
               </a>
@@ -279,7 +279,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                 href="https://wa.me/923046308631"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#d82424] hover:underline"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:underline"
               >
                 <span>Chat on WhatsApp</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -288,8 +288,8 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
 
             {/* Official Email */}
             <div className="p-6 rounded-2xl border border-gray-200 bg-white space-y-3 hover:border-gray-300 hover:shadow-xs transition-all">
-              <div className="w-10 h-10 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center">
-                <Mail className="w-5 h-5 text-[#d82424]" />
+              <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center">
+                <Mail className="w-5 h-5 text-amber-600" />
               </div>
               <div>
                 <h3 className="text-base font-bold text-slate-900">Official Email Desk</h3>
@@ -297,13 +297,13 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               </div>
               <a
                 href="mailto:mz751136000@gmail.com"
-                className="block text-sm sm:text-base font-bold text-slate-900 hover:text-[#d82424] transition-colors break-all"
+                className="block text-sm sm:text-base font-bold text-slate-900 hover:text-amber-600 transition-colors break-all"
               >
                 mz751136000@gmail.com
               </a>
               <a
                 href="mailto:mz751136000@gmail.com"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#d82424] hover:underline"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:underline"
               >
                 <span>Send Email</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -332,13 +332,13 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
           {/* Interactive Message Dispatch Form */}
           <div className="p-6 sm:p-8 rounded-2xl border border-gray-200 bg-slate-50 shadow-xs">
             <div className="flex items-center gap-2 mb-2">
-              <MessageSquare className="w-5 h-5 text-[#d82424]" />
+              <MessageSquare className="w-5 h-5 text-amber-600" />
               <h2 className="text-xl sm:text-2xl font-bold font-serif-headline text-slate-900">
                 Send a Message to the Editorial Team
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-slate-600 mb-6">
-              Have a question about a cooking temperature, dietary adaptation, or cookware recommendation? Our team will review and reply directly.
+              Have a question about a cooking temperature, ingredient substitution, or cookware tip? Our team will review and reply directly.
             </p>
 
             {contactSubmitted ? (
@@ -356,7 +356,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                 <div className="grid sm:grid-cols-3 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Your Name <span className="text-[#d82424]">*</span>
+                      Your Name <span className="text-amber-600">*</span>
                     </label>
                     <input
                       type="text"
@@ -364,13 +364,13 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Sarah Jenkins"
-                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-[#d82424] focus:ring-1 focus:ring-[#d82424]"
+                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Your Email <span className="text-[#d82424]">*</span>
+                      Your Email <span className="text-amber-600">*</span>
                     </label>
                     <input
                       type="email"
@@ -378,7 +378,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="name@example.com"
-                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-[#d82424] focus:ring-1 focus:ring-[#d82424]"
+                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500"
                     />
                   </div>
 
@@ -391,7 +391,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="03046308631"
-                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-[#d82424] focus:ring-1 focus:ring-[#d82424]"
+                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500"
                     />
                   </div>
                 </div>
@@ -399,23 +399,23 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Topic <span className="text-[#d82424]">*</span>
+                      Topic <span className="text-amber-600">*</span>
                     </label>
                     <select
                       value={formData.topic}
                       onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-[#d82424]"
+                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
                     >
-                      <option value="Recipe Technical Question">Recipe Technical &amp; Temperature Question</option>
+                      <option value="Recipe Technical Question">Recipe Question &amp; Cooking Tips</option>
                       <option value="Equipment Review Request">Kitchen Gear &amp; Cookware Question</option>
-                      <option value="Dietary & Allergen Verification">Dietary &amp; Allergen Verification</option>
+                      <option value="Dietary & Allergen Verification">Dietary &amp; Allergen Question</option>
                       <option value="General Feedback">General Reader Feedback</option>
                     </select>
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                      Subject <span className="text-[#d82424]">*</span>
+                      Subject <span className="text-amber-600">*</span>
                     </label>
                     <input
                       type="text"
@@ -423,14 +423,14 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       placeholder="e.g. Dutch Oven Beef Stew cooking time"
-                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-[#d82424]"
+                      className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
                     />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                    Your Message <span className="text-[#d82424]">*</span>
+                    Your Message <span className="text-amber-600">*</span>
                   </label>
                   <textarea
                     rows={4}
@@ -438,7 +438,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Provide your question or comments..."
-                    className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-[#d82424]"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-slate-900 text-sm focus:outline-none focus:border-amber-500"
                   />
                 </div>
 
@@ -448,7 +448,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                   </p>
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-[#d82424] hover:bg-[#b91c1c] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-colors"
+                    className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-colors"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>Submit Message</span>
@@ -466,7 +466,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
       {currentTab === 'privacy' && (
         <div className="space-y-6">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#d82424]">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
               Legal &amp; Privacy Policy
             </span>
             <h1 className="text-3xl sm:text-5xl font-bold font-serif-headline text-slate-950">
@@ -480,7 +480,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
           <div className="p-6 sm:p-8 rounded-2xl border border-gray-200 bg-white space-y-6 text-xs sm:text-sm text-slate-700 leading-relaxed shadow-2xs">
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Lock className="w-4 h-4 text-[#d82424]" /> 1. Introduction &amp; Scope
+                <Lock className="w-4 h-4 text-amber-500" /> 1. Introduction &amp; Scope
               </h2>
               <p>
                 Welcome to <strong>recipepots</strong> ("we", "our", or "us"). We operate this digital culinary publication dedicated to delicious one-pot recipes and kitchen gear guides. This Privacy Policy informs you of our practices regarding data privacy, cookie usage, and your rights under applicable regulations including GDPR, CCPA/CPRA, and Google AdSense publisher policies.
@@ -489,7 +489,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
 
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Globe className="w-4 h-4 text-[#d82424]" /> 2. Information We Collect
+                <Globe className="w-4 h-4 text-amber-500" /> 2. Information We Collect
               </h2>
               <ul className="list-disc list-inside space-y-1.5 ml-1">
                 <li><strong>Log Data &amp; Web Telemetry:</strong> Standard web server logs including IP addresses, browser types, timestamps, and page views to ensure site performance and security.</li>
@@ -500,7 +500,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
 
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#d82424]" /> 3. Cookies &amp; Advertising Policies
+                <Sparkles className="w-4 h-4 text-amber-500" /> 3. Cookies &amp; Advertising Policies
               </h2>
               <p>
                 Third-party vendors, including Google, use cookies to serve ads based on prior visits to our website. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to recipepots and/or other sites on the Internet.
@@ -512,7 +512,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
 
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#d82424]" /> 4. GDPR &amp; CCPA Rights
+                <ShieldCheck className="w-4 h-4 text-amber-500" /> 4. GDPR &amp; CCPA Rights
               </h2>
               <p>
                 Users residing in the European Union (GDPR) and California (CCPA/CPRA) possess rights to access, rectify, delete, or port their personal information. <strong>recipepots does not sell or rent personal information to third parties.</strong>
@@ -526,8 +526,8 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               </p>
               <div className="p-3.5 rounded-lg bg-slate-50 border border-gray-200 text-xs space-y-1">
                 <p><strong>Website:</strong> recipepots</p>
-                <p><strong>Email:</strong> <a href="mailto:mz751136000@gmail.com" className="text-[#d82424] hover:underline font-semibold">mz751136000@gmail.com</a></p>
-                <p><strong>Telephone / WhatsApp:</strong> <a href="tel:03046308631" className="text-[#d82424] hover:underline font-semibold">03046308631</a></p>
+                <p><strong>Email:</strong> <a href="mailto:mz751136000@gmail.com" className="text-amber-600 hover:underline font-semibold">mz751136000@gmail.com</a></p>
+                <p><strong>Telephone / WhatsApp:</strong> <a href="tel:03046308631" className="text-amber-600 hover:underline font-semibold">03046308631</a></p>
               </div>
             </section>
           </div>
@@ -540,7 +540,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
       {currentTab === 'terms' && (
         <div className="space-y-6">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#d82424]">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
               Legal Governance
             </span>
             <h1 className="text-3xl sm:text-5xl font-bold font-serif-headline text-slate-950">
@@ -554,7 +554,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
           <div className="p-6 sm:p-8 rounded-2xl border border-gray-200 bg-white space-y-6 text-xs sm:text-sm text-slate-700 leading-relaxed shadow-2xs">
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <FileText className="w-4 h-4 text-[#d82424]" /> 1. Agreement to Terms
+                <FileText className="w-4 h-4 text-amber-500" /> 1. Agreement to Terms
               </h2>
               <p>
                 By accessing or using <strong>recipepots</strong>, you agree to comply with and be bound by these Terms of Use and all applicable laws and regulations.
@@ -563,19 +563,19 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
 
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <AlertTriangle className="w-4 h-4 text-[#d82424]" /> 2. Culinary &amp; Dietary Disclaimer
+                <AlertTriangle className="w-4 h-4 text-amber-500" /> 2. Culinary &amp; Dietary Disclaimer
               </h2>
               <p>
-                All recipes, thermal cooking times, and nutritional macro estimates published on recipepots are provided for general educational, home-cooking, and informational purposes. Always adhere to certified food safety procedures and inspect ingredient labels for potential allergens.
+                All recipes, cooking times, and nutritional macro estimates published on recipepots are provided for general educational, home-cooking, and informational purposes. Always adhere to certified food safety procedures and inspect ingredient labels for potential allergens.
               </p>
             </section>
 
             <section className="space-y-2">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Award className="w-4 h-4 text-[#d82424]" /> 3. Intellectual Property Rights
+                <Award className="w-4 h-4 text-amber-500" /> 3. Intellectual Property Rights
               </h2>
               <p>
-                All editorial texts, recipe monographs, and custom infographic assets are protected under copyright law and remain the property of recipepots. Users may print or save recipe pages for personal, non-commercial home cooking use only.
+                All editorial texts, recipe monographs, and recipe photo assets are protected under copyright law and remain the property of recipepots. Users may print or save recipe pages for personal, non-commercial home cooking use only.
               </p>
             </section>
 
@@ -583,8 +583,8 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
               <h2 className="text-sm font-bold text-slate-900">4. Legal Contact Information</h2>
               <div className="p-3.5 rounded-lg bg-slate-50 border border-gray-200 text-xs space-y-1">
                 <p><strong>Publication:</strong> recipepots</p>
-                <p><strong>Email:</strong> <a href="mailto:mz751136000@gmail.com" className="text-[#d82424] hover:underline font-semibold">mz751136000@gmail.com</a></p>
-                <p><strong>Phone:</strong> <a href="tel:03046308631" className="text-[#d82424] hover:underline font-semibold">03046308631</a></p>
+                <p><strong>Email:</strong> <a href="mailto:mz751136000@gmail.com" className="text-amber-600 hover:underline font-semibold">mz751136000@gmail.com</a></p>
+                <p><strong>Phone:</strong> <a href="tel:03046308631" className="text-amber-600 hover:underline font-semibold">03046308631</a></p>
               </div>
             </section>
           </div>
@@ -597,30 +597,30 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
       {currentTab === 'standards' && (
         <div className="space-y-6">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#d82424]">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
               Editorial Rigor
             </span>
             <h1 className="text-3xl sm:text-5xl font-bold font-serif-headline text-slate-950">
               Our Editorial Standards &amp; Testing Rigor
             </h1>
             <p className="text-base text-slate-600 leading-relaxed">
-              How our culinary scientists and clinical dietitians develop, triple-test, and verify every single-vessel recipe monograph.
+              How our culinary team develops, kitchen-tests, and verifies every single-vessel recipe guide.
             </p>
           </div>
 
           <div className="space-y-4">
             <div className="p-6 rounded-2xl border border-gray-200 bg-white space-y-2">
               <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-emerald-600" /> 1. The Triple Thermal Testing Protocol
+                <ShieldCheck className="w-5 h-5 text-emerald-600" /> 1. The Triple Kitchen Testing Protocol
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Prior to publishing, every recipe is prepared on gas burners, induction surfaces, and electric radiant coil stoves to ensure consistent thermal transfer regardless of the user's home equipment.
+                Prior to publishing, every recipe is prepared on gas burners, induction surfaces, and electric radiant coil stoves to ensure consistent heat transfer regardless of the user's home equipment.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl border border-gray-200 bg-white space-y-2">
               <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Award className="w-5 h-5 text-emerald-600" /> 2. Nutritional Biochemistry Analysis
+                <Award className="w-5 h-5 text-emerald-600" /> 2. Nutritional Composition Analysis
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 Macronutrient profiles (calories, protein, carbohydrates, fats, fiber, sodium) are calibrated using USDA FoodData Central standards to give home cooks reliable dietary metrics.
@@ -636,14 +636,14 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
       {currentTab === 'editors' && (
         <div className="space-y-6">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#d82424]">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
               The Masthead
             </span>
             <h1 className="text-3xl sm:text-5xl font-bold font-serif-headline text-slate-950">
-              Medical &amp; Culinary Review Board
+              Culinary Review Board &amp; Team
             </h1>
             <p className="text-base text-slate-600 leading-relaxed">
-              Meet the culinary technologists, chefs, and nutrition researchers behind recipepots.
+              Meet the chefs, food writers, and nutritionists behind recipepots.
             </p>
           </div>
 
@@ -660,7 +660,7 @@ export const EditorialPages: React.FC<EditorialPageProps> = ({
                     className="w-20 h-20 rounded-full object-cover mx-auto border border-gray-200 mb-4 shadow-xs"
                   />
                   <h3 className="text-base font-bold text-slate-900 text-center">{staff.name}</h3>
-                  <p className="text-xs text-[#d82424] text-center font-semibold">{staff.role}</p>
+                  <p className="text-xs text-amber-600 text-center font-semibold">{staff.role}</p>
                   <p className="text-xs text-slate-600 mt-2 leading-relaxed text-center">
                     {staff.bio}
                   </p>
